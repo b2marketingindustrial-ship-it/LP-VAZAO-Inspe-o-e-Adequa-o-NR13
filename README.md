@@ -6,13 +6,13 @@ Palavra-chave principal: **inspeção nr13** (presente no H1 e no título da aba
 
 ## Estrutura
 
-- `index.html`: página única e autocontida (HTML, CSS e JS inline). Fontes: Barlow e Inter (Google Fonts).
+- `index.html`: página única e autocontida (HTML, CSS e JS inline). Fonte: Plus Jakarta Sans (Google Fonts). Identidade visual igual à do site da Vazão (marinho `#0b3f8a`, azul `#2468cc`, vermelho `#e1062f`).
 - `assets/`: imagens. Os arquivos abaixo entram **sozinhos** na página quando forem adicionados com o nome exato:
 
 | Arquivo | Onde aparece | Tamanho |
 |---|---|---|
-| `logo-vazao.svg` ou `logo-vazao.png` | topo e rodapé (substitui o logotipo em texto) | altura de 44px na tela |
-| `banner-topo.jpg` | fundo do topo | 1981×900 |
+| `logo-vazao.webp` (já incluída) | topo e rodapé | 230×72 |
+| `banner-topo.jpg` | painel azul do topo, atrás do chat | 1200×900 |
 | `servico-inspecao-nr13.jpg` | serviço Inspeção | 1200×900 |
 | `servico-adequacao-nr13.jpg` | serviço Adequação | 1200×900 |
 | `servico-laudo-documentacao-nr13.jpg` | serviço Laudo e Documentação | 1200×900 |
