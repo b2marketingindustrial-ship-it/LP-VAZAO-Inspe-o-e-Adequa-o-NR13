@@ -160,13 +160,6 @@ section{padding:88px 0}
 .chat-f button:disabled{opacity:.4;cursor:default}
 .chat-done{padding:16px;text-align:center;background:#EAF8EF;color:#1C6B3A;font-size:14px;border-top:1px solid #CDEBD8}
 
-/* Selos */
-.seals{background:#fff;border-bottom:1px solid var(--line);padding:0}
-.seals ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr)}
-.seals li{display:flex;align-items:center;gap:14px;padding:22px 20px;font-family:var(--head);font-weight:700;font-size:17px;color:var(--navy)}
-.seals li+li{border-left:1px solid var(--line)}
-.seals .ic{width:44px;height:44px;border-radius:12px;background:var(--blue-50);color:var(--blue);display:grid;place-items:center;flex:none}
-.seals .ic svg{width:22px;height:22px}
 
 /* Mídia com placeholder */
 .media{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#DDE8F1,#C6D7E5);display:grid;place-items:center;color:#7F99AF;background-size:cover;background-position:center;overflow:hidden}
@@ -289,9 +282,6 @@ footer a{color:#C9D8E5}
   .hero .wrap,.steps-intro,.vaso,.faq .wrap,.quote-sec .wrap{grid-template-columns:1fr;gap:32px}
   .svc-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr 1fr}
-  .seals ul{grid-template-columns:1fr}
-  .seals li+li{border-left:0;border-top:1px solid var(--line)}
-  .seals li{padding:14px 0}
   .quote .wrap{flex-direction:column;align-items:flex-start}
   .chat{height:460px}
 }
@@ -373,16 +363,6 @@ footer a{color:#C9D8E5}
     </div>
   </section>
 
-  <!-- SELOS DE CONFIANÇA -->
-  <section class="seals" aria-label="Selos de confiança">
-    <div class="wrap">
-      <ul>
-        <li><span class="ic"><svg><use href="#i-pin"/></svg></span>Atendimento em PE e CE</li>
-        <li><span class="ic"><svg><use href="#i-badge"/></svg></span>Profissionais certificados</li>
-        <li><span class="ic"><svg><use href="#i-gear"/></svg></span>Engenharia especializada em NR13</li>
-      </ul>
-    </div>
-  </section>
 
   <!-- LINHAS DE PRODUTO: 4 serviços -->
   <section class="services" id="servicos">
