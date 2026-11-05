@@ -194,7 +194,7 @@ section{padding:88px 0}
 /* Etapas */
 .steps-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px}
 .steps-intro .q{font-family:var(--head);font-weight:700;font-size:22px;color:var(--navy);margin-bottom:8px}
-.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
 .step{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px 24px;background:#fff;counter-increment:s}
 .step::before{content:counter(s,decimal-leading-zero);font-family:var(--head);font-weight:800;font-size:42px;line-height:1;color:var(--blue);opacity:.2;position:absolute;right:20px;top:18px}
 .step .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--head);font-weight:700;margin-bottom:14px}
@@ -282,7 +282,7 @@ footer a{color:#C9D8E5}
 
 /* Responsivo */
 @media (max-width:1024px){
-  .app-grid{grid-template-columns:repeat(2,1fr)}
+  .app-grid,.steps{grid-template-columns:repeat(2,1fr)}
   .diffs{grid-template-columns:repeat(3,1fr)}
   .svc{grid-template-columns:1fr}
   .svc .media{aspect-ratio:16/9;min-height:0}
@@ -444,12 +444,10 @@ footer a{color:#C9D8E5}
         </div>
       </div>
       <ol class="steps">
-        <li class="step"><span class="n">1</span><h3>Levantamento em Campo</h3><p>Identificação dos equipamentos e avaliação inicial das condições existentes na instalação.</p></li>
-        <li class="step"><span class="n">2</span><h3>Enquadramento e Diagnóstico</h3><p>Análise técnica para identificar os requisitos aplicáveis a cada equipamento e as necessidades de inspeção e documentação.</p></li>
-        <li class="step"><span class="n">3</span><h3>Inspeção dos Equipamentos</h3><p>Execução das verificações e inspeções necessárias conforme o tipo, categoria, condições e histórico do equipamento.</p></li>
-        <li class="step"><span class="n">4</span><h3>Documentação Técnica</h3><p>Elaboração ou organização dos documentos aplicáveis decorrentes do processo de inspeção e adequação.</p></li>
-        <li class="step"><span class="n">5</span><h3>Plano de Adequação</h3><p>Indicação das intervenções necessárias para tratar as não conformidades ou necessidades identificadas.</p></li>
-        <li class="step"><span class="n">6</span><h3>Engenharia e Adequações</h3><p>Quando necessário, execução ou suporte para alterações, reparos, instalações e demais intervenções de engenharia.</p></li>
+        <li class="step"><span class="n">1</span><h3>Levantamento e Diagnóstico</h3><p>Identificação dos equipamentos em campo, avaliação das condições da instalação e análise dos requisitos aplicáveis a cada um.</p></li>
+        <li class="step"><span class="n">2</span><h3>Inspeção dos Equipamentos</h3><p>Execução das verificações e inspeções necessárias conforme o tipo, categoria, condições e histórico do equipamento.</p></li>
+        <li class="step"><span class="n">3</span><h3>Documentação Técnica</h3><p>Elaboração ou organização dos documentos aplicáveis decorrentes do processo de inspeção e adequação.</p></li>
+        <li class="step"><span class="n">4</span><h3>Plano e Adequações</h3><p>Indicação das intervenções necessárias e, quando preciso, execução ou suporte para alterações, reparos e instalações.</p></li>
       </ol>
       <div class="cta-row"><a href="#avaliacao" class="btn" data-cta="etapas">Solicitar avaliação técnica <svg><use href="#i-arrow"/></svg></a></div>
     </div>
