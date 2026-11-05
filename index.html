@@ -202,42 +202,43 @@ section{padding:88px 0}
 .step p{font-size:14.5px;color:var(--muted)}
 
 /* Aplicações */
-.apps{background:var(--navy);color:#fff}
-.apps h2{color:#fff}
-.apps .lead{color:#B4C6D6}
+.apps{background:var(--navy);color:#fff;padding:64px 0}
+.apps h2{color:#fff;font-size:clamp(26px,3vw,34px)}
+.apps .lead{color:#B4C6D6;font-size:16px}
 .apps .eyebrow{color:#7FCBF2}
-.app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.apps-top{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:32px}
+.apps-top .lead{margin-top:12px}
+.apps-top .btn{margin-top:20px}
+.vaso{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:22px 24px}
+.vaso h3{font-size:18px;margin-bottom:14px}
+.vaso ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px}
+.vaso li{display:flex;gap:9px;align-items:center;font-weight:500;font-size:14.5px;color:#DCE7F0}
+.vaso li svg{width:16px;height:16px;color:#5DBDEE;flex:none}
+.app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .app{background:var(--navy-2);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden}
-.app .media{background:linear-gradient(135deg,#1A4A72,#123A5C);color:#5E86A8}
-.app-b{padding:20px}
-.app h3{font-size:20px;margin-bottom:6px}
-.app p{font-size:14px;color:#B4C6D6}
+.app .media{aspect-ratio:16/9;background:linear-gradient(135deg,#1A4A72,#123A5C);color:#5E86A8}
+.app .media svg{width:40px;height:40px}
+.app-b{padding:16px 18px 18px}
+.app h3{font-size:18px;margin-bottom:4px}
+.app p{font-size:13.5px;color:#B4C6D6;line-height:1.5}
 .app.feat{outline:2px solid var(--blue)}
-.app .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--blue);color:#fff;border-radius:6px;padding:3px 8px;margin-bottom:10px}
-.vaso{margin-top:28px;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:36px}
-.vaso h3{font-size:26px;margin-bottom:10px}
-.vaso p{color:#B4C6D6;font-size:15px}
-.vaso ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.vaso li{display:flex;gap:10px;align-items:center;background:rgba(0,135,208,.12);border:1px solid rgba(0,135,208,.35);border-radius:10px;padding:12px 14px;font-weight:500;font-size:14.5px}
-.vaso li svg{width:18px;height:18px;color:#5DBDEE;flex:none}
-.vaso .btn{margin-top:22px}
+.app .tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--blue);color:#fff;border-radius:6px;padding:2px 7px;margin-bottom:6px}
 
-/* Frase de autoridade */
-.quote{background:var(--red);color:#fff;padding:56px 0}
-.quote .wrap{display:flex;align-items:center;justify-content:space-between;gap:32px}
-.quote p.big{font-family:var(--head);font-weight:800;font-size:clamp(26px,3.2vw,38px);line-height:1.15}
-.quote p.small{color:#F2D3D3;margin-top:8px;max-width:640px}
-.quote .btn{background:#fff;color:var(--red);flex:none}
-.quote .btn:hover{background:#F6EAEA}
-
-/* Diferenciais */
-.diffs{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-.diff{border-top:3px solid var(--blue);padding-top:18px}
-.diff .ic{width:46px;height:46px;border-radius:12px;background:var(--blue-50);color:var(--blue);display:grid;place-items:center;margin-bottom:14px}
-.diff .ic svg{width:24px;height:24px}
-.diff h3{font-size:19px;color:var(--navy);margin-bottom:6px}
-.diff p{font-size:14.5px;color:var(--muted)}
-
+/* Diferenciais + frase de autoridade */
+.why{padding:64px 0}
+.why-top{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center;margin-bottom:36px}
+.why-top h2{font-size:clamp(26px,3vw,34px)}
+.urge{background:var(--red);color:#fff;border-radius:var(--radius);padding:22px 26px;display:flex;align-items:center;gap:22px}
+.urge p.big{font-family:var(--head);font-weight:800;font-size:22px;line-height:1.15}
+.urge p.small{color:#F2D3D3;font-size:14px;margin-top:4px;line-height:1.45}
+.urge .btn{background:#fff;color:var(--red);flex:none;padding:12px 18px;min-height:44px;font-size:14px}
+.urge .btn:hover{background:#F6EAEA}
+.diffs{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.diff{border-top:3px solid var(--blue);padding-top:14px}
+.diff h3{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--navy);margin-bottom:4px}
+.diff h3 .ic{width:34px;height:34px;border-radius:10px;background:var(--blue-50);color:var(--blue);display:grid;place-items:center;flex:none}
+.diff h3 .ic svg{width:18px;height:18px}
+.diff p{font-size:14px;color:var(--muted);line-height:1.5}
 /* FAQ */
 .faq{background:var(--bg-soft)}
 .faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
@@ -290,10 +291,11 @@ footer a{color:#C9D8E5}
 @media (max-width:860px){
   section{padding:64px 0}
   .hero{padding:44px 0 56px}
-  .hero .wrap,.steps-intro,.vaso,.faq .wrap,.quote-sec .wrap{grid-template-columns:1fr;gap:32px}
+  .hero .wrap,.steps-intro,.apps-top,.faq .wrap,.quote-sec .wrap{grid-template-columns:1fr;gap:32px}
   .svc-grid .svc{flex-basis:100%}
   .steps{grid-template-columns:1fr 1fr}
-  .quote .wrap{flex-direction:column;align-items:flex-start}
+  .why-top{grid-template-columns:1fr;gap:24px}
+  .urge{flex-direction:column;align-items:flex-start}
   .chat{height:460px}
 }
 @media (max-width:560px){
@@ -301,7 +303,6 @@ footer a{color:#C9D8E5}
   .points{grid-template-columns:1fr}
   .steps,.app-grid,.diffs,.grid2,.vaso ul{grid-template-columns:1fr}
   .grid2{gap:0}
-  .vaso{padding:24px}
   .form{padding:24px 18px}
   .top .btn{padding:10px 14px;font-size:13px}
   .wordmark{font-size:22px}
@@ -456,10 +457,24 @@ footer a{color:#C9D8E5}
   <!-- APLICAÇÕES -->
   <section class="apps" id="aplicacoes">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Equipamentos atendidos</span>
-        <h2>NR13 para vasos de pressão, caldeiras, ar comprimido e tubulações</h2>
-        <p class="lead">Inspeção, adequação e laudo NR13 para os equipamentos enquadrados na norma.</p>
+      <div class="apps-top">
+        <div>
+          <span class="eyebrow">Equipamentos atendidos</span>
+          <h2>NR13 para vasos de pressão, caldeiras, ar comprimido e tubulações</h2>
+          <p class="lead">Inspeção, adequação e laudo NR13 para os equipamentos enquadrados na norma. Vasos de pressão precisam ter sua integridade e documentação gerenciadas.</p>
+          <a href="#avaliacao" class="btn" data-cta="vasos">Solicitar inspeção de vaso de pressão <svg><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="vaso">
+          <h3>Na inspeção de vasos de pressão, avaliamos:</h3>
+          <ul>
+            <li><svg><use href="#i-check"/></svg>Identificação do equipamento</li>
+            <li><svg><use href="#i-check"/></svg>Dispositivos de segurança</li>
+            <li><svg><use href="#i-check"/></svg>Instrumentação</li>
+            <li><svg><use href="#i-check"/></svg>Condições de instalação</li>
+            <li><svg><use href="#i-check"/></svg>Documentação</li>
+            <li><svg><use href="#i-check"/></svg>Necessidades de adequação</li>
+          </ul>
+        </div>
       </div>
       <div class="app-grid">
         <article class="app feat">
@@ -468,7 +483,7 @@ footer a{color:#C9D8E5}
         </article>
         <article class="app">
           <div class="media" data-img="assets/aplicacao-ar-comprimido.jpg"><svg><use href="#i-gauge"/></svg></div>
-          <div class="app-b"><h3>Ar Comprimido</h3><p>Vasos de pressão e reservatórios associados ao sistema avaliados quanto ao enquadramento na NR13.</p></div>
+          <div class="app-b"><h3>Ar Comprimido</h3><p>Vasos de pressão e reservatórios do sistema avaliados quanto ao enquadramento na NR13.</p></div>
         </article>
         <article class="app">
           <div class="media" data-img="assets/aplicacao-caldeiras.jpg"><svg><use href="#i-factory"/></svg></div>
@@ -476,53 +491,34 @@ footer a{color:#C9D8E5}
         </article>
         <article class="app">
           <div class="media" data-img="assets/aplicacao-tubulacoes.jpg"><svg><use href="#i-ruler"/></svg></div>
-          <div class="app-b"><h3>Tubulações Industriais</h3><p>Avaliação de tubulações enquadradas, considerando documentação, condições da linha e requisitos de inspeção.</p></div>
+          <div class="app-b"><h3>Tubulações Industriais</h3><p>Avaliação de tubulações enquadradas, com documentação e inspeção.</p></div>
         </article>
       </div>
+    </div>
+  </section>
 
-      <div class="vaso">
+  <!-- DIFERENCIAIS + FRASE DE AUTORIDADE -->
+  <section class="why" id="diferenciais">
+    <div class="wrap">
+      <div class="why-top">
         <div>
-          <span class="eyebrow">Inspeção NR13 para vasos de pressão</span>
-          <h3>O que pode ser avaliado?</h3>
-          <p>Vasos de pressão enquadrados na NR13 precisam ter sua integridade e documentação gerenciadas. Na inspeção, a Vazão avalia o equipamento e a instalação para indicar o que precisa ser regularizado.</p>
-          <a href="#avaliacao" class="btn" data-cta="vasos">Solicitar inspeção de vaso de pressão <svg><use href="#i-arrow"/></svg></a>
+          <span class="eyebrow">Segurança e conformidade</span>
+          <h2>Por que contar com a Vazão Engenharia?</h2>
         </div>
-        <ul>
-          <li><svg><use href="#i-check"/></svg>Identificação do equipamento</li>
-          <li><svg><use href="#i-check"/></svg>Dispositivos de segurança</li>
-          <li><svg><use href="#i-check"/></svg>Instrumentação</li>
-          <li><svg><use href="#i-check"/></svg>Condições de instalação</li>
-          <li><svg><use href="#i-check"/></svg>Documentação</li>
-          <li><svg><use href="#i-check"/></svg>Necessidades de adequação</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- FRASE DE AUTORIDADE -->
-  <section class="quote" aria-label="Chamada">
-    <div class="wrap">
-      <div>
-        <p class="big">Evite deixar a adequação para depois.</p>
-        <p class="small">Encontrou pendências na NR13 da sua planta? A Vazão avalia os equipamentos e indica o caminho para regularizar.</p>
-      </div>
-      <a href="#avaliacao" class="btn" data-cta="autoridade">Solicitar avaliação técnica <svg><use href="#i-arrow"/></svg></a>
-    </div>
-  </section>
-
-  <!-- DIFERENCIAIS -->
-  <section id="diferenciais">
-    <div class="wrap">
-      <div class="sec-head center">
-        <span class="eyebrow">Segurança e conformidade</span>
-        <h2>Por que contar com a Vazão Engenharia?</h2>
+        <div class="urge">
+          <div>
+            <p class="big">Evite deixar a adequação para depois.</p>
+            <p class="small">Encontrou pendências na NR13 da sua planta? A Vazão avalia os equipamentos e indica o caminho para regularizar.</p>
+          </div>
+          <a href="#avaliacao" class="btn" data-cta="autoridade">Solicitar avaliação</a>
+        </div>
       </div>
       <div class="diffs">
-        <div class="diff"><div class="ic"><svg><use href="#i-cal"/></svg></div><h3>Desde 1991</h3><p>Experiência em soluções para o mercado industrial.</p></div>
-        <div class="diff"><div class="ic"><svg><use href="#i-shield"/></svg></div><h3>Especialistas em NR13</h3><p>Inspeção, levantamento e adequação de equipamentos.</p></div>
-        <div class="diff"><div class="ic"><svg><use href="#i-gear"/></svg></div><h3>Engenharia Especializada</h3><p>Suporte para avaliar e desenvolver as intervenções.</p></div>
-        <div class="diff"><div class="ic"><svg><use href="#i-search"/></svg></div><h3>Levantamento em Campo</h3><p>Avaliação da situação real encontrada na instalação.</p></div>
-        <div class="diff"><div class="ic"><svg><use href="#i-factory"/></svg></div><h3>Soluções para Indústrias</h3><p>Atendimento focado em ambientes e processos industriais.</p></div>
+        <div class="diff"><h3><span class="ic"><svg><use href="#i-cal"/></svg></span>Desde 1991</h3><p>Experiência em soluções para o mercado industrial.</p></div>
+        <div class="diff"><h3><span class="ic"><svg><use href="#i-shield"/></svg></span>Especialistas em NR13</h3><p>Inspeção, levantamento e adequação de equipamentos.</p></div>
+        <div class="diff"><h3><span class="ic"><svg><use href="#i-gear"/></svg></span>Engenharia Especializada</h3><p>Suporte para avaliar e desenvolver as intervenções.</p></div>
+        <div class="diff"><h3><span class="ic"><svg><use href="#i-search"/></svg></span>Levantamento em Campo</h3><p>Avaliação da situação real encontrada na instalação.</p></div>
+        <div class="diff"><h3><span class="ic"><svg><use href="#i-factory"/></svg></span>Soluções para Indústrias</h3><p>Atendimento focado em ambientes e processos industriais.</p></div>
       </div>
     </div>
   </section>
