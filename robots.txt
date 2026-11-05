@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vazao.b2marketingindustrial.com.br/inspecao-nr13/sitemap.xml
