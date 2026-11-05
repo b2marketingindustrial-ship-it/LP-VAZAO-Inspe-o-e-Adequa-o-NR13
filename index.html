@@ -168,7 +168,18 @@ section{padding:88px 0}
 
 /* Serviços */
 .services{background:var(--bg-soft)}
-.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.svc-grid{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:4px 2px 8px;margin:0 -2px}
+.svc-grid::-webkit-scrollbar{display:none}
+.svc-grid .svc{flex:0 0 calc((100% - 24px)/2);scroll-snap-align:start}
+.car-ctrl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px}
+.car-btn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.car-btn:hover:not(:disabled){background:var(--blue);border-color:var(--blue);color:#fff}
+.car-btn:disabled{opacity:.35;cursor:default}
+.car-btn svg{width:20px;height:20px}
+.car-btn.prev svg{transform:rotate(180deg)}
+.car-dots{display:flex;gap:8px}
+.car-dots button{width:10px;height:10px;border-radius:999px;border:0;background:#C3D0DC;cursor:pointer;padding:0;transition:width .25s,background .25s}
+.car-dots button.on{width:28px;background:var(--blue)}
 .svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:42% 1fr;box-shadow:0 2px 0 rgba(11,42,68,.03)}
 .svc .media{aspect-ratio:auto;height:100%;min-height:260px}
 .svc-body{padding:26px 24px}
@@ -280,7 +291,7 @@ footer a{color:#C9D8E5}
   section{padding:64px 0}
   .hero{padding:44px 0 56px}
   .hero .wrap,.steps-intro,.vaso,.faq .wrap,.quote-sec .wrap{grid-template-columns:1fr;gap:32px}
-  .svc-grid{grid-template-columns:1fr}
+  .svc-grid .svc{flex-basis:100%}
   .steps{grid-template-columns:1fr 1fr}
   .quote .wrap{flex-direction:column;align-items:flex-start}
   .chat{height:460px}
@@ -409,6 +420,11 @@ footer a{color:#C9D8E5}
             <ul class="checks"><li>Informações dos equipamentos</li><li>Registros e documentação</li><li>Acompanhamento de inspeções</li></ul>
           </div>
         </article>
+      </div>
+      <div class="car-ctrl" data-carousel-ctrl="svc-grid">
+        <button type="button" class="car-btn prev" aria-label="Serviço anterior"><svg><use href="#i-arrow"/></svg></button>
+        <div class="car-dots"></div>
+        <button type="button" class="car-btn next" aria-label="Próximo serviço"><svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="cta-row"><a href="#avaliacao" class="btn" data-cta="servicos">Solicitar avaliação técnica <svg><use href="#i-arrow"/></svg></a></div>
     </div>
@@ -650,6 +666,34 @@ tryImg(hero.getAttribute('data-hero-img'), function(s){ hero.style.setProperty('
     });
   });
 });
+
+/* Carrossel de serviços */
+(function(){
+  var track = document.querySelector('.svc-grid'), ctrl = document.querySelector('[data-carousel-ctrl]');
+  if(!track || !ctrl) return;
+  var items = track.children, prev = ctrl.querySelector('.prev'), next = ctrl.querySelector('.next'), dotsBox = ctrl.querySelector('.car-dots');
+  function perView(){ return Math.max(1, Math.round(track.clientWidth / items[0].getBoundingClientRect().width)); }
+  function pages(){ return items.length - perView() + 1; }
+  function step(){ return items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : track.clientWidth; }
+  function current(){ return Math.round(track.scrollLeft / step()); }
+  function go(i){ i = Math.max(0, Math.min(pages()-1, i)); track.scrollTo({left: i*step(), behavior:'smooth'}); }
+  function buildDots(){
+    dotsBox.innerHTML = '';
+    for(var i=0;i<pages();i++){ (function(i){ var b = document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Ir para o serviço '+(i+1)); b.onclick = function(){ go(i); }; dotsBox.appendChild(b); })(i); }
+    update();
+  }
+  function update(){
+    var c = current(), n = pages();
+    Array.prototype.forEach.call(dotsBox.children, function(d,i){ d.classList.toggle('on', i===c); });
+    prev.disabled = c <= 0; next.disabled = c >= n-1;
+    ctrl.style.display = n > 1 ? '' : 'none';
+  }
+  prev.onclick = function(){ go(current()-1); };
+  next.onclick = function(){ go(current()+1); };
+  var t; track.addEventListener('scroll', function(){ clearTimeout(t); t = setTimeout(update, 60); }, {passive:true});
+  var rw; window.addEventListener('resize', function(){ clearTimeout(rw); rw = setTimeout(buildDots, 150); });
+  buildDots();
+})();
 
 /* Cliques em CTA */
 document.addEventListener('click', function(e){
