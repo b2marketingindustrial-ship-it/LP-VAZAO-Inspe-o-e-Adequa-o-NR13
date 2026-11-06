@@ -187,6 +187,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .media .ico{width:56px;height:56px;stroke-width:1.2;opacity:.55}
 .media.loaded{background-size:cover;background-position:center}
 .media.loaded .ico{display:none}
+/* Fotos de catálogo (produto em fundo branco): mostra inteira, sem cortar */
+.media.fit.loaded{background-color:#fff;background-size:contain;background-repeat:no-repeat;background-origin:content-box;padding:14px}
 
 /* ---------- Serviços (carrossel) ---------- */
 .services{background:linear-gradient(180deg,#f3f7fd 0%,#eef4fb 50%,#f4f8fd 100%)}
@@ -570,7 +572,7 @@ ul,ol{margin:0;padding:0;list-style:none}
       <div class="carousel reveal">
         <ul class="track" tabindex="0" aria-label="Serviços NR13">
           <li class="svc">
-            <div class="media" data-img="assets/servico-inspecao-nr13.jpg"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></div>
+            <div class="media fit" data-img="assets/servico-inspecao-nr13.jpg"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></div>
             <div class="svc-body">
               <span class="chip">Inspeção</span>
               <h3>Inspeção NR13</h3>
@@ -579,7 +581,7 @@ ul,ol{margin:0;padding:0;list-style:none}
             </div>
           </li>
           <li class="svc">
-            <div class="media" data-img="assets/servico-adequacao-nr13.jpg"><svg class="ico" aria-hidden="true"><use href="#i-gear"/></svg></div>
+            <div class="media" data-img="assets/servico-adequacao-nr13.webp"><svg class="ico" aria-hidden="true"><use href="#i-gear"/></svg></div>
             <div class="svc-body">
               <span class="chip">Adequação</span>
               <h3>Adequação NR13</h3>
@@ -663,11 +665,11 @@ ul,ol{margin:0;padding:0;list-style:none}
       </div>
       <div class="app-grid">
         <article class="app feat reveal">
-          <div class="media" data-img="assets/aplicacao-vasos-de-pressao.jpg"><svg class="ico" aria-hidden="true"><use href="#i-gauge"/></svg></div>
+          <div class="media fit" data-img="assets/aplicacao-vasos-de-pressao.jpg"><svg class="ico" aria-hidden="true"><use href="#i-gauge"/></svg></div>
           <div class="app-b"><span class="tag">Destaque</span><h3>Vasos de Pressão</h3><p>Inspeção, avaliação e documentação de vasos de pressão enquadrados na NR13.</p></div>
         </article>
         <article class="app reveal d1">
-          <div class="media" data-img="assets/aplicacao-ar-comprimido.jpg"><svg class="ico" aria-hidden="true"><use href="#i-air"/></svg></div>
+          <div class="media fit" data-img="assets/aplicacao-ar-comprimido.png"><svg class="ico" aria-hidden="true"><use href="#i-air"/></svg></div>
           <div class="app-b"><h3>Ar Comprimido</h3><p>Vasos de pressão e reservatórios do sistema avaliados quanto ao enquadramento na NR13.</p></div>
         </article>
         <article class="app reveal d2">
