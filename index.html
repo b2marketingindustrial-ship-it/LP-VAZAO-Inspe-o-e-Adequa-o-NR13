@@ -187,8 +187,14 @@ ul,ol{margin:0;padding:0;list-style:none}
 .media .ico{width:56px;height:56px;stroke-width:1.2;opacity:.55}
 .media.loaded{background-size:cover;background-position:center}
 .media.loaded .ico{display:none}
-/* Fotos de catálogo (produto em fundo branco): mostra inteira, sem cortar */
-.media.fit.loaded{background-color:#fff;background-size:contain;background-repeat:no-repeat;background-origin:content-box;padding:14px}
+
+/* ---------- Logo no topo das seções + foto de fundo que se dissolve ---------- */
+.sec-logo{display:block;width:clamp(150px,12vw,190px);height:auto;margin-bottom:14px}
+.section-head .sec-logo{margin:0 auto 16px}
+.logo-line{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.logo-line .sec-logo{margin:0}
+.logo-line .eyebrow{padding-left:24px;border-left:1px solid var(--line-strong);min-height:44px}
+.sec-photo{position:absolute;top:0;right:0;z-index:-1;width:min(50%,820px);height:clamp(320px,30vw,460px);background:var(--img) center/cover no-repeat;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%),linear-gradient(0deg,transparent 0,#000 45%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 38%),linear-gradient(0deg,transparent 0,#000 45%);mask-composite:intersect}
 
 /* ---------- Serviços (carrossel) ---------- */
 .services{background:linear-gradient(180deg,#f3f7fd 0%,#eef4fb 50%,#f4f8fd 100%)}
@@ -199,7 +205,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .svc:hover{transform:translateY(-5px);box-shadow:0 28px 48px -26px rgba(10,43,87,.45);border-color:var(--blue-200)}
 .svc .media{min-height:280px;border-radius:12px}
 .svc-body{display:flex;flex-direction:column;padding:16px 14px 10px 24px}
-.chip{align-self:flex-start;padding:3px 12px;border-radius:999px;background:var(--blue-100);font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--blue-700)}
+.chip .ico{width:16px;height:16px;stroke-width:2}
+.chip{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:var(--blue-100);font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--blue-700)}
 .svc h3{margin:12px 0 8px;font-size:clamp(21px,1.7vw,24px);line-height:1.2;color:var(--blue-700)}
 .svc p{font-size:15px;line-height:1.6;color:var(--muted)}
 .checks{display:grid;gap:8px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
@@ -218,18 +225,24 @@ ul,ol{margin:0;padding:0;list-style:none}
 .progress span{position:absolute;top:0;bottom:0;left:0;width:50%;border-radius:5px;background:var(--blue-600);transition:transform .2s linear,width .2s}
 
 /* ---------- Etapas ---------- */
-.flow-sec{background:#fff}
-.flow-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:end;margin-bottom:clamp(40px,5vw,56px)}
-.flow-intro .head-left h2{margin-bottom:0}
-.flow-intro .q{margin-bottom:10px;font-size:clamp(18px,1.5vw,21px);font-weight:700;line-height:1.35;letter-spacing:-.015em;color:var(--navy-800)}
-.flow-intro .q+p{font-size:16.5px;color:var(--muted)}
-.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
-.step{position:relative;padding:30px 24px 28px;border:1px solid #dde6f1;border-radius:var(--r-lg);background:#fff;box-shadow:0 24px 48px -30px rgba(6,27,56,.4),0 2px 6px rgba(10,43,87,.05);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.flow-sec{overflow:hidden;background:linear-gradient(180deg,#fff 0%,#f5f8fd 100%)}
+.flow-head{max-width:760px;margin-bottom:clamp(40px,5vw,56px)}
+.flow-head h2{margin:18px 0 18px;font-size:clamp(30px,3.4vw,48px);line-height:1.1;color:var(--blue-700)}
+.flow-head h2 em{font-style:normal;color:var(--blue-500)}
+.flow-head .q{margin-bottom:8px;font-size:clamp(18px,1.5vw,21px);font-weight:800;line-height:1.35;letter-spacing:-.015em;color:var(--navy-800)}
+.flow-head .q+p{font-size:16.5px;color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.step:not(:last-child)::after{content:"";position:absolute;top:50%;right:-36px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--blue-200);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231550aa' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/18px no-repeat;box-shadow:0 8px 18px -10px rgba(10,43,87,.4);transform:translateY(-50%)}
+.step-top{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.step-ic{display:grid;place-items:center;width:64px;height:64px;flex:none;border-radius:50%;background:var(--blue-50);color:var(--blue-700);box-shadow:inset 0 0 0 1px var(--blue-100)}
+.step-ic .ico{width:30px;height:30px;stroke-width:1.5}
+.step-t{padding-left:16px;border-left:1px solid var(--line-strong)}
+.step{position:relative;padding:28px 24px 26px;border:1px solid #dde6f1;border-radius:var(--r-lg);background:#fff;box-shadow:0 24px 48px -30px rgba(6,27,56,.4),0 2px 6px rgba(10,43,87,.05);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
 .step::before{content:"";position:absolute;top:-1px;left:24px;width:64px;height:5px;border-radius:0 0 4px 4px;background:var(--blue-500)}
 .step:nth-child(even)::before{background:var(--red-600)}
 .step:hover{transform:translateY(-6px);box-shadow:0 34px 60px -30px rgba(6,27,56,.5),0 2px 6px rgba(10,43,87,.06)}
-.step .n{display:grid;place-items:center;width:54px;height:54px;margin-bottom:18px;border-radius:50%;background:#fff;border:1.5px solid var(--blue-200);color:var(--blue-700);font-size:17px;font-weight:800;box-shadow:0 8px 18px -10px rgba(10,43,87,.35)}
-.step h3{margin-bottom:8px;font-size:19px;line-height:1.25;color:var(--blue-700)}
+.step .n{display:block;margin-bottom:2px;font-size:22px;font-weight:800;line-height:1.1;color:var(--blue-600)}
+.step h3{font-size:19px;line-height:1.25;color:var(--blue-700)}
 .step p{font-size:15px;line-height:1.6;color:var(--muted)}
 
 /* ---------- Aplicações ---------- */
@@ -245,20 +258,25 @@ ul,ol{margin:0;padding:0;list-style:none}
 .app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .app{display:flex;flex-direction:column;padding:12px;border:1px solid #dbe5f1;border-radius:18px;background:#fff;box-shadow:0 18px 36px -24px rgba(10,43,87,.35);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
 .app:hover{transform:translateY(-5px);box-shadow:0 28px 48px -26px rgba(10,43,87,.45);border-color:var(--blue-200)}
-.app .media{aspect-ratio:16/10;border-radius:12px}
+.app .media{aspect-ratio:2/1;border-radius:12px}
 .app .media .ico{width:44px;height:44px}
-.app-b{padding:14px 6px 6px}
-.app .tag{display:inline-block;margin-bottom:8px;padding:3px 10px;border-radius:999px;background:var(--red-600);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.app-b{display:flex;align-items:flex-start;gap:16px;padding:18px 8px 8px}
+.app-ic{flex:none;padding:4px 16px 4px 0;border-right:1px solid var(--line-strong);color:var(--blue-600)}
+.app-ic .ico{width:40px;height:40px;stroke-width:1.4}
 .app h3{margin-bottom:6px;font-size:18px;line-height:1.25;color:var(--blue-700)}
 .app p{font-size:14.5px;line-height:1.55;color:var(--muted)}
 .app.feat{border-color:var(--blue-500);box-shadow:0 0 0 1px var(--blue-500),0 24px 44px -24px rgba(11,63,138,.5)}
 
 /* ---------- Diferenciais (onda azul do site) ---------- */
 .dif-section{overflow:hidden;padding-bottom:clamp(64px,6vw,80px);background:linear-gradient(180deg,#fff 0%,#f3f7fc 55%,#eef3fa 100%)}
-.dif-lines,.dif-wave{position:absolute;left:0;width:100%;z-index:-1;pointer-events:none}
+.dif-lines{position:absolute;left:0;width:100%;z-index:-1;pointer-events:none}
 .dif-lines{top:0;height:100%}
-.dif-wave{bottom:0;height:clamp(300px,30vw,440px)}
 .dif-section .wrap{width:min(1360px,100% - 48px)}
+.dif-head{max-width:680px;margin-bottom:clamp(40px,5vw,64px)}
+.dif-head h2{margin:16px 0 14px;font-size:clamp(32px,3.6vw,54px);line-height:1.06;letter-spacing:-.035em;color:var(--navy-800)}
+.dif-head h2 em{font-style:normal;color:var(--blue-500)}
+.dif-head p{font-size:17px;color:var(--text)}
+.dif-section .sec-photo{width:min(56%,1000px);height:clamp(340px,32vw,500px)}
 .benefits{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
 .benefit{position:relative;padding:30px 20px 28px;border:1px solid #dde6f1;border-radius:var(--r-lg);background:#fff;text-align:center;box-shadow:0 24px 48px -28px rgba(6,27,56,.45),0 2px 6px rgba(10,43,87,.06);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
 .benefit::before{content:"";position:absolute;top:-1px;left:50%;width:96px;height:6px;border-radius:0 0 4px 4px;background:var(--blue-500);transform:translateX(-50%)}
@@ -288,7 +306,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .talk::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 0 5%,rgba(255,255,255,.8) 5% 12%,transparent 12% 68%,rgba(255,255,255,.65) 68% 76%,transparent 76%),linear-gradient(115deg,transparent 0 24%,rgba(214,228,245,.55) 24% 29%,transparent 29% 86%,rgba(214,228,245,.5) 86% 92%,transparent 92%)}
 .talk .wrap{width:min(1360px,100% - clamp(48px,8vw,200px))}
 
-.cta-section{--list:clamp(320px,26vw,430px);padding:clamp(48px,5vw,64px) 0 0}
+.cta-section{--list:clamp(440px,42vw,640px);padding:clamp(48px,5vw,64px) 0 0}
 .cta{position:relative;display:grid;grid-template-columns:minmax(0,1fr) var(--list);min-height:clamp(300px,22vw,360px);border-radius:24px;overflow:hidden;background:linear-gradient(120deg,#082b5e 0%,#0a3478 60%,#0b3f8a 100%);isolation:isolate;box-shadow:0 40px 80px -40px rgba(6,27,56,.55)}
 .cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(120,170,255,.07) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(90deg,rgba(120,170,255,.07) 1px,transparent 1px) 0 0/34px 34px;-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 70%);mask-image:linear-gradient(90deg,transparent 30%,#000 70%)}
 .cta-main{position:relative;align-self:center;padding:clamp(40px,4vw,56px) clamp(24px,3vw,48px) clamp(40px,4vw,56px) clamp(28px,3.6vw,60px)}
@@ -299,12 +317,14 @@ ul,ol{margin:0;padding:0;list-style:none}
 .cta h2{margin:16px 0 12px;max-width:620px;color:#fff;font-size:clamp(28px,2.4vw,42px);line-height:1.08;letter-spacing:-.035em}
 .cta p{max-width:560px;color:#d6e4f7;font-size:clamp(16px,1.1vw,18px);line-height:1.55}
 .cta .btn{margin-top:clamp(22px,2vw,28px);min-height:56px;padding:0 28px}
-.cta-list{grid-column:2;display:flex;flex-direction:column;justify-content:center;padding:20px clamp(24px,2.2vw,40px) 20px 100px;background:linear-gradient(180deg,#f7faff,#eef3fa);clip-path:polygon(110px 0,100% 0,100% 100%,0 100%)}
-.cta-list li{display:flex;align-items:center;gap:18px;padding:clamp(14px,1.3vw,20px) 0;border-bottom:1px solid #d9e3ef}
+.cta .sec-logo{width:clamp(140px,11vw,180px);margin-bottom:22px}
+.cta-side{position:relative;grid-column:2;display:flex;align-items:center;padding:32px clamp(24px,3vw,48px) 32px 0;isolation:isolate}
+.cta-side::before{content:"";position:absolute;top:0;bottom:0;left:22%;right:0;z-index:-1;background:url("assets/bg-diferenciais.jpg") 75% center/cover no-repeat;clip-path:polygon(90px 0,100% 0,100% 100%,0 100%)}
+.cta-list{width:100%;padding:6px clamp(20px,2vw,32px);border-radius:20px;background:rgba(255,255,255,.97);box-shadow:0 30px 60px -24px rgba(3,15,35,.6)}
+.cta-list li{display:flex;align-items:center;gap:18px;padding:clamp(16px,1.4vw,22px) 0;border-bottom:1px solid #d9e3ef}
 .cta-list li:last-child{border-bottom:0}
 .cta-list .ico{width:clamp(32px,2.4vw,40px);height:clamp(32px,2.4vw,40px);color:var(--blue-600);stroke-width:1.5}
-.cta-list strong{display:block;font-size:clamp(16px,1.1vw,19px);line-height:1.25;letter-spacing:-.015em;color:var(--blue-700)}
-.cta-list span{display:block;font-size:clamp(14px,1vw,16px);line-height:1.35;color:var(--muted)}
+.cta-list strong{display:block;padding-left:18px;border-left:1px solid var(--line-strong);font-size:clamp(16px,1.2vw,20px);line-height:1.25;letter-spacing:-.015em;color:var(--blue-700)}
 
 .contact-section{padding:clamp(56px,6vw,80px) 0 clamp(64px,7vw,96px)}
 .contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,5vw,80px);align-items:start}
@@ -392,9 +412,10 @@ ul,ol{margin:0;padding:0;list-style:none}
   .svc{grid-template-columns:40% 1fr}
   .flow{grid-template-columns:repeat(2,1fr)}
   .app-grid{grid-template-columns:repeat(2,1fr)}
+  .step::after{display:none}
   .cta{grid-template-columns:1fr}
-  .cta-list{grid-column:1;flex-direction:row;flex-wrap:wrap;gap:12px 28px;padding:22px clamp(28px,3.6vw,60px);clip-path:none}
-  .cta-list li{flex:1 1 200px;padding:0;border:0}
+  .cta-side{grid-column:1;padding:28px clamp(28px,3.6vw,60px) 36px}
+  .cta-side::before{left:0;clip-path:none;opacity:.9}
 }
 @media (max-width:900px){
   .nav-links a:not(.btn){display:none}
@@ -404,7 +425,8 @@ ul,ol{margin:0;padding:0;list-style:none}
   .hero-inner{grid-template-columns:1fr;width:auto;padding:40px clamp(24px,5vw,48px) 40px;gap:40px}
   .hero-copy{max-width:640px}
   .chat{max-width:560px;width:100%;margin-inline:auto;height:500px}
-  .flow-intro,.apps-top,.faq .wrap,.contact{grid-template-columns:1fr}
+  .apps-top,.faq .wrap,.contact{grid-template-columns:1fr}
+  .sec-photo{width:100%;opacity:.22}
   .faq .head-left{position:static}
 }
 @media (max-width:640px){
@@ -442,7 +464,6 @@ ul,ol{margin:0;padding:0;list-style:none}
   .benefit-icon .ico{width:28px;height:28px}
   .benefit h3{font-size:16px}
   .benefit p{font-size:13.5px;line-height:1.55}
-  .dif-wave{height:340px}
   .faq-list summary{padding:18px 58px 18px 18px;font-size:16px}
   .faq-list summary::after{right:16px}
   .faq-list details p{padding:0 18px 18px;font-size:15px}
@@ -450,8 +471,10 @@ ul,ol{margin:0;padding:0;list-style:none}
   .cta{border-radius:20px}
   .cta-main{padding:32px 24px 28px}
   .cta .btn{width:100%}
-  .cta-list{flex-direction:column;gap:0;padding:8px 24px}
-  .cta-list li{flex:none;padding:16px 0;border-bottom:1px solid #d9e3ef}
+  .cta-side{padding:4px 16px 20px}
+  .cta-list{padding:4px 18px}
+  .logo-line{gap:14px}
+  .logo-line .eyebrow{padding-left:14px}
   .grid2{grid-template-columns:1fr}
   .form-card{padding:28px 20px 22px}
   .site-footer .wrap{width:calc(100% - 32px)}
@@ -492,7 +515,9 @@ ul,ol{margin:0;padding:0;list-style:none}
   <symbol id="i-boiler" viewBox="0 0 24 24"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 2.5v3.5M15 2.5v3.5M9 12c0-1.5 1.5-2 1.5-3.5M13.5 12c0-1.5 1.5-2 1.5-3.5M8 16.5h8"/></symbol>
   <symbol id="i-pipe" viewBox="0 0 24 24"><path d="M2.5 8h7a3 3 0 0 1 3 3v10.5M2.5 13h4a1 1 0 0 1 1 1v7.5"/><path d="M15 3.5h6.5v5H15zM18 8.5V12a3 3 0 0 1-3 3h-2.5"/></symbol>
   <symbol id="i-air" viewBox="0 0 24 24"><rect x="3" y="9" width="13" height="9" rx="4.5"/><path d="M16 13.5h3a2 2 0 0 0 2-2V6M19 4h4M6.5 18v2.5M12.5 18v2.5"/></symbol>
-  <symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 2.8 14.4 4.5l2.9-.2.9 2.8 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-.9 2.8-2.9-.2L12 21.2l-2.4-1.7-2.9.2-.9-2.8-2.4-1.7.9-2.8-.9-2.8 2.4-1.7.9-2.8 2.9.2L12 2.8Z"/><path d="m8.8 12 2.2 2.2 4.4-4.6"/></symbol>
+  <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M4.5 16a7.5 7.5 0 0 1 15 0"/><path d="M2.5 16h19v2.5h-19z"/><path d="M10 8.7V5.5h4v3.2"/></symbol>
+  <symbol id="i-tank" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="9.5" rx="4.75"/><path d="M7 16.5v3M17 16.5v3M10 7V5h4v2"/></symbol>
+  <symbol id="i-badge"viewBox="0 0 24 24"><path d="M12 2.8 14.4 4.5l2.9-.2.9 2.8 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-.9 2.8-2.9-.2L12 21.2l-2.4-1.7-2.9.2-.9-2.8-2.4-1.7.9-2.8-.9-2.8 2.4-1.7.9-2.8 2.9.2L12 2.8Z"/><path d="m8.8 12 2.2 2.2 4.4-4.6"/></symbol>
 </svg>
 
 <header class="site-header" id="topo">
@@ -565,6 +590,7 @@ ul,ol{margin:0;padding:0;list-style:none}
     </svg>
     <div class="wrap">
       <div class="section-head reveal">
+        <img class="sec-logo" src="assets/logo-vazao.webp" alt="" width="230" height="72" loading="lazy">
         <span class="eyebrow">Inspeção · Adequação · Laudos</span>
         <h2 id="svc-title">Serviços <em>NR13</em> para a sua indústria</h2>
         <p>Regularize equipamentos e instalações enquadrados na NR13 com suporte de engenharia especializada.</p>
@@ -572,9 +598,9 @@ ul,ol{margin:0;padding:0;list-style:none}
       <div class="carousel reveal">
         <ul class="track" tabindex="0" aria-label="Serviços NR13">
           <li class="svc">
-            <div class="media fit" data-img="assets/servico-inspecao-nr13.jpg"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></div>
+            <div class="media" data-img="assets/servico-inspecao-nr13.jpg"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></div>
             <div class="svc-body">
-              <span class="chip">Inspeção</span>
+              <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-clip"/></svg>Inspeção</span>
               <h3>Inspeção NR13</h3>
               <p>Avaliação técnica dos equipamentos e das condições da instalação conforme os requisitos aplicáveis da norma.</p>
               <ul class="checks"><li>Levantamento em campo</li><li>Dispositivos de segurança</li><li>Teste hidrostático</li></ul>
@@ -583,7 +609,7 @@ ul,ol{margin:0;padding:0;list-style:none}
           <li class="svc">
             <div class="media" data-img="assets/servico-adequacao-nr13.webp"><svg class="ico" aria-hidden="true"><use href="#i-gear"/></svg></div>
             <div class="svc-body">
-              <span class="chip">Adequação</span>
+              <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-gear"/></svg>Adequação</span>
               <h3>Adequação NR13</h3>
               <p>A Vazão apoia sua indústria desde o diagnóstico até a execução das intervenções de engenharia necessárias.</p>
               <ul class="checks"><li>Diagnóstico técnico</li><li>Plano de adequação</li><li>Intervenções de engenharia</li></ul>
@@ -592,7 +618,7 @@ ul,ol{margin:0;padding:0;list-style:none}
           <li class="svc">
             <div class="media" data-img="assets/servico-laudo-documentacao-nr13.jpg"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></div>
             <div class="svc-body">
-              <span class="chip">Documentação</span>
+              <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Documentação</span>
               <h3>Laudo e Documentação NR13</h3>
               <p>Organização e elaboração da documentação técnica decorrente da inspeção: relatórios de inspeção de segurança e demais documentos exigíveis por equipamento.</p>
               <ul class="checks"><li>Relatórios de inspeção</li><li>Prontuário do equipamento</li><li>Registro de segurança</li></ul>
@@ -601,7 +627,7 @@ ul,ol{margin:0;padding:0;list-style:none}
           <li class="svc">
             <div class="media" data-img="assets/servico-gestao-nr13.jpg"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg></div>
             <div class="svc-body">
-              <span class="chip">Gestão</span>
+              <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg>Gestão</span>
               <h3>Gestão NR13</h3>
               <p>Suporte para organizar as informações dos equipamentos, registros, documentação e acompanhamento das inspeções ao longo do ciclo de operação.</p>
               <ul class="checks"><li>Informações dos equipamentos</li><li>Registros e documentação</li><li>Acompanhamento de inspeções</li></ul>
@@ -620,22 +646,19 @@ ul,ol{margin:0;padding:0;list-style:none}
 
   <!-- ETAPAS DO ATENDIMENTO -->
   <section class="section flow-sec" id="etapas" aria-labelledby="flow-title">
+    <div class="sec-photo" style="--img:url('assets/bg-etapas.jpg')" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="flow-intro">
-        <div class="head-left reveal">
-          <span class="eyebrow left">Do diagnóstico à adequação</span>
-          <h2 id="flow-title">Como funciona uma <em>adequação NR13?</em></h2>
-        </div>
-        <div class="reveal d1">
-          <p class="q">Sua empresa sabe quais equipamentos precisam atender à NR13?</p>
-          <p>Tudo começa com um levantamento técnico na sua planta. A Vazão identifica os equipamentos, avalia as condições existentes e define o que precisa ser inspecionado, documentado ou adequado.</p>
-        </div>
+      <div class="flow-head reveal">
+        <div class="logo-line"><img class="sec-logo" src="assets/logo-vazao.webp" alt="" width="230" height="72" loading="lazy"><span class="eyebrow left">Do diagnóstico à adequação</span></div>
+        <h2 id="flow-title">Como funciona uma adequação <em>NR13?</em></h2>
+        <p class="q">Sua empresa sabe quais equipamentos precisam atender à NR13?</p>
+        <p>Tudo começa com um levantamento técnico na sua planta. A Vazão identifica os equipamentos, avalia as condições existentes e define o que precisa ser inspecionado, documentado ou adequado.</p>
       </div>
       <ol class="flow">
-        <li class="step reveal"><span class="n">01</span><h3>Levantamento e Diagnóstico</h3><p>Identificação dos equipamentos em campo, avaliação das condições da instalação e análise dos requisitos aplicáveis a cada um.</p></li>
-        <li class="step reveal d1"><span class="n">02</span><h3>Inspeção dos Equipamentos</h3><p>Execução das verificações e inspeções necessárias conforme o tipo, categoria, condições e histórico do equipamento.</p></li>
-        <li class="step reveal d2"><span class="n">03</span><h3>Documentação Técnica</h3><p>Elaboração ou organização dos documentos aplicáveis decorrentes do processo de inspeção e adequação.</p></li>
-        <li class="step reveal d3"><span class="n">04</span><h3>Plano e Adequações</h3><p>Indicação das intervenções necessárias e, quando preciso, execução ou suporte para alterações, reparos e instalações.</p></li>
+        <li class="step reveal"><div class="step-top"><span class="step-ic" aria-hidden="true"><svg class="ico"><use href="#i-clip"/></svg></span><div class="step-t"><span class="n">01</span><h3>Levantamento e diagnóstico</h3></div></div><p>Identificação dos equipamentos em campo, avaliação das condições da instalação e análise dos requisitos aplicáveis a cada um.</p></li>
+        <li class="step reveal d1"><div class="step-top"><span class="step-ic" aria-hidden="true"><svg class="ico"><use href="#i-helmet"/></svg></span><div class="step-t"><span class="n">02</span><h3>Inspeção dos equipamentos</h3></div></div><p>Execução das verificações e inspeções necessárias conforme o tipo, categoria, condições e histórico do equipamento.</p></li>
+        <li class="step reveal d2"><div class="step-top"><span class="step-ic" aria-hidden="true"><svg class="ico"><use href="#i-doc"/></svg></span><div class="step-t"><span class="n">03</span><h3>Documentação técnica</h3></div></div><p>Elaboração ou organização dos documentos aplicáveis decorrentes do processo de inspeção e adequação.</p></li>
+        <li class="step reveal d3"><div class="step-top"><span class="step-ic" aria-hidden="true"><svg class="ico"><use href="#i-gear"/></svg></span><div class="step-t"><span class="n">04</span><h3>Plano e adequações</h3></div></div><p>Indicação das intervenções necessárias e, quando preciso, execução ou suporte para alterações, reparos e instalações.</p></li>
       </ol>
       <div class="cta-row"><a href="#avaliacao" class="btn" data-cta="etapas">Solicitar avaliação técnica <svg class="ico"><use href="#i-arrow"/></svg></a></div>
     </div>
@@ -646,39 +669,40 @@ ul,ol{margin:0;padding:0;list-style:none}
     <div class="wrap">
       <div class="apps-top">
         <div class="head-left reveal">
+          <img class="sec-logo" src="assets/logo-vazao.webp" alt="" width="230" height="72" loading="lazy">
           <span class="eyebrow left">Equipamentos atendidos</span>
           <h2 id="apps-title">NR13 para vasos de pressão, caldeiras, <em>ar comprimido e tubulações</em></h2>
           <p>Inspeção, adequação e laudo NR13 para os equipamentos enquadrados na norma. Vasos de pressão precisam ter sua integridade e documentação gerenciadas.</p>
-          <a href="#avaliacao" class="btn" data-cta="vasos">Solicitar inspeção de vaso de pressão <svg class="ico"><use href="#i-arrow"/></svg></a>
+          <a href="#avaliacao" class="btn" data-cta="vasos">Solicitar inspeção <svg class="ico"><use href="#i-arrow"/></svg></a>
         </div>
         <div class="vaso reveal d1">
           <h3>Na inspeção de vasos de pressão, avaliamos:</h3>
           <ul>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Identificação do equipamento</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Identificação</li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Dispositivos de segurança</li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Instrumentação</li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Condições de instalação</li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Documentação</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Necessidades de adequação</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Adequações</li>
           </ul>
         </div>
       </div>
       <div class="app-grid">
         <article class="app feat reveal">
-          <div class="media fit" data-img="assets/aplicacao-vasos-de-pressao.jpg"><svg class="ico" aria-hidden="true"><use href="#i-gauge"/></svg></div>
-          <div class="app-b"><span class="tag">Destaque</span><h3>Vasos de Pressão</h3><p>Inspeção, avaliação e documentação de vasos de pressão enquadrados na NR13.</p></div>
+          <div class="media" data-img="assets/aplicacao-vasos-de-pressao.jpg"><svg class="ico" aria-hidden="true"><use href="#i-gauge"/></svg></div>
+          <div class="app-b"><span class="app-ic" aria-hidden="true"><svg class="ico"><use href="#i-tank"/></svg></span><div><h3>Vasos de pressão</h3><p>Inspeção, avaliação e documentação de vasos de pressão enquadrados na NR13.</p></div></div>
         </article>
         <article class="app reveal d1">
-          <div class="media fit" data-img="assets/aplicacao-ar-comprimido.png"><svg class="ico" aria-hidden="true"><use href="#i-air"/></svg></div>
-          <div class="app-b"><h3>Ar Comprimido</h3><p>Vasos de pressão e reservatórios do sistema avaliados quanto ao enquadramento na NR13.</p></div>
+          <div class="media" data-img="assets/aplicacao-ar-comprimido.jpg"><svg class="ico" aria-hidden="true"><use href="#i-air"/></svg></div>
+          <div class="app-b"><span class="app-ic" aria-hidden="true"><svg class="ico"><use href="#i-air"/></svg></span><div><h3>Ar comprimido</h3><p>Vasos de pressão e reservatórios do sistema avaliados quanto ao enquadramento na NR13.</p></div></div>
         </article>
         <article class="app reveal d2">
           <div class="media" data-img="assets/aplicacao-caldeiras.jpg"><svg class="ico" aria-hidden="true"><use href="#i-boiler"/></svg></div>
-          <div class="app-b"><h3>Caldeiras</h3><p>Inspeção e avaliação técnica de caldeiras enquadradas na NR13.</p></div>
+          <div class="app-b"><span class="app-ic" aria-hidden="true"><svg class="ico"><use href="#i-boiler"/></svg></span><div><h3>Caldeiras</h3><p>Inspeção e avaliação técnica de caldeiras enquadradas na NR13.</p></div></div>
         </article>
         <article class="app reveal d3">
           <div class="media" data-img="assets/aplicacao-tubulacoes.jpg"><svg class="ico" aria-hidden="true"><use href="#i-pipe"/></svg></div>
-          <div class="app-b"><h3>Tubulações Industriais</h3><p>Avaliação de tubulações enquadradas, com documentação e inspeção.</p></div>
+          <div class="app-b"><span class="app-ic" aria-hidden="true"><svg class="ico"><use href="#i-pipe"/></svg></span><div><h3>Tubulações industriais</h3><p>Avaliação de tubulações enquadradas, com documentação e inspeção.</p></div></div>
         </article>
       </div>
     </div>
@@ -690,20 +714,10 @@ ul,ol{margin:0;padding:0;list-style:none}
       <path d="M-40 120C180 60 260 260 520 240" opacity=".7"/><path d="M-40 160C190 100 270 300 540 280" opacity=".55"/><path d="M-40 200C200 140 280 340 560 320" opacity=".4"/><path d="M-40 240C210 180 290 380 580 360" opacity=".3"/>
       <path d="M1480 60C1260 110 1240 300 980 330" opacity=".7"/><path d="M1480 100C1270 150 1250 340 1000 370" opacity=".55"/><path d="M1480 140C1280 190 1260 380 1020 410" opacity=".4"/><path d="M1480 180C1290 230 1270 420 1040 450" opacity=".3"/>
     </svg>
-    <svg class="dif-wave" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="dw-navy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b3f8a"/><stop offset="1" stop-color="#072a59"/></linearGradient>
-        <linearGradient id="dw-mid" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f5fbf"/><stop offset="1" stop-color="#2468cc"/></linearGradient>
-      </defs>
-      <path d="M1440 20C1320 60 1260 150 1180 210L1440 210Z" fill="#c9daf1" opacity=".55"/>
-      <path d="M0 40C160 110 230 190 330 230C430 270 520 270 640 262C860 248 1080 250 1210 205C1300 170 1370 80 1440 30V400H0Z" fill="url(#dw-mid)"/>
-      <path d="M0 120C120 150 190 220 300 262C420 300 560 292 700 286C900 278 1090 290 1240 240C1330 210 1390 140 1440 92V400H0Z" fill="url(#dw-navy)"/>
-      <path d="M0 0C110 40 180 80 260 128" stroke="#e1062f" stroke-width="5" fill="none"/>
-      <path d="M1290 222C1350 200 1400 150 1440 108" stroke="#e1062f" stroke-width="7" fill="none"/>
-      <g stroke="#fff" stroke-width="1" fill="none" opacity=".18"><path d="M0 220C140 230 220 300 380 330"/><path d="M0 250C140 260 220 330 380 360"/><path d="M1440 200C1360 260 1300 300 1180 330"/><path d="M1440 240C1370 290 1310 330 1200 360"/></g>
-    </svg>
+    <div class="sec-photo" style="--img:url('assets/bg-diferenciais.jpg')" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="dif-head reveal">
+        <img class="sec-logo" src="assets/logo-vazao.webp" alt="" width="230" height="72" loading="lazy">
         <span class="eyebrow">Segurança e conformidade</span>
         <h2 id="dif-title">Por que contar com a <em>Vazão Engenharia?</em></h2>
         <p>Experiência industrial, engenharia própria e avaliação feita na sua planta.</p>
@@ -765,16 +779,19 @@ ul,ol{margin:0;padding:0;list-style:none}
       <div class="wrap">
         <div class="cta reveal">
           <div class="cta-main">
+            <img class="sec-logo" src="assets/logo-vazao.webp" alt="" width="230" height="72" loading="lazy">
             <span class="eyebrow">Fale com um especialista</span>
             <h2 id="cta-title">Evite deixar a adequação NR13 para depois.</h2>
-            <p>Encontrou pendências na NR13 da sua planta? A Vazão avalia os equipamentos e indica o caminho para regularizar.</p>
+            <p>A Vazão avalia os equipamentos e indica o caminho para regularizar.</p>
             <a class="btn" href="#avaliacao" data-cta="autoridade">Solicitar avaliação <svg class="ico"><use href="#i-arrow"/></svg></a>
           </div>
-          <ul class="cta-list">
-            <li><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><div><strong>Levantamento em campo</strong><span>na sua instalação</span></div></li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg><div><strong>Documentação técnica</strong><span>por equipamento</span></div></li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-headset"/></svg><div><strong>Atendimento técnico</strong><span>em Pernambuco e Ceará</span></div></li>
-          </ul>
+          <div class="cta-side">
+            <ul class="cta-list">
+              <li><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><strong>Levantamento em campo</strong></li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg><strong>Documentação técnica</strong></li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-headset"/></svg><strong>Atendimento em Pernambuco e Ceará</strong></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
