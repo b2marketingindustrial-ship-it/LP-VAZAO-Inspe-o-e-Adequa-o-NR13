@@ -46,24 +46,26 @@ const isDev = import.meta.env.DEV
           )}
         </slot>
 
-        {/* Nota de LGPD */}
-        <p class="mt-3 font-sans text-[11px] leading-relaxed text-ink-soft/80">
-          {quote.lgpd}
-          {site.privacyUrl && (
-            <>
-              {' '}
-              <a
-                href={site.privacyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="font-semibold text-primary-dark underline-offset-2 hover:underline"
-              >
-                Política de privacidade
-              </a>
-              .
-            </>
-          )}
-        </p>
+        {/* Nota de LGPD (some quando não há texto nem link de política — LP Vazão, 09/11/2026) */}
+        {(quote.lgpd || site.privacyUrl) && (
+          <p class="mt-3 font-sans text-[11px] leading-relaxed text-ink-soft/80">
+            {quote.lgpd}
+            {site.privacyUrl && (
+              <>
+                {' '}
+                <a
+                  href={site.privacyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-semibold text-primary-dark underline-offset-2 hover:underline"
+                >
+                  Política de privacidade
+                </a>
+                .
+              </>
+            )}
+          </p>
+        )}
       </div>
 
       {/* Coluna de texto */}

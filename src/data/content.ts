@@ -88,17 +88,19 @@ export const quote = {
   text: 'Conte o que você precisa e um especialista em NR13 retorna com a orientação para a sua planta. Preencha o formulário ou fale direto conosco pelo WhatsApp.',
   trust: [
     { icon: 'users', label: 'Retorno de especialista' },
-    // PENDENTE: confirmar com a Vazão que a avaliação inicial não é cobrada.
-    { icon: 'check', label: 'Sem compromisso' },
     { icon: 'shield', label: 'Dados protegidos' },
   ],
-  /** Nota de LGPD exibida abaixo do formulário. */
-  lgpd: `Seus dados são usados apenas para responder à sua solicitação de avaliação, conforme a LGPD.`,
+  /**
+   * Nota de LGPD abaixo do formulário. Vazia a pedido da B2 (09/11/2026): o aviso de LGPD fica
+   * no próprio formulário do plugin. Sem texto e sem `site.privacyUrl`, a nota não aparece.
+   */
+  lgpd: '',
 } as const satisfies {
   eyebrow: string
   title: string
   text: string
-  trust: readonly [TrustItem, TrustItem, TrustItem]
+  /** 2 selos (pedido da B2 em 09/11/2026: sai "Sem compromisso"); o padrão pede 3. */
+  trust: readonly TrustItem[]
   lgpd: string
 }
 

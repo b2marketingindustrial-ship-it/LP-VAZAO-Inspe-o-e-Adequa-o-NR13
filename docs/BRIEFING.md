@@ -116,7 +116,7 @@ Repetições, incoerências e erros encontrados e decididos com a B2:
 | 20  | FAQ do compressor sem resposta              | resposta direta ("Depende…")                                                                                                                                                                |
 | 21  | 5 CTAs em Serviços                          | mantidos                                                                                                                                                                                    |
 
-**Confirmar com a Vazão antes de publicar:** "Sem compromisso" (a avaliação inicial não é cobrada?); a resposta do FAQ do compressor; "Recife — Sede da Vazão"; a ordem das etapas; e se a campanha também passa a anunciar "Nordeste".
+**Confirmar com a Vazão antes de publicar:** a resposta do FAQ do compressor; "Recife — Sede da Vazão"; a ordem das etapas; e se a campanha também passa a anunciar "Nordeste".
 
 ## Desvios do padrão que continuam valendo
 
