@@ -83,9 +83,14 @@ const parts = applications.title.split('*')
                 <use href={`#i-${app.glyph}`} />
               </svg>
             </span>
-            <span>
+            <span class="min-w-0 flex-1">
               <span class="app-h">{app.label}</span>
               <span class="app-p">{app.description}</span>
+            </span>
+            <span class="app-arrow" aria-hidden="true">
+              <svg class="ico">
+                <use href="#i-arrow" />
+              </svg>
             </span>
           </span>
         </button>
