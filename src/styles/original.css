@@ -1556,3 +1556,76 @@
 .vz.talk {
   overflow: visible;
 }
+
+/* ---------------------------------------------------------------------------
+   Ritmo vertical padronizado (09/11/2026): a mesma distância entre a borda de cada
+   seção e o conteúdo, em cima e embaixo — 72px no desktop, 48px no celular. Entre o
+   conteúdo de duas seções ficam ~144px / ~96px (faixa 96–160px do GUIA-LAYOUT do padrão
+   B2 quando o fundo muda). A sobreposição das bordas arredondadas (--round, e 40/64px sob
+   o hero) é compensada à parte, para não entrar no espaço visível.
+   --------------------------------------------------------------------------- */
+.vz {
+  --gap-sec: 48px;
+}
+@media (min-width: 1024px) {
+  .vz {
+    --gap-sec: 72px;
+  }
+}
+.vz.section {
+  padding-top: var(--gap-sec);
+  padding-bottom: var(--gap-sec);
+}
+.vz.flow-sec,
+.vz.apps,
+.vz.faq {
+  padding-top: calc(var(--round) + var(--gap-sec));
+}
+.vz.services {
+  margin-top: -40px;
+  padding-top: calc(40px + var(--gap-sec));
+}
+@media (min-width: 1024px) {
+  .vz.services {
+    margin-top: -64px;
+    padding-top: calc(64px + var(--gap-sec));
+  }
+}
+/* Dúvidas vem depois do bloco "Por que a Vazão", cujos cards avançam 40px (desktop) sobre
+   ela: sem sobreposição de borda, respiro de duas medidas para igualar o vão entre conteúdos. */
+#perguntas.vz.faq {
+  margin-top: 0;
+  padding-top: calc(var(--gap-sec) * 2);
+}
+@media (min-width: 1024px) {
+  #perguntas.vz.faq {
+    padding-top: calc(var(--gap-sec) * 2 + 40px);
+  }
+}
+/* Banner + Cotação: o banner começa com o mesmo respiro; até o texto da Cotação (que já tem
+   pt-8 = 32px) fica uma medida. */
+.vz.talk {
+  padding-top: var(--round);
+  padding-bottom: calc(var(--gap-sec) - 32px);
+}
+.vz.cta-section {
+  padding-top: var(--gap-sec);
+}
+
+/* Espaço interno padronizado: cabeçalho → conteúdo e conteúdo → botão (48px / 32px). */
+.vz {
+  --gap-in: 32px;
+}
+@media (min-width: 1024px) {
+  .vz {
+    --gap-in: 48px;
+  }
+}
+.vz .section-head,
+.vz .flow-head,
+.vz .apps-top {
+  margin-bottom: var(--gap-in);
+}
+.vz .cta-row {
+  margin-top: var(--gap-in);
+}

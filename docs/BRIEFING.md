@@ -118,6 +118,14 @@ Repetições, incoerências e erros encontrados e decididos com a B2:
 
 **Confirmar com a Vazão antes de publicar:** a resposta do FAQ do compressor; "Recife — Sede da Vazão"; a ordem das etapas; e se a campanha também passa a anunciar "Nordeste".
 
+## Espaçamentos padronizados (09/11/2026)
+
+Medidos no navegador (1366px e 412px), do fim do conteúdo de uma seção ao início do conteúdo da seguinte. Antes variavam de 63 a 230px no desktop. Regra aplicada em `src/styles/original.css` ("Ritmo vertical padronizado"):
+
+- **Entre a borda da seção e o conteúdo: 72px no desktop, 48px no celular**, em cima e embaixo, em todas as seções do miolo, no bloco "Por que a Vazão" e no banner. A sobreposição das bordas arredondadas é compensada à parte.
+- Resultado entre conteúdos: ~137–150px no desktop e ~86–104px no celular (faixa 96–160px do GUIA-LAYOUT do padrão B2). Banner → Cotação, que formam um bloco só, ficam a uma medida (72 / 48px).
+- **Dentro das seções**: cabeçalho → conteúdo e conteúdo → botão a 48px no desktop e 32px no celular.
+
 ## Desvios do padrão que continuam valendo
 
 | Desvio                                                                                                                              | Onde                                             | Motivo                                              |
