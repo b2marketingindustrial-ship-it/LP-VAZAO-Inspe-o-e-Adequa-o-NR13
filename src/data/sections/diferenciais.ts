@@ -34,7 +34,7 @@ export const why = {
   stats: [
     { value: '1991', label: 'Ano de fundação' },
     { value: '+30 anos', label: 'No mercado industrial' },
-    { value: 'PE e CE', label: 'Atendimento técnico' },
+    { value: 'Nordeste', label: 'Parceiro das indústrias' },
   ],
   scene: {
     src: cenario,
