@@ -86,6 +86,7 @@ Diferenças inevitáveis em relação ao original:
 - **Hero com cantos inferiores arredondados** (40px / 64px), como nas LPs Print Master; Serviços começa por baixo dele.
 - **Quebras de linha fixas**: H1 em 3 linhas ("Inspeção NR13," / "adequação e laudo" / "para sua indústria"), parágrafo do hero quebrado depois de "vasos de pressão,", parágrafo de Serviços em 1 linha e descrição do "Como funciona" em 2 linhas (desktop).
 - **Número de linhas dos cards**: descrições com 3 linhas em Serviços, Etapas e Equipamentos, e títulos dos Equipamentos em 1 linha. Para caber, estes textos originais foram encurtados: Adequação, Laudo e Documentação, Gestão (Serviços); as 4 etapas; Vasos de pressão, Ar comprimido e Tubulações (Equipamentos); "Soluções para indústrias" (Diferenciais).
+- **Seção "Por que a Vazão" reformulada com o institucional** do site da Vazão: eyebrow "Engenharia desde 1991", título "Mais de 30 anos de engenharia industrial.", texto com a história (fundação em 1991, engenharias mecânica, civil e elétrica, projetos turnkey, normas regulamentadoras), 3 números de autoridade (1991 · 3 engenharias · turnkey) e os 5 cards sobre a empresa. Decisões: sem nomes de clientes, sem Missão/Visão/Valores, sem fotos novas por enquanto (as fotos da sede e da equipe ficam como melhoria futura).
 
 ## Desvios do padrão que continuam valendo
 
