@@ -75,6 +75,14 @@ Diferenças inevitáveis em relação ao original:
 
 **Não recomponha** (`npm run compose`): ele sobrescreve os 5 componentes, o `index.astro` e o manifesto. Se precisar, guarde esta versão e reaplique os ajustes acima.
 
+## Ajustes de 09/11/2026 (fim do dia)
+
+- **Header** no modelo das LPs SEIVE e Print Master: barra branca com o logo dentro (sem a placa pendurada), filete azul→vermelho no topo, tagline com selo, CTA compacto e sombra só ao rolar. O logo não é link. A assinatura do Header em `scripts/check-lp.mjs` (A8) foi trocada pela mesma usada na SEIVE.
+- **Logo da Vazão removido** do topo das seções do miolo e do banner.
+- **Serviços em grid 2×2** (1 coluna abaixo de 1080px), no lugar do carrossel.
+- **Botões padronizados** com o `Button.astro` do padrão: cantos retos, 15px seminegrito, 14px × 24px de respiro, ícone de 16px, sem sombra nem deslocamento no hover. O link "Falar com especialista" dos cards segue a receita de link de card (13px negrito). O CTA do header continua na versão compacta.
+- **Banner "Fale com um especialista" integrado à Cotação**: mesmo fundo cinza, sem recorte arredondado nem faixas diagonais entre os dois.
+
 ## Desvios do padrão que continuam valendo
 
 | Desvio                                                                                                                              | Onde                                             | Motivo                                              |

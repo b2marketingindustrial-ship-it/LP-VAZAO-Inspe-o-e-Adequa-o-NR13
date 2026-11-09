@@ -14,7 +14,6 @@ import Section from '@components/Section.astro'
 import type { SectionProps } from '@lib/layout'
 import { productLines } from '@data/sections/linhas'
 import { ctaMiolo } from '@data/miolo'
-import logo from '@assets/LOGO.png'
 
 type Props = SectionProps
 
@@ -52,14 +51,13 @@ const parts = productLines.title.split('*')
   </svg>
   <div class="wrap">
     <div class="section-head reveal">
-      <Image class="sec-logo" src={logo} alt="" width={230} loading="lazy" decoding="async" />
       <span class="eyebrow">{productLines.eyebrow}</span>
       <h2 id="linhas-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
       <p>{productLines.text}</p>
     </div>
 
-    <div class="carousel reveal" data-carousel>
-      <ul class="track" tabindex="0" aria-label="Serviços NR13">
+    <div class="reveal">
+      <ul class="svc-grid" aria-label="Serviços NR13">
         {productLines.items.map((item) => (
           <li class="svc">
             <div class="media">
@@ -96,24 +94,6 @@ const parts = productLines.title.split('*')
           </li>
         ))}
       </ul>
-      <div class="car-ctrl">
-        <button type="button" class="ctrl prev" data-rail-prev aria-label="Serviço anterior">
-          <svg class="ico" aria-hidden="true">
-            <use href="#i-arrow" />
-          </svg>
-        </button>
-        <div class="car-prog">
-          <span class="car-count" aria-live="polite"></span>
-          <div class="progress">
-            <span></span>
-          </div>
-        </div>
-        <button type="button" class="ctrl next" data-rail-next aria-label="Próximo serviço">
-          <svg class="ico" aria-hidden="true">
-            <use href="#i-arrow" />
-          </svg>
-        </button>
-      </div>
     </div>
 
     <div class="cta-row">
@@ -126,35 +106,3 @@ const parts = productLines.title.split('*')
     </div>
   </div>
 </Section>
-
-<script>
-  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((car) => {
-    const track = car.querySelector<HTMLElement>('.track')
-    const prev = car.querySelector<HTMLButtonElement>('.prev')
-    const next = car.querySelector<HTMLButtonElement>('.next')
-    const bar = car.querySelector<HTMLElement>('.progress span')
-    const count = car.querySelector<HTMLElement>('.car-count')
-    if (!track || !prev || !next || !bar || !count) return
-    const items = track.children
-    const gap = () => parseFloat(getComputedStyle(track).columnGap) || 0
-    const stepPx = () => (items[0] as HTMLElement).offsetWidth + gap()
-    const perView = () => Math.max(1, Math.round((track.clientWidth + gap()) / stepPx()))
-    const update = () => {
-      const max = track.scrollWidth - track.clientWidth
-      prev.disabled = track.scrollLeft <= 2
-      next.disabled = track.scrollLeft >= max - 2
-      const ratio = track.scrollWidth ? track.clientWidth / track.scrollWidth : 1
-      bar.style.width = `${ratio * 100}%`
-      bar.style.transform = `translateX(${max > 0 ? (track.scrollLeft / max) * (1 / ratio - 1) * 100 : 0}%)`
-      const first = Math.round(track.scrollLeft / stepPx()) + 1
-      const pv = perView()
-      const last = Math.min(items.length, first + pv - 1)
-      count.textContent = `${pv > 1 ? `${first}–${last}` : first} de ${items.length} serviços`
-    }
-    prev.addEventListener('click', () => track.scrollBy({ left: -stepPx() }))
-    next.addEventListener('click', () => track.scrollBy({ left: stepPx() }))
-    track.addEventListener('scroll', update, { passive: true })
-    addEventListener('resize', update)
-    update()
-  })
-</script>

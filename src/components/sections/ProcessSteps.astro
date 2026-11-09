@@ -10,7 +10,6 @@ import Section from '@components/Section.astro'
 import type { SectionProps } from '@lib/layout'
 import { process } from '@data/sections/processo'
 import { ctaMiolo } from '@data/miolo'
-import logo from '@assets/LOGO.png'
 import fundo from '@assets/processo/fundo.jpg'
 
 type Props = SectionProps
@@ -39,10 +38,7 @@ const parts = process.title.split('*')
   />
   <div class="wrap">
     <div class="flow-head reveal">
-      <div class="logo-line">
-        <Image class="sec-logo" src={logo} alt="" width={230} loading="lazy" decoding="async" />
-        <span class="eyebrow left">{process.eyebrow}</span>
-      </div>
+      <span class="eyebrow left">{process.eyebrow}</span>
       <h2 id="processo-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
       <p class="q">{process.question}</p>
       <p>{process.text}</p>

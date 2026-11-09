@@ -190,7 +190,14 @@ for (const f of astroFiles) {
 /* A8. Estrutura fixa: assinaturas do Header, Hero, Cotação e Footer ---------- */
 {
   const expect = {
-    'Header.astro': ['sticky top-0 z-50', '-mt-3 -mb-10', 'rounded-b-xl', 'data-cta="header-cta"'],
+    // Desvio da LP Vazão (09/11/2026), o mesmo das LPs SEIVE e Print Master: logo dentro da
+    // barra branca, sem a placa pendurada (docs/BRIEFING.md).
+    'Header.astro': [
+      'sticky top-0 z-50',
+      'bg-neutral-light',
+      'header-logo',
+      'data-cta="header-cta"',
+    ],
     'Hero.astro': [
       'grid-template-columns: minmax(0, 1fr) 270px 300px',
       'right: var(--page-edge)',

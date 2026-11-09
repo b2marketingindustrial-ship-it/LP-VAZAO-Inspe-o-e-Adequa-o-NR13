@@ -13,7 +13,6 @@ import { Image } from 'astro:assets'
 import Section from '@components/Section.astro'
 import type { SectionProps } from '@lib/layout'
 import { applications } from '@data/sections/aplicacoes'
-import logo from '@assets/LOGO.png'
 
 type Props = SectionProps
 
@@ -32,7 +31,6 @@ const parts = applications.title.split('*')
   <div class="wrap">
     <div class="apps-top">
       <div class="head-left reveal">
-        <Image class="sec-logo" src={logo} alt="" width={230} loading="lazy" decoding="async" />
         <span class="eyebrow left">{applications.eyebrow}</span>
         <h2 id="aplicacoes-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
         <p>{applications.text}</p>

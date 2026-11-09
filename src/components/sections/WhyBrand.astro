@@ -14,7 +14,6 @@ import Section from '@components/Section.astro'
 import type { SectionProps } from '@lib/layout'
 import { why } from '@data/sections/diferenciais'
 import { ctaMiolo } from '@data/miolo'
-import logo from '@assets/LOGO.png'
 
 type Props = SectionProps
 
@@ -60,7 +59,6 @@ const parts = why.title.split('*')
   />
   <div class="wrap">
     <div class="dif-head reveal">
-      <Image class="sec-logo" src={logo} alt="" width={230} loading="lazy" decoding="async" />
       <span class="eyebrow">{why.eyebrow}</span>
       <h2 id="diferenciais-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
       <p>{why.text}</p>

@@ -1411,3 +1411,78 @@
 .vz.talk {
   padding-bottom: clamp(48px, 5vw, 64px);
 }
+
+/* Serviços em grid 2×2 (pedido de 09/11/2026: grid, não carrossel). O card é o original. */
+.vz .svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.vz .svc-grid .svc .media {
+  min-height: 260px;
+}
+@media (max-width: 1080px) {
+  .vz .svc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .vz .svc-grid {
+    gap: 14px;
+  }
+  .vz .svc-grid .svc .media {
+    min-height: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Botões padronizados com o Button.astro do padrão B2 (pedido de 09/11/2026):
+   mesmos cantos retos, tamanho, peso, respiro e ícone do Hero, da Cotação e da
+   barra do celular. Vale para todos os botões do miolo, inclusive o do banner.
+   --------------------------------------------------------------------------- */
+.vz .btn,
+.vz .cta .btn {
+  gap: 10px;
+  min-height: 0;
+  padding: 14px 24px;
+  border: 0;
+  border-radius: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: normal;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.2s;
+}
+.vz .btn:hover,
+.vz .btn:active {
+  transform: none;
+  box-shadow: none;
+}
+.vz .btn .ico {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  transition: none;
+}
+.vz .btn:hover .ico {
+  transform: none;
+}
+/* Link "Falar com especialista" do card: receita de link de card do padrão (13px, negrito). */
+.vz .svc-cta {
+  font-size: 13px;
+}
+
+/* Banner "Fale com um especialista" integrado à Cotação como uma seção só (pedido de
+   09/11/2026): mesmo fundo da Cotação, sem o recorte arredondado embaixo nem as faixas
+   diagonais, para não haver corte entre os dois. */
+.vz.talk {
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--color-neutral-gray-100);
+  padding-bottom: 32px;
+}
+.vz.talk::before {
+  display: none;
+}
