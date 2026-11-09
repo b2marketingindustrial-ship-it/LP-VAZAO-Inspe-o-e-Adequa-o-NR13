@@ -19,23 +19,12 @@ export interface Reason {
   description: string
 }
 
-export interface Stat {
-  value: string
-  label: string
-}
-
 export const why = {
   eyebrow: 'Por que a Vazão',
   title: 'Mais de 30 anos de *engenharia industrial*',
   /** O mesmo título quebrado em 2 linhas; o trecho entre asteriscos é o destaque. */
   titleLines: ['Mais de 30 anos de', '*engenharia industrial*'],
   text: 'Fundada em 1991, a Vazão Engenharia e Montagem desenvolve soluções completas para a indústria, do projeto à entrega, atendendo às normas regulamentadoras de cada segmento.',
-  /** Números de autoridade abaixo do texto. */
-  stats: [
-    { value: 'Recife', label: 'Sede da Vazão' },
-    { value: 'Nordeste', label: 'Parceiro das indústrias' },
-    { value: 'Em campo', label: 'Avaliação na sua planta' },
-  ],
   scene: {
     src: cenario,
     alt: 'Vaso de pressão de aço inox em planta industrial a céu aberto',
@@ -72,7 +61,6 @@ export const why = {
   title: string
   titleLines: readonly [string, string]
   text: string
-  stats: readonly [Stat, Stat, Stat]
   scene: Photo
   reasons: readonly [Reason, Reason, Reason, Reason, Reason]
 }

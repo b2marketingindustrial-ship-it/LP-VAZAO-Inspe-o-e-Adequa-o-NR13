@@ -1550,3 +1550,9 @@
 .vz .app .app-p {
   min-height: calc(1.55em * 3);
 }
+
+/* A sombra do banner era cortada em linha reta pelo overflow da área "talk" (que só existia
+   para as faixas diagonais, já removidas). */
+.vz.talk {
+  overflow: visible;
+}
