@@ -60,7 +60,7 @@ export const productLines = {
       id: 'laudo',
       tag: 'Documentação',
       glyph: 'doc',
-      title: 'Laudo e Documentação NR13',
+      title: 'Laudo e documentação NR13',
       description:
         'Relatórios de inspeção de segurança e demais documentos técnicos exigíveis para cada equipamento.',
       photo: {

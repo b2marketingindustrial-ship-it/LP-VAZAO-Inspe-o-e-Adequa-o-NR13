@@ -25,7 +25,7 @@ export const faq = {
       id: 'laudo',
       question: 'O que é um laudo NR13?',
       answer:
-        '“Laudo NR13” é uma expressão comum nas buscas por serviços de adequação. Tecnicamente, a norma prevê diferentes documentos conforme o equipamento, incluindo relatórios de inspeção de segurança, prontuários e registros de segurança, quando aplicáveis.',
+        'É como o mercado chama a documentação técnica exigida pela NR13 para cada equipamento: relatório de inspeção de segurança, prontuário e registro de segurança, conforme o tipo e a categoria do equipamento.',
     },
     {
       id: 'vasos',
@@ -37,25 +37,8 @@ export const faq = {
       id: 'compressor',
       question: 'Compressor de ar precisa de NR13?',
       answer:
-        'Em sistemas de ar comprimido, é necessário avaliar os vasos de pressão e demais equipamentos ou componentes quanto ao enquadramento na NR13. A análise considera as características da instalação e dos equipamentos.',
-    },
-    {
-      id: 'adequacao',
-      question: 'A Vazão realiza adequação NR13?',
-      answer:
-        'Sim. A Vazão faz o levantamento em campo, avalia os equipamentos e identifica os requisitos que precisam ser atendidos, do diagnóstico à execução das intervenções de engenharia.',
-    },
-    {
-      id: 'caldeiras',
-      question: 'A Vazão realiza inspeção NR13 em caldeiras?',
-      answer:
-        'Sim. A Vazão faz a inspeção e a avaliação técnica de caldeiras enquadradas na NR13, com verificação das condições de segurança e da documentação aplicável.',
-    },
-    {
-      id: 'documentacao',
-      question: 'A Vazão pode ajudar na documentação NR13?',
-      answer:
-        'Sim. A Vazão avalia a documentação existente e apoia a organização ou a elaboração dos documentos técnicos aplicáveis a cada equipamento.',
+        // PENDENTE: confirmar a redação com a Vazão.
+        'Depende. O compressor em si não é o foco da norma, mas o reservatório de ar comprimido é um vaso de pressão e pode estar enquadrado na NR13, conforme suas características. A avaliação considera a instalação e os equipamentos.',
     },
   ],
 } as const satisfies {

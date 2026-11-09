@@ -25,16 +25,16 @@ export interface Stat {
 }
 
 export const why = {
-  eyebrow: 'Engenharia desde 1991',
-  title: 'Mais de 30 anos de *engenharia industrial.*',
+  eyebrow: 'Por que a Vazão',
+  title: 'Mais de 30 anos de *engenharia industrial*',
   /** O mesmo título quebrado em 2 linhas; o trecho entre asteriscos é o destaque. */
-  titleLines: ['Mais de 30 anos de', '*engenharia industrial.*'],
+  titleLines: ['Mais de 30 anos de', '*engenharia industrial*'],
   text: 'Fundada em 1991, a Vazão Engenharia e Montagem desenvolve soluções completas para a indústria, do projeto à entrega, atendendo às normas regulamentadoras de cada segmento.',
   /** Números de autoridade abaixo do texto. */
   stats: [
-    { value: '1991', label: 'Ano de fundação' },
-    { value: '+30 anos', label: 'No mercado industrial' },
+    { value: 'Recife', label: 'Sede da Vazão' },
     { value: 'Nordeste', label: 'Parceiro das indústrias' },
+    { value: 'Em campo', label: 'Avaliação na sua planta' },
   ],
   scene: {
     src: cenario,
@@ -42,24 +42,24 @@ export const why = {
   },
   reasons: [
     {
-      icon: 'clock',
-      title: 'Desde 1991',
-      description: 'Mais de 30 anos atendendo o mercado industrial.',
+      icon: 'search',
+      title: 'Orientação técnica',
+      description: 'Indicação clara do que fazer em cada equipamento.',
     },
     {
       icon: 'layers',
-      title: 'Engenharia própria',
-      description: 'Equipe de engenharia do projeto à execução.',
+      title: 'Equipe técnica',
+      description: 'Engenheiros e técnicos dedicados à indústria.',
     },
     {
       icon: 'wrench',
-      title: 'Do projeto à entrega',
-      description: 'Soluções completas, até as utilidades no ponto de uso.',
+      title: 'Todas as etapas',
+      description: 'Do diagnóstico à adequação, um só parceiro.',
     },
     {
       icon: 'shield',
       title: 'Especialistas em NR13',
-      description: 'Conformidade dos equipamentos com a norma.',
+      description: 'Apoio técnico para adequar seus equipamentos à norma.',
     },
     {
       icon: 'factory',

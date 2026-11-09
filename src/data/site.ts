@@ -10,7 +10,7 @@ export const site = {
   /** Produto principal, no plural (entrada 3). Vai na tagline do header e no H1. */
   product: 'Inspeção e adequação NR13',
   /** Contexto de uso (entrada 4). Completa o H1 e o title. */
-  context: 'indústrias em Pernambuco e Ceará',
+  context: 'indústrias do Nordeste',
   /**
    * URL absoluta da página no ar (entrada 10). Usada em canonical e og:url.
    * PROVISÓRIA: a página vai para o WordPress da Vazão e a URL final ainda não foi informada.
@@ -38,14 +38,14 @@ export const shortcodes = {
 } as const
 
 /**
- * Título da aba. Mantém o da LP anterior (no ar desde 06/11/2026): palavra-chave no início e a
- * área atendida, que a fórmula padrão deixaria longa demais. 56 caracteres.
+ * Título da aba: palavra-chave no início e a área atendida. Área "Nordeste" em toda a página
+ * (decisão da B2 em 09/11/2026, no lugar de "PE e CE").
  */
-export const title = 'Inspeção NR13 e adequação em PE e CE | Vazão Engenharia'
+export const title = 'Inspeção NR13 e adequação no Nordeste | Vazão Engenharia'
 
 /** Meta description (≤ 160 caracteres). Ajuste o texto, mantendo marcas e o apoio técnico. */
 export const description =
-  'Inspeção NR13, adequação e laudo para vasos de pressão, caldeiras, ar comprimido e tubulações. Atendimento em Pernambuco e Ceará.'
+  'Inspeção NR13, adequação e laudo para vasos de pressão, caldeiras, ar comprimido e tubulações. Atendimento no Nordeste.'
 
 /**
  * Campanha que leva tráfego para esta LP (entrada 15). Quem clica digitou a

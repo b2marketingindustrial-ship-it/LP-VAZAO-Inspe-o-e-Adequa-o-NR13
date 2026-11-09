@@ -88,6 +88,36 @@ Diferenças inevitáveis em relação ao original:
 - **Número de linhas dos cards**: descrições com 3 linhas em Serviços, Etapas e Equipamentos, e títulos dos Equipamentos em 1 linha. Para caber, estes textos originais foram encurtados: Adequação, Laudo e Documentação, Gestão (Serviços); as 4 etapas; Vasos de pressão, Ar comprimido e Tubulações (Equipamentos); "Soluções para indústrias" (Diferenciais).
 - **Seção "Por que a Vazão" reformulada com o institucional** do site da Vazão: eyebrow "Engenharia desde 1991", título "Mais de 30 anos de engenharia industrial.", texto com a história (fundação em 1991, soluções completas do projeto à entrega, normas regulamentadoras), 3 números de autoridade (1991 · +30 anos · Nordeste: parceiro das indústrias) e os 5 cards sobre a empresa. Regra da B2: **não usar "turnkey" e não contar nem listar soluções na página**. Decisões: sem nomes de clientes, sem Missão/Visão/Valores, sem fotos novas por enquanto (as fotos da sede e da equipe ficam como melhoria futura).
 
+## Revisão completa da página (09/11/2026)
+
+Repetições, incoerências e erros encontrados e decididos com a B2:
+
+| #   | Ponto                                       | Decisão                                                                                                                                                                                         |
+| --- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | "1991 / +30 anos" 8 vezes                   | fica no ponto do hero, no título e no texto dos Diferenciais; eyebrow vira "Por que a Vazão", números viram Recife · Nordeste · Em campo, card "Desde 1991" vira "Orientação técnica", selo sai |
+| 2   | "Levantamento em campo" 3 vezes             | ponto do hero vira "Engenharia própria"; lista do banner vira situações que pedem avaliação                                                                                                     |
+| 3   | "Especialistas em NR13" 2 vezes             | selos da cotação: Retorno de especialista · Sem compromisso · Dados protegidos                                                                                                                  |
+| 4   | Frase igual no "Como funciona" e na cotação | texto da cotação reescrito                                                                                                                                                                      |
+| 5   | Lista de equipamentos 3 vezes               | mantida (SEO)                                                                                                                                                                                   |
+| 6   | Banner e cotação seguidos                   | mantidos; eyebrow do banner vira "Atenção aos prazos"                                                                                                                                           |
+| 7   | FAQ repetia a oferta                        | saíram as 3 perguntas "A Vazão realiza…/pode ajudar…"                                                                                                                                           |
+| 8   | Mesma foto do vaso 3 vezes                  | depende de fotos novas                                                                                                                                                                          |
+| 9   | "PE e CE" × "Nordeste"                      | **Nordeste em toda a página** (title, meta, contexto do site); a campanha ainda anuncia PE e CE                                                                                                 |
+| 10  | "Laudo" × FAQ                               | "laudo" mantido; FAQ explica o que compõe o laudo NR13                                                                                                                                          |
+| 11  | 6 rótulos de CTA                            | todos os botões "Solicite sua avaliação técnica"; links de card "Falar com especialista"; secundário do hero "Identifique seus equipamentos"                                                    |
+| 12  | "Chamar no WhatsApp"                        | mantido: o plugin da Vazão abre o WhatsApp                                                                                                                                                      |
+| 13  | Pontos finais e maiúscula nos títulos       | títulos sem ponto; "Laudo e documentação NR13"                                                                                                                                                  |
+| 14  | Dois estilos de eyebrow                     | eyebrow com traço em toda a página (`Eyebrow.astro`)                                                                                                                                            |
+| 15  | Ordem das etapas                            | mantida (é o processo da Vazão)                                                                                                                                                                 |
+| 16  | Card Ar comprimido incompleto               | corrigido ("…avaliados quanto à NR13.")                                                                                                                                                         |
+| 17  | Frase de obrigação nos Equipamentos         | removida                                                                                                                                                                                        |
+| 18  | Jargão "utilidades no ponto de uso"         | card vira "Todas as etapas — Do diagnóstico à adequação, um só parceiro."                                                                                                                       |
+| 19  | Promessa de conformidade                    | "Apoio técnico para adequar seus equipamentos à norma."                                                                                                                                         |
+| 20  | FAQ do compressor sem resposta              | resposta direta ("Depende…")                                                                                                                                                                    |
+| 21  | 5 CTAs em Serviços                          | mantidos                                                                                                                                                                                        |
+
+**Confirmar com a Vazão antes de publicar:** "Sem compromisso" (a avaliação inicial não é cobrada?); a resposta do FAQ do compressor; "Recife — Sede da Vazão"; a ordem das etapas; e se a campanha também passa a anunciar "Nordeste".
+
 ## Desvios do padrão que continuam valendo
 
 | Desvio                                                                                                                              | Onde                                             | Motivo                                              |

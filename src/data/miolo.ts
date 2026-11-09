@@ -4,8 +4,8 @@
  */
 import cenario from '@assets/diferenciais/cenario.jpg'
 
-/** Rótulo dos botões do miolo, como na LP original. */
-export const ctaMiolo = 'Solicitar avaliação técnica'
+/** Rótulo dos botões do miolo: o mesmo CTA principal da página (padronizado em 09/11/2026). */
+export const ctaMiolo = 'Solicite sua avaliação técnica'
 
 /**
  * Banner "Fale com um especialista" da LP original, entre o miolo e a Cotação. Não é seção
@@ -13,14 +13,15 @@ export const ctaMiolo = 'Solicitar avaliação técnica'
  * src/pages/index.astro.
  */
 export const authority = {
-  eyebrow: 'Fale com um especialista',
-  title: 'Evite deixar a adequação NR13 para depois.',
+  eyebrow: 'Atenção aos prazos',
+  title: 'Evite deixar a adequação NR13 para depois',
   text: 'A Vazão avalia os equipamentos e indica o caminho para regularizar.',
-  button: 'Solicitar avaliação',
+  button: ctaMiolo,
   photo: { src: cenario, alt: '' },
+  /** Situações que pedem avaliação (não repetem serviços nem selos da página). */
   items: [
-    { icon: 'search', label: 'Levantamento em campo' },
-    { icon: 'doc', label: 'Documentação técnica' },
-    { icon: 'headset', label: 'Atendimento em Pernambuco e Ceará' },
+    { icon: 'cal', label: 'Prazo de inspeção vencido' },
+    { icon: 'gear', label: 'Equipamento novo ou alterado' },
+    { icon: 'clip', label: 'Auditoria ou fiscalização à vista' },
   ],
 } as const

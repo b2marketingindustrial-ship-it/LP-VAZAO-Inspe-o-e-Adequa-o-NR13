@@ -66,7 +66,7 @@ export const hero = {
     alt: 'Trocador de calor e tubulações em planta industrial',
   },
   points: [
-    { icon: 'search', line1: 'Levantamento', line2: 'em campo' },
+    { icon: 'users', line1: 'Engenharia', line2: 'própria' },
     { icon: 'file-text', line1: 'Inspeção e', line2: 'documentação' },
     { icon: 'badge-check', line1: 'Desde 1991', line2: 'na indústria' },
   ],
@@ -84,12 +84,13 @@ export const hero = {
 
 export const quote = {
   eyebrow: 'Avaliação técnica NR13',
-  title: 'Fale com quem entende de inspeção NR13.',
-  text: 'Nossa equipe avalia os equipamentos da sua planta e indica o que precisa ser inspecionado, documentado ou adequado. Preencha o formulário ou fale direto conosco pelo WhatsApp.',
+  title: 'Fale com quem entende de inspeção NR13',
+  text: 'Conte o que você precisa e um especialista em NR13 retorna com a orientação para a sua planta. Preencha o formulário ou fale direto conosco pelo WhatsApp.',
   trust: [
-    { icon: 'shield', label: 'Especialistas em NR13' },
-    { icon: 'badge-check', label: 'Experiência desde 1991' },
-    { icon: 'map-pin', label: 'Atendimento em PE e CE' },
+    { icon: 'users', label: 'Retorno de especialista' },
+    // PENDENTE: confirmar com a Vazão que a avaliação inicial não é cobrada.
+    { icon: 'check', label: 'Sem compromisso' },
+    { icon: 'shield', label: 'Dados protegidos' },
   ],
   /** Nota de LGPD exibida abaixo do formulário. */
   lgpd: `Seus dados são usados apenas para responder à sua solicitação de avaliação, conforme a LGPD.`,

@@ -24,8 +24,9 @@ export interface Application {
 export const applications = {
   eyebrow: 'Equipamentos atendidos',
   title: 'NR13 para vasos de pressão, caldeiras, *ar comprimido e tubulações*',
-  text: 'Inspeção, adequação e laudo NR13 para os equipamentos enquadrados na norma. Vasos de pressão precisam ter sua integridade e documentação gerenciadas.',
-  button: 'Solicitar inspeção',
+  text: 'Inspeção, adequação e laudo NR13 para os equipamentos enquadrados na norma.',
+  /** Rótulo do botão: o CTA principal da página (padronizado em 09/11/2026). */
+  button: 'Solicite sua avaliação técnica',
   checklist: {
     title: 'Na inspeção de vasos de pressão, avaliamos:',
     items: [
@@ -50,7 +51,7 @@ export const applications = {
       id: 'ar-comprimido',
       label: 'Ar comprimido',
       glyph: 'air',
-      description: 'Vasos e reservatórios do sistema avaliados quanto ao enquadramento.',
+      description: 'Vasos e reservatórios do sistema avaliados quanto à NR13.',
       photo: { src: app2, alt: 'Compressor de ar e reservatório em sala de máquinas' },
     },
     {
