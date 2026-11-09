@@ -1,6 +1,6 @@
 {
   "ficha": 1,
-  "gerado": "2026-11-09T14:15:14.486Z",
+  "gerado": "2026-11-09T15:17:11.587Z",
   "origem": "docs/FICHA-LP.md",
   "padrao": "2.8.0",
   "cliente": "Vazão Engenharia e Montagem",
@@ -323,14 +323,14 @@
           {
             "icon": "factory",
             "title": "Soluções para indústrias",
-            "description": "Atendimento focado em ambientes e processos industriais."
+            "description": "Foco em ambientes e processos industriais."
           }
         ]
       }
     }
   },
   "assets": {
-    "pendentes": ["diferenciais"]
+    "pendentes": []
   },
   "fora": {
     "especificacoes": {

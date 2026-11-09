@@ -1,8 +1,10 @@
 /**
- * Dados da seção "Linhas de produto" (biblioteca B2, fase: oferta).
+ * Dados da seção "Serviços NR13" (slot `linhas` da biblioteca B2, fase: oferta).
  *
- * 3 ou 4 cards, exatamente um deles escuro — normalmente o card de marcas, que
- * fecha o grid com peso visual. Cada linha tem 3 features de 2–4 palavras.
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026): o miolo voltou ao layout e aos textos da LP
+ * original (carrossel de serviços). Os campos do contrato da biblioteca continuam aqui
+ * para o `check:lp`; `icon` é do sprite original (VzIcons.astro). No título, o trecho
+ * entre asteriscos é o destaque em azul.
  */
 import type { Photo } from '@data/types'
 
@@ -14,24 +16,27 @@ import marcasPhoto from '@assets/linhas/marcas.png'
 export interface ProductLine {
   id: string
   tag: string
+  glyph: string
   title: string
   description: string
   photo: Photo
   features: readonly [string, string, string]
-  /** Exatamente um card escuro por grid. Informe sempre (true/false). */
+  /** Exigido pelo contrato da biblioteca; o layout original não tem card escuro. */
   dark: boolean
 }
 
 export const productLines = {
-  eyebrow: 'Serviços NR13',
-  title: 'Serviços NR13 para a sua indústria',
+  eyebrow: 'Inspeção · Adequação · Laudos',
+  title: 'Serviços *NR13* para a sua indústria',
   text: 'Regularize equipamentos e instalações enquadrados na NR13 com suporte de engenharia especializada.',
   items: [
     {
       id: 'inspecao',
       tag: 'Inspeção',
+      glyph: 'clip',
       title: 'Inspeção NR13',
-      description: 'Avaliação técnica dos equipamentos e da instalação conforme a norma.',
+      description:
+        'Avaliação técnica dos equipamentos e das condições da instalação conforme os requisitos aplicáveis da norma.',
       photo: { src: linha1, alt: 'Inspetor anotando a leitura do manômetro de um vaso de pressão' },
       features: ['Levantamento em campo', 'Dispositivos de segurança', 'Teste hidrostático'],
       dark: false,
@@ -39,8 +44,10 @@ export const productLines = {
     {
       id: 'adequacao',
       tag: 'Adequação',
+      glyph: 'gear',
       title: 'Adequação NR13',
-      description: 'Do diagnóstico à execução das intervenções de engenharia necessárias.',
+      description:
+        'A Vazão apoia sua indústria desde o diagnóstico até a execução das intervenções de engenharia necessárias.',
       photo: {
         src: linha2,
         alt: 'Técnico ajustando os rotores internos de um equipamento industrial',
@@ -51,8 +58,10 @@ export const productLines = {
     {
       id: 'laudo',
       tag: 'Documentação',
-      title: 'Laudo e documentação NR13',
-      description: 'Relatórios de inspeção e documentos exigíveis para cada equipamento.',
+      glyph: 'doc',
+      title: 'Laudo e Documentação NR13',
+      description:
+        'Organização e elaboração da documentação técnica decorrente da inspeção: relatórios de inspeção de segurança e demais documentos exigíveis por equipamento.',
       photo: {
         src: linha3,
         alt: 'Engenheiro da Vazão preenchendo o checklist NR13 ao lado de um vaso de pressão',
@@ -63,13 +72,19 @@ export const productLines = {
     {
       id: 'gestao',
       tag: 'Gestão',
+      glyph: 'cal',
       title: 'Gestão NR13',
-      description: 'Registros, documentação e acompanhamento das inspeções ao longo da operação.',
+      description:
+        'Suporte para organizar as informações dos equipamentos, registros, documentação e acompanhamento das inspeções ao longo do ciclo de operação.',
       photo: {
         src: marcasPhoto,
         alt: 'Notebook com o painel de controle NR13 e capacete da Vazão',
       },
-      features: ['Dados dos equipamentos', 'Registros e documentação', 'Controle das inspeções'],
+      features: [
+        'Informações dos equipamentos',
+        'Registros e documentação',
+        'Acompanhamento de inspeções',
+      ],
       dark: true,
     },
   ],
@@ -77,7 +92,5 @@ export const productLines = {
   eyebrow: string
   title: string
   text: string
-  items:
-    | readonly [ProductLine, ProductLine, ProductLine]
-    | readonly [ProductLine, ProductLine, ProductLine, ProductLine]
+  items: readonly [ProductLine, ProductLine, ProductLine, ProductLine]
 }

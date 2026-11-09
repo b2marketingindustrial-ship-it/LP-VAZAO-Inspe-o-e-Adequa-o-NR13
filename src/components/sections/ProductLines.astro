@@ -1,260 +1,160 @@
 ---
 /**
- * VARIANTES LOCAIS (LP Vazão, 09/11/2026) — reaplicar se `npm run compose` sobrescrever:
- *   1. Sem logos de marca (brands.ts vazio), o cabeçalho usa a largura inteira: o H2 cabe
- *      em uma linha e o parágrafo em duas, em vez de "indústria" sozinha na 2ª linha.
- *   4. Linhas decorativas em SVG no fundo (as da seção de serviços da LP anterior).
- *   3. Logo da Vazão acima do eyebrow (SectionLogo), mantido da LP anterior.
- *   2. As fotos são cenas de serviço, não produto recortado: preenchem o palco do card
- *      (object-cover) em vez de aparecer pequenas com mix-blend.
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026) — o miolo voltou ao layout ORIGINAL da LP anterior.
+ * Este arquivo ocupa o slot `linhas` da biblioteca B2 (nome, id, dados e CTAs exigidos pelo
+ * manifesto), mas o markup é o carrossel de serviços original; estilo em
+ * src/styles/original.css (escopo `.vz`). `npm run compose` sobrescreve este arquivo:
+ * não recomponha sem guardar esta versão.
  *
- * Linhas de produto — fase "oferta" da biblioteca B2.
- *
- * Cabeçalho à esquerda, carrossel de logos à direita, grid de 3–4 cards com um
- * card escuro. Fundo e respiro vêm da composição via `tone`/`rhythm`.
+ * Diferença do original: cada card ganhou o link "Falar com especialista" (o manifesto exige
+ * um CTA por item) e os botões são `btn-slave-whats` em vez de âncoras para o formulário.
  */
 import { Image } from 'astro:assets'
 import Section from '@components/Section.astro'
-import Icon from '@components/Icon.astro'
-import BrandCarousel from '@components/BrandCarousel.astro'
-import Eyebrow from '@components/Eyebrow.astro'
-import SectionLogo from '@components/SectionLogo.astro'
 import type { SectionProps } from '@lib/layout'
-import { cta } from '@data/content'
 import { productLines } from '@data/sections/linhas'
-import { brands } from '@data/brands'
+import { ctaMiolo } from '@data/miolo'
+import logo from '@assets/LOGO.png'
 
 type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
-const lines = productLines.items
-/** Variante 1: o carrossel só aparece com 4+ logos; sem ele, o cabeçalho não reserva espaço. */
-const hasCarousel = brands.length >= 4
+const parts = productLines.title.split('*')
 ---
 
-<Section id="linhas" tone={tone} rhythm={rhythm} class="relative isolate overflow-hidden">
-  {/* Variante 4: linhas decorativas da LP anterior */}
+<Section
+  id="linhas"
+  tone={tone}
+  rhythm={rhythm}
+  container={false}
+  class="vz section services"
+  aria-labelledby="linhas-title"
+>
   <svg
-    aria-hidden="true"
-    class="pointer-events-none absolute inset-0 -z-10 h-full w-full"
+    class="sec-bg"
     viewBox="0 0 1440 1000"
     preserveAspectRatio="xMidYMin slice"
+    aria-hidden="true"
     fill="none"
   >
-    <g stroke="#b7cbe6" stroke-width="1" opacity=".6">
-      <path d="M-20 420C200 360 380 520 620 470S1020 360 1460 420" />
-      <path d="M-20 450C200 390 380 550 620 500S1020 390 1460 450" />
-      <path d="M-20 480C200 420 380 580 620 530S1020 420 1460 480" />
-      <path d="M1000 40C1150 80 1250 20 1460 60" />
-      <path d="M1000 70C1150 110 1250 50 1460 90" />
+    <g stroke="#b7cbe6" stroke-width="1" opacity=".7">
+      <path d="M-20 420C200 360 380 520 620 470S1020 360 1460 420"></path>
+      <path d="M-20 450C200 390 380 550 620 500S1020 390 1460 450"></path>
+      <path d="M-20 480C200 420 380 580 620 530S1020 420 1460 480"></path>
+      <path d="M1000 40C1150 80 1250 20 1460 60"></path>
+      <path d="M1000 70C1150 110 1250 50 1460 90"></path>
     </g>
-    <g stroke="#7fa3d6" stroke-width="1.2" opacity=".5">
-      <circle cx="1275" cy="150" r="38" />
-      <path d="M1275 100v100M1225 150h100" />
-      <path d="M1105 54v24M1093 66h24M30 400v20M20 410h20M1395 600v20M1385 610h20" />
+    <g stroke="#7fa3d6" stroke-width="1.2" opacity=".6">
+      <circle cx="1275" cy="210" r="38"></circle>
+      <path d="M1275 160v100M1225 210h100"></path>
+      <path d="M1105 54v24M1093 66h24M388 130v20M378 140h20M30 400v20M20 410h20M1395 600v20M1385 610h20M1220 820v20M1210 830h20"></path>
     </g>
   </svg>
-  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-    <div class:list={[hasCarousel ? 'max-w-xl' : 'max-w-3xl']}>
-      <SectionLogo />
-      <Eyebrow>{productLines.eyebrow}</Eyebrow>
-      <h2 class="mt-3 font-display text-3xl leading-tight font-extrabold text-ink sm:text-4xl">
-        {productLines.title}
-      </h2>
-      <p
-        class:list={[
-          'mt-3 font-sans text-[15px] leading-relaxed text-ink-soft',
-          hasCarousel ? 'max-w-[330px]' : 'max-w-2xl',
-        ]}
-      >
-        {productLines.text}
-      </p>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <Image class="sec-logo" src={logo} alt="" width={230} loading="lazy" decoding="async" />
+      <span class="eyebrow">{productLines.eyebrow}</span>
+      <h2 id="linhas-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
+      <p>{productLines.text}</p>
     </div>
 
-    {hasCarousel && (
-      <div class="min-w-0 flex-1 sm:pl-10">
-        <BrandCarousel />
+    <div class="carousel reveal" data-carousel>
+      <ul class="track" tabindex="0" aria-label="Serviços NR13">
+        {productLines.items.map((item) => (
+          <li class="svc">
+            <div class="media">
+              <Image
+                src={item.photo.src}
+                alt={item.photo.alt}
+                width={640}
+                format="webp"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="svc-body">
+              <span class="chip">
+                <svg class="ico" aria-hidden="true">
+                  <use href={`#i-${item.glyph}`} />
+                </svg>
+                {item.tag}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <ul class="checks">
+                {item.features.map((f) => (
+                  <li>{f}</li>
+                ))}
+              </ul>
+              <button type="button" class="svc-cta btn-slave-whats" data-cta={`linhas-${item.id}`}>
+                Falar com especialista
+                <svg class="ico" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg>
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div class="car-ctrl">
+        <button type="button" class="ctrl prev" data-rail-prev aria-label="Serviço anterior">
+          <svg class="ico" aria-hidden="true">
+            <use href="#i-arrow" />
+          </svg>
+        </button>
+        <div class="car-prog">
+          <span class="car-count" aria-live="polite"></span>
+          <div class="progress">
+            <span></span>
+          </div>
+        </div>
+        <button type="button" class="ctrl next" data-rail-next aria-label="Próximo serviço">
+          <svg class="ico" aria-hidden="true">
+            <use href="#i-arrow" />
+          </svg>
+        </button>
       </div>
-    )}
-  </div>
+    </div>
 
-  <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-    {lines.map((line, i) => (
-      <article
-        class:list={[
-          'product-card group relative flex flex-col overflow-hidden rounded-2xl border transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1.5',
-          line.dark
-            ? 'navy-premium border-white/10 shadow-[0_18px_40px_-24px_rgba(0,24,48,0.6)] hover:border-accent-orange/60 hover:shadow-[0_28px_56px_-24px_rgba(0,24,48,0.75)]'
-            : 'border-neutral-gray-200/70 bg-neutral-light shadow-[0_1px_2px_rgba(13,29,48,0.05)] hover:border-accent-orange/50 hover:shadow-[0_28px_56px_-28px_rgba(0,33,71,0.35)]',
-        ]}
-      >
-        {/* Linha de acento no topo — cresce no hover */}
-        <span
-          aria-hidden="true"
-          class="absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-accent-orange transition-transform duration-300 ease-out group-hover:scale-x-100"
-        />
-
-        {/* Palco da imagem */}
-        <div
-          class:list={[
-            'relative flex h-40 items-center justify-center overflow-hidden',
-            line.dark ? 'product-card__stage--dark' : 'product-card__stage--light',
-          ]}
-        >
-          <Image
-            src={line.photo.src}
-            alt={line.photo.alt}
-            format="webp"
-            width={640}
-            loading="lazy"
-            decoding="async"
-            class:list={[
-              line.dark
-                ? 'absolute inset-0 z-[1] h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04]'
-                : 'absolute inset-0 z-[1] h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04]',
-            ]}
-          />
-
-          <span class="absolute top-4 left-4 z-[2] font-display text-[11px] font-extrabold tracking-[0.2em] text-neutral-light [text-shadow:0_1px_3px_rgb(0_0_0/0.6)]">
-            {String(i + 1).padStart(2, '0')}
-          </span>
-
-          <span class="absolute top-3.5 right-4 z-[2] rounded-full border border-primary-dark/10 bg-neutral-light px-2.5 py-1 font-sans text-[10px] font-bold tracking-[0.16em] text-primary-dark/75 uppercase">
-            {line.tag}
-          </span>
-
-          {!line.dark && (
-            <span
-              aria-hidden="true"
-              class="absolute bottom-3 left-1/2 h-4 w-28 -translate-x-1/2 rounded-[100%] bg-primary-dark/20 opacity-50 blur-md transition-opacity duration-500 group-hover:opacity-90"
-            />
-          )}
-        </div>
-
-        {/* Conteúdo */}
-        <div class="flex flex-1 flex-col px-6 pt-4 pb-4">
-          <h3
-            class:list={[
-              'font-display text-lg leading-snug font-extrabold',
-              line.dark ? 'text-neutral-light' : 'text-ink',
-            ]}
-          >
-            {line.title}
-          </h3>
-
-          <p
-            class:list={[
-              'mt-2 font-sans text-[13px] leading-relaxed',
-              line.dark ? 'text-neutral-light/65' : 'text-ink-soft',
-            ]}
-          >
-            {line.description}
-          </p>
-
-          <ul class="mt-4 mb-4 flex flex-col gap-2">
-            {line.features.map((feature) => (
-              <li
-                class:list={[
-                  'flex items-center gap-2.5 font-sans text-[13px] font-medium',
-                  line.dark ? 'text-neutral-light/90' : 'text-ink',
-                ]}
-              >
-                <span
-                  class:list={[
-                    'flex size-5 shrink-0 items-center justify-center rounded-full text-accent-orange',
-                    line.dark ? 'bg-accent-orange/20' : 'bg-accent-orange/10',
-                  ]}
-                >
-                  <Icon name="check" class="size-3" />
-                </span>
-                {feature}
-              </li>
-            ))}
-          </ul>
-
-          <button
-            type="button"
-            data-cta={`linhas-${line.id}`}
-            class:list={[
-              'btn-slave-whats mt-auto flex items-center justify-between gap-3 border-t pt-3 font-sans text-[13px] font-bold transition-colors duration-200 hover:text-accent-orange',
-              line.dark
-                ? 'border-white/10 text-neutral-light'
-                : 'border-neutral-gray-200/60 text-primary-dark',
-            ]}
-          >
-            <span>{cta.card}</span>
-            <span
-              class:list={[
-                'flex size-8 shrink-0 items-center justify-center rounded-full transition-[background-color,color,transform] duration-300 group-hover:translate-x-0.5 group-hover:bg-accent-orange group-hover:text-neutral-light',
-                line.dark
-                  ? 'bg-white/10 text-neutral-light'
-                  : 'bg-neutral-gray-100 text-primary-dark',
-              ]}
-            >
-              <Icon name="arrow-right" class="size-3.5" />
-            </span>
-          </button>
-        </div>
-      </article>
-    ))}
+    <div class="cta-row">
+      <button type="button" class="btn btn-slave-whats" data-cta="linhas-cta">
+        {ctaMiolo}
+        <svg class="ico" aria-hidden="true">
+          <use href="#i-arrow" />
+        </svg>
+      </button>
+    </div>
   </div>
 </Section>
 
-<style>
-  /* Palco claro: gradiente suave + malha de pontos que esmaece nas bordas */
-  .product-card__stage--light {
-    background-image: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
-  }
-
-  .product-card__stage--light::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(0, 33, 71, 0.16) 1px, transparent 1.2px);
-    background-size: 18px 18px;
-    mask-image: radial-gradient(ellipse at center, transparent 32%, black 90%);
-    -webkit-mask-image: radial-gradient(ellipse at center, transparent 32%, black 90%);
-    opacity: 0.7;
-    pointer-events: none;
-  }
-
-  /* Palco do card escuro: painel branco para a foto de marcas */
-  .product-card__stage--dark {
-    background-color: #ffffff;
-    border-bottom: 1px solid rgb(255 255 255 / 0.12);
-  }
-
-  /* Canto técnico discreto que aparece no hover */
-  .product-card::after {
-    content: '';
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
-    width: 14px;
-    height: 14px;
-    border-right: 2px solid var(--color-accent-orange);
-    border-bottom: 2px solid var(--color-accent-orange);
-    opacity: 0;
-    transform: translate(4px, 4px);
-    transition:
-      opacity 300ms ease,
-      transform 300ms ease;
-    pointer-events: none;
-  }
-
-  .product-card:hover::after {
-    opacity: 0.9;
-    transform: translate(0, 0);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .product-card,
-    .product-card img,
-    .product-card span {
-      transition: none !important;
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((car) => {
+    const track = car.querySelector<HTMLElement>('.track')
+    const prev = car.querySelector<HTMLButtonElement>('.prev')
+    const next = car.querySelector<HTMLButtonElement>('.next')
+    const bar = car.querySelector<HTMLElement>('.progress span')
+    const count = car.querySelector<HTMLElement>('.car-count')
+    if (!track || !prev || !next || !bar || !count) return
+    const items = track.children
+    const gap = () => parseFloat(getComputedStyle(track).columnGap) || 0
+    const stepPx = () => (items[0] as HTMLElement).offsetWidth + gap()
+    const perView = () => Math.max(1, Math.round((track.clientWidth + gap()) / stepPx()))
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth
+      prev.disabled = track.scrollLeft <= 2
+      next.disabled = track.scrollLeft >= max - 2
+      const ratio = track.scrollWidth ? track.clientWidth / track.scrollWidth : 1
+      bar.style.width = `${ratio * 100}%`
+      bar.style.transform = `translateX(${max > 0 ? (track.scrollLeft / max) * (1 / ratio - 1) * 100 : 0}%)`
+      const first = Math.round(track.scrollLeft / stepPx()) + 1
+      const pv = perView()
+      const last = Math.min(items.length, first + pv - 1)
+      count.textContent = `${pv > 1 ? `${first}–${last}` : first} de ${items.length} serviços`
     }
-    .product-card:hover {
-      transform: none;
-    }
-  }
-</style>
+    prev.addEventListener('click', () => track.scrollBy({ left: -stepPx() }))
+    next.addEventListener('click', () => track.scrollBy({ left: stepPx() }))
+    track.addEventListener('scroll', update, { passive: true })
+    addEventListener('resize', update)
+    update()
+  })
+</script>

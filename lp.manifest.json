@@ -16,8 +16,8 @@
       "aplicacoes"
     ],
     "autoridade": [
-      "perguntas",
-      "diferenciais"
+      "diferenciais",
+      "perguntas"
     ]
   },
   "sections": [
@@ -182,6 +182,65 @@
       ]
     },
     {
+      "slug": "diferenciais",
+      "id": "diferenciais",
+      "title": "Diferenciais",
+      "phase": "autoridade",
+      "component": "WhyBrand.astro",
+      "data": "diferenciais.ts",
+      "dataExport": "why",
+      "carriesNavy": true,
+      "tone": "gray",
+      "rhythm": "even",
+      "tones": [
+        "light",
+        "gray"
+      ],
+      "rhythms": [
+        "overlap",
+        "even"
+      ],
+      "exampleHash": "24683935274bbad0",
+      "ctas": [
+        "diferenciais-cta"
+      ],
+      "contract": {
+        "itemsPath": "reasons",
+        "itemsMin": 5,
+        "itemsMax": 5,
+        "requiredItemFields": [
+          "icon",
+          "title",
+          "description"
+        ],
+        "maxLength": {
+          "text": 320,
+          "item.description": 70
+        }
+      },
+      "assets": [
+        {
+          "dir": "diferenciais",
+          "match": "cenario",
+          "files": "cenario.jpg",
+          "spec": "Cenário/bancada 1600×900, sangra à direita do bloco navy",
+          "width": 1600,
+          "height": 900,
+          "alpha": false
+        },
+        {
+          "dir": "diferenciais",
+          "match": "pessoa",
+          "files": "pessoa.png",
+          "spec": "Pessoa recortada de corpo inteiro, 1220×1000, fundo transparente",
+          "width": 1220,
+          "height": 1000,
+          "alpha": true
+        }
+      ],
+      "note": "Variante local LP Vazão (09/11/2026): layout original sem cards sobrepostos à Cotação, por isso ritmo \"even\" e posição antes de perguntas."
+    },
+    {
       "slug": "perguntas",
       "id": "perguntas",
       "title": "Perguntas frequentes",
@@ -223,63 +282,6 @@
         }
       },
       "assets": []
-    },
-    {
-      "slug": "diferenciais",
-      "id": "diferenciais",
-      "title": "Diferenciais",
-      "phase": "autoridade",
-      "component": "WhyBrand.astro",
-      "data": "diferenciais.ts",
-      "dataExport": "why",
-      "carriesNavy": true,
-      "tone": "gray",
-      "rhythm": "overlap",
-      "tones": [
-        "light",
-        "gray"
-      ],
-      "rhythms": [
-        "overlap"
-      ],
-      "exampleHash": "24683935274bbad0",
-      "ctas": [
-        "diferenciais-cta"
-      ],
-      "contract": {
-        "itemsPath": "reasons",
-        "itemsMin": 5,
-        "itemsMax": 5,
-        "requiredItemFields": [
-          "icon",
-          "title",
-          "description"
-        ],
-        "maxLength": {
-          "text": 320,
-          "item.description": 70
-        }
-      },
-      "assets": [
-        {
-          "dir": "diferenciais",
-          "match": "cenario",
-          "files": "cenario.jpg",
-          "spec": "Cenário/bancada 1600×900, sangra à direita do bloco navy",
-          "width": 1600,
-          "height": 900,
-          "alpha": false
-        },
-        {
-          "dir": "diferenciais",
-          "match": "pessoa",
-          "files": "pessoa.png",
-          "spec": "Pessoa recortada de corpo inteiro, 1220×1000, fundo transparente",
-          "width": 1220,
-          "height": 1000,
-          "alpha": true
-        }
-      ]
     }
   ]
 }

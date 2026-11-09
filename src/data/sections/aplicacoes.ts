@@ -1,7 +1,9 @@
 /**
- * Dados da seção "Aplicações" (biblioteca B2, fase: prova).
+ * Dados da seção "Equipamentos atendidos" (slot `aplicacoes` da biblioteca B2, fase: prova).
  *
- * 4 cards-botão com foto 4:3 e cabeçalho centrado. O card inteiro é o CTA.
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026): layout e textos da LP original, com o checklist
+ * de vasos de pressão. `icon` é do sprite original (VzIcons.astro); `featured` destaca o
+ * card com borda azul. No título, o trecho entre asteriscos é o destaque.
  */
 import type { Photo } from '@data/types'
 
@@ -13,46 +15,19 @@ import app4 from '@assets/aplicacoes/aplicacao-4.png'
 export interface Application {
   id: string
   label: string
+  glyph: string
   description: string
   photo: Photo
+  featured?: boolean
 }
 
 export const applications = {
   eyebrow: 'Equipamentos atendidos',
-  title: 'Inspeção NR13 por tipo de equipamento',
-  text: 'Inspeção, adequação e laudo NR13 para os equipamentos enquadrados na norma.',
-  items: [
-    {
-      id: 'vasos-de-pressao',
-      label: 'Vasos de pressão',
-      description: 'Inspeção, avaliação e documentação de vasos de pressão enquadrados.',
-      photo: { src: app1, alt: 'Vaso de pressão horizontal em área industrial' },
-    },
-    {
-      id: 'ar-comprimido',
-      label: 'Ar comprimido',
-      description: 'Vasos e reservatórios do sistema avaliados quanto ao enquadramento na NR13.',
-      photo: { src: app2, alt: 'Compressor de ar e reservatório em sala de máquinas' },
-    },
-    {
-      id: 'caldeiras',
-      label: 'Caldeiras',
-      description: 'Inspeção e avaliação técnica de caldeiras enquadradas na NR13.',
-      photo: { src: app3, alt: 'Caldeira industrial com queimador em casa de caldeiras' },
-    },
-    {
-      id: 'tubulacoes',
-      label: 'Tubulações industriais',
-      description: 'Avaliação de tubulações enquadradas, com inspeção e documentação.',
-      photo: { src: app4, alt: 'Tubulações industriais com válvula e flanges' },
-    },
-  ],
-  /**
-   * Variante local (LP Vazão): checklist da LP anterior, abaixo dos cards. Fora do contrato
-   * da seção; o componente só o mostra quando existe.
-   */
+  title: 'NR13 para vasos de pressão, caldeiras, *ar comprimido e tubulações*',
+  text: 'Inspeção, adequação e laudo NR13 para os equipamentos enquadrados na norma. Vasos de pressão precisam ter sua integridade e documentação gerenciadas.',
+  button: 'Solicitar inspeção',
   checklist: {
-    title: 'Na inspeção de vasos de pressão, avaliamos',
+    title: 'Na inspeção de vasos de pressão, avaliamos:',
     items: [
       'Identificação',
       'Dispositivos de segurança',
@@ -62,10 +37,43 @@ export const applications = {
       'Adequações',
     ],
   },
+  items: [
+    {
+      id: 'vasos-de-pressao',
+      label: 'Vasos de pressão',
+      glyph: 'tank',
+      description: 'Inspeção, avaliação e documentação de vasos de pressão enquadrados na NR13.',
+      photo: { src: app1, alt: 'Vaso de pressão horizontal em área industrial' },
+      featured: true,
+    },
+    {
+      id: 'ar-comprimido',
+      label: 'Ar comprimido',
+      glyph: 'air',
+      description:
+        'Vasos de pressão e reservatórios do sistema avaliados quanto ao enquadramento na NR13.',
+      photo: { src: app2, alt: 'Compressor de ar e reservatório em sala de máquinas' },
+    },
+    {
+      id: 'caldeiras',
+      label: 'Caldeiras',
+      glyph: 'boiler',
+      description: 'Inspeção e avaliação técnica de caldeiras enquadradas na NR13.',
+      photo: { src: app3, alt: 'Caldeira industrial com queimador em casa de caldeiras' },
+    },
+    {
+      id: 'tubulacoes',
+      label: 'Tubulações industriais',
+      glyph: 'pipe',
+      description: 'Avaliação de tubulações enquadradas, com documentação e inspeção.',
+      photo: { src: app4, alt: 'Tubulações industriais com válvula e flanges' },
+    },
+  ],
 } as const satisfies {
   eyebrow: string
   title: string
   text: string
+  button: string
+  checklist: { title: string; items: readonly string[] }
   items: readonly [Application, Application, Application, Application]
-  checklist?: { title: string; items: readonly string[] }
 }

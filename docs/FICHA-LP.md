@@ -1,5 +1,7 @@
 # Ficha de execução — Vazão Engenharia e Montagem · Inspeção NR13
 
+> **Atualização de 09/11/2026 (tarde):** a pedido da B2, o miolo (Serviços, Como funciona, Equipamentos, Diferenciais, Dúvidas e o banner "Fale com um especialista") voltou ao layout e aos **textos originais** da LP anterior. Os textos do miolo abaixo ficaram como registro da versão enxugada; a fonte da verdade do miolo agora são os arquivos `src/data/sections/*.ts` e `src/data/miolo.ts`. Header, Hero e Cotação seguem esta ficha.
+>
 > Origem: migração da LP em HTML (mockups com a identidade do site da Vazão, importada em 06/11/2026) para o padrão B2 v2.8.0. Conteúdo tirado da página anterior, enxugado aos limites do padrão, com as decisões tomadas com a B2 em 09/11/2026 (registradas em `docs/BRIEFING.md`).
 
 ```yaml
@@ -260,7 +262,7 @@ blocos:
     falta: a oferta não é consolidação de compras
 
 assets:
-  pendentes: [diferenciais]
+  pendentes: [] # a pessoa recortada saiu com a volta ao layout original do miolo
 
 conflitos:
   - pede: chat próprio em JS que manda o lead para o WhatsApp (81) 99203-9379

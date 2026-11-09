@@ -1,0 +1,54 @@
+---
+/**
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026): banner "Fale com um especialista" da LP original,
+ * entre o miolo e a Cotação. Não é seção da biblioteca B2; montado à mão em
+ * src/pages/index.astro (que `npm run compose` regenera — recoloque-o ao recompor).
+ * Estilo em src/styles/original.css (escopo `.vz`).
+ */
+import { Image } from 'astro:assets'
+import { authority } from '../data/miolo'
+import logo from '../assets/LOGO.png'
+---
+
+<div class="vz talk">
+  <section id="especialista" class="vz cta-section" aria-labelledby="especialista-title">
+    <div class="wrap">
+      <div class="cta reveal">
+        <div class="cta-main">
+          <Image class="sec-logo" src={logo} alt="" width={230} loading="lazy" decoding="async" />
+          <span class="eyebrow">{authority.eyebrow}</span>
+          <h2 id="especialista-title">{authority.title}</h2>
+          <p>{authority.text}</p>
+          <button type="button" class="btn btn-slave-whats" data-cta="especialista-cta">
+            {authority.button}
+            <svg class="ico" aria-hidden="true">
+              <use href="#i-arrow" />
+            </svg>
+          </button>
+        </div>
+        <div class="cta-side">
+          <Image
+            class="cta-side-photo"
+            src={authority.photo.src}
+            alt=""
+            aria-hidden="true"
+            width={900}
+            format="webp"
+            loading="lazy"
+            decoding="async"
+          />
+          <ul class="cta-list">
+            {authority.items.map((item) => (
+              <li>
+                <svg class="ico" aria-hidden="true">
+                  <use href={`#i-${item.icon}`} />
+                </svg>
+                <strong>{item.label}</strong>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

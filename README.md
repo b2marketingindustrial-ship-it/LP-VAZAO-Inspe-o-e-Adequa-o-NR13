@@ -17,7 +17,7 @@ Fora do WordPress, os shortcodes do chat e do formulário aparecem como texto cr
 
 ## Página
 
-Ordem fixa em [`src/pages/index.astro`](src/pages/index.astro), gerado por `npm run compose`. Ao recompor, reaplique as variantes locais marcadas no topo de cada componente.
+Ordem em [`src/pages/index.astro`](src/pages/index.astro) (ajustada à mão para a ordem original do miolo).
 
 | Seção                      | Componente                                          | Texto                               |
 | -------------------------- | --------------------------------------------------- | ----------------------------------- |
@@ -31,9 +31,9 @@ Ordem fixa em [`src/pages/index.astro`](src/pages/index.astro), gerado por `npm 
 | Cotação (+ formulário)     | `src/components/QuoteForm.astro`                    | `src/data/content.ts`               |
 | Rodapé                     | `src/components/Footer.astro`                       | `src/data/site.ts`                  |
 
-Variantes locais (fora do padrão, aprovadas): `SectionLogo.astro` (logo nas seções) e `MobileCta.astro` (barra de CTA no celular).
+**O miolo usa o layout e os textos originais da LP anterior** (pedido da B2): os 5 componentes de seção ocupam os slots da biblioteca, mas o markup é o original, com CSS em `src/styles/original.css` (escopo `.vz`) e ícones em `src/components/VzIcons.astro`. O banner "Fale com um especialista" é `src/components/AuthorityBanner.astro`. Barra de CTA no celular: `src/components/MobileCta.astro`. **Não rode `npm run compose`**: ele sobrescreve tudo isso (ver `docs/BRIEFING.md`).
 
-Marca, URL, endereço, title, description, palavra-chave e shortcodes: `src/data/site.ts`. Cores (marinho e vermelho Vazão nos tokens "navy" e "orange") e fonte: `src/styles/global.css`.
+Marca, URL, endereço, title, description, palavra-chave e shortcodes: `src/data/site.ts`. Cores (marinho e vermelho Vazão nos tokens "navy" e "orange") e fonte (Plus Jakarta Sans): `src/styles/global.css`.
 
 ## Verificar e publicar
 

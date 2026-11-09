@@ -7,6 +7,10 @@
  *
  *   npm run compose -- <slugs da composição nova>
  *
+ * AJUSTADO À MÃO (LP Vazão, 09/11/2026): ordem original do miolo (diferenciais antes de
+ * perguntas) e o banner AuthorityBanner antes da Cotação. Ao recompor, refaça os dois ajustes
+ * e o de lp.manifest.json (ver docs/BRIEFING.md).
+ *
  * Header, Hero, Cotação e Footer são estrutura fixa do padrão (regra 13) e estão
  * fora da biblioteca. Os dois slots de shortcode saem de `site.ts`.
  */
@@ -20,6 +24,7 @@ import ProcessSteps from '../components/sections/ProcessSteps.astro'
 import ApplicationsGallery from '../components/sections/ApplicationsGallery.astro'
 import FaqAccordion from '../components/sections/FaqAccordion.astro'
 import WhyBrand from '../components/sections/WhyBrand.astro'
+import AuthorityBanner from '../components/AuthorityBanner.astro'
 import { shortcodes } from '../data/site'
 ---
 
@@ -33,8 +38,9 @@ import { shortcodes } from '../data/site'
     <ProductLines tone="light" rhythm="open" />
     <ProcessSteps tone="light" rhythm="panel-lead" />
     <ApplicationsGallery tone="light" rhythm="centered-lead" />
+    <WhyBrand tone="gray" rhythm="even" />
     <FaqAccordion tone="gray" rhythm="even" />
-    <WhyBrand tone="gray" rhythm="overlap" />
+    <AuthorityBanner />
     <QuoteForm>
       <Fragment slot="shortcode">{shortcodes.form}</Fragment>
     </QuoteForm>

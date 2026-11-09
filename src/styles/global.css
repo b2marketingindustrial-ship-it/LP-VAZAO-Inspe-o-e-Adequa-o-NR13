@@ -19,9 +19,10 @@
 
   --container-page: 1320px;
 
-  /* Uma única família para títulos e corpo; o peso e o tracking fazem a hierarquia. */
-  --font-display: 'Manrope', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  /* Uma única família para títulos e corpo; o peso e o tracking fazem a hierarquia.
+     Plus Jakarta Sans, a fonte do site da Vazão (decisão da B2 em 09/11/2026), no lugar da Manrope. */
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
