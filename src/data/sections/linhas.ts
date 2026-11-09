@@ -3,7 +3,8 @@
  *
  * VARIANTE LOCAL (LP Vazão, 09/11/2026): o miolo voltou ao layout e aos textos da LP
  * original (carrossel de serviços). Os campos do contrato da biblioteca continuam aqui
- * para o `check:lp`; `icon` é do sprite original (VzIcons.astro). No título, o trecho
+ * para o `check:lp`. As descrições foram encurtadas para caberem em 3 linhas (pedido de
+ * 09/11/2026); `icon` é do sprite original (VzIcons.astro). No título, o trecho
  * entre asteriscos é o destaque em azul.
  */
 import type { Photo } from '@data/types'
@@ -47,7 +48,7 @@ export const productLines = {
       glyph: 'gear',
       title: 'Adequação NR13',
       description:
-        'A Vazão apoia sua indústria desde o diagnóstico até a execução das intervenções de engenharia necessárias.',
+        'Do diagnóstico à execução das intervenções de engenharia que a sua indústria precisa.',
       photo: {
         src: linha2,
         alt: 'Técnico ajustando os rotores internos de um equipamento industrial',
@@ -61,7 +62,7 @@ export const productLines = {
       glyph: 'doc',
       title: 'Laudo e Documentação NR13',
       description:
-        'Organização e elaboração da documentação técnica decorrente da inspeção: relatórios de inspeção de segurança e demais documentos exigíveis por equipamento.',
+        'Relatórios de inspeção de segurança e demais documentos técnicos exigíveis para cada equipamento.',
       photo: {
         src: linha3,
         alt: 'Engenheiro da Vazão preenchendo o checklist NR13 ao lado de um vaso de pressão',
@@ -75,7 +76,7 @@ export const productLines = {
       glyph: 'cal',
       title: 'Gestão NR13',
       description:
-        'Suporte para organizar as informações dos equipamentos, registros, documentação e acompanhamento das inspeções ao longo do ciclo de operação.',
+        'Organização dos registros e da documentação dos equipamentos e acompanhamento das inspeções.',
       photo: {
         src: marcasPhoto,
         alt: 'Notebook com o painel de controle NR13 e capacete da Vazão',

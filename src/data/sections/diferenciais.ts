@@ -1,8 +1,8 @@
 /**
  * Dados da seção "Por que a Vazão" (slot `diferenciais` da biblioteca B2, fase: autoridade).
  *
- * VARIANTE LOCAL (LP Vazão, 09/11/2026): layout e textos da LP original (cards brancos
- * sobre a foto que se dissolve, sem pessoa recortada). `icon` é do sprite original
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026): textos da LP original; layout da seção de
+ * diferenciais da LP Print Master Locação (bloco escuro sobre a foto + 5 cards sobrepostos). `icon` é do sprite original
  * (VzIcons.astro). No título, o trecho entre asteriscos é o destaque.
  */
 import type { IconName } from '@data/icons'
@@ -22,14 +22,16 @@ export interface Reason {
 export const why = {
   eyebrow: 'Segurança e conformidade',
   title: 'Por que contar com a *Vazão Engenharia?*',
+  /** O mesmo título quebrado em 2 linhas para o bloco escuro (layout da LP Print Master). */
+  titleLines: ['Por que contar com', 'a *Vazão Engenharia?*'],
   text: 'Experiência industrial, engenharia própria e avaliação feita na sua planta.',
   scene: {
     src: cenario,
-    alt: 'Vaso de pressão em planta industrial',
+    alt: 'Vaso de pressão de aço inox em planta industrial a céu aberto',
   },
   reasons: [
     {
-      icon: 'check',
+      icon: 'clock',
       glyph: 'badge',
       title: 'Desde 1991',
       description: 'Experiência em soluções para o mercado industrial.',
@@ -56,12 +58,13 @@ export const why = {
       icon: 'factory',
       glyph: 'factory',
       title: 'Soluções para indústrias',
-      description: 'Atendimento focado em ambientes e processos industriais.',
+      description: 'Foco em ambientes e processos industriais.',
     },
   ],
 } as const satisfies {
   eyebrow: string
   title: string
+  titleLines: readonly [string, string]
   text: string
   scene: Photo
   reasons: readonly [Reason, Reason, Reason, Reason, Reason]

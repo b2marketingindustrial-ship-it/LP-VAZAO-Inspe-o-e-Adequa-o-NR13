@@ -53,7 +53,14 @@ export const header = {
 export const hero = {
   eyebrow: 'Engenharia especializada em NR13',
   title: 'Inspeção NR13, adequação e laudo para sua indústria',
+  /** Quebras fixas do H1 (pedido de 09/11/2026). Juntas, as linhas têm de formar `title`. */
+  titleLines: ['Inspeção NR13,', 'adequação e laudo', 'para sua indústria'],
   text: 'Inspeção, adequação e documentação para vasos de pressão, caldeiras, ar comprimido e tubulações.',
+  /** Quebra do parágrafo a partir de `sm` (pedido de 09/11/2026). */
+  textLines: [
+    'Inspeção, adequação e documentação para vasos de pressão,',
+    'caldeiras, ar comprimido e tubulações.',
+  ],
   banner: {
     src: heroBg,
     alt: 'Trocador de calor e tubulações em planta industrial',
@@ -66,7 +73,9 @@ export const hero = {
 } as const satisfies {
   eyebrow: string
   title: string
+  titleLines: readonly string[]
   text: string
+  textLines: readonly string[]
   banner: Photo
   points: readonly [HeroPoint, HeroPoint, HeroPoint]
 }

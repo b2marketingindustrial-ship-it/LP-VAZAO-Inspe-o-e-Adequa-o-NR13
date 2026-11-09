@@ -82,6 +82,10 @@ Diferenças inevitáveis em relação ao original:
 - **Serviços em grid 2×2** (1 coluna abaixo de 1080px), no lugar do carrossel.
 - **Botões padronizados** com o `Button.astro` do padrão: cantos retos, 15px seminegrito, 14px × 24px de respiro, ícone de 16px, sem sombra nem deslocamento no hover. O link "Falar com especialista" dos cards segue a receita de link de card (13px negrito). O CTA do header continua na versão compacta.
 - **Banner "Fale com um especialista" integrado à Cotação**: mesmo fundo cinza, sem recorte arredondado nem faixas diagonais entre os dois.
+- **Diferenciais no layout da LP Print Master Locação**: bloco escuro em largura total sobre a foto (o vaso de pressão da LP anterior, espelhado para ficar à direita), cantos superiores arredondados e os 5 cards brancos sobrepostos à base. Textos da LP original.
+- **Hero com cantos inferiores arredondados** (40px / 64px), como nas LPs Print Master; Serviços começa por baixo dele.
+- **Quebras de linha fixas**: H1 em 3 linhas ("Inspeção NR13," / "adequação e laudo" / "para sua indústria"), parágrafo do hero quebrado depois de "vasos de pressão,", parágrafo de Serviços em 1 linha e descrição do "Como funciona" em 2 linhas (desktop).
+- **Número de linhas dos cards**: descrições com 3 linhas em Serviços, Etapas e Equipamentos, e títulos dos Equipamentos em 1 linha. Para caber, estes textos originais foram encurtados: Adequação, Laudo e Documentação, Gestão (Serviços); as 4 etapas; Vasos de pressão, Ar comprimido e Tubulações (Equipamentos); "Soluções para indústrias" (Diferenciais).
 
 ## Desvios do padrão que continuam valendo
 

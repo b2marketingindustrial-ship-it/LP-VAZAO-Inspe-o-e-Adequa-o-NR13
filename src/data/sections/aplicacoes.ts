@@ -3,7 +3,7 @@
  *
  * VARIANTE LOCAL (LP Vazão, 09/11/2026): layout e textos da LP original, com o checklist
  * de vasos de pressão. `icon` é do sprite original (VzIcons.astro); `featured` destaca o
- * card com borda azul. No título, o trecho entre asteriscos é o destaque.
+ * card com borda azul. Descrições dos cards encurtadas para 3 linhas (09/11/2026). No título, o trecho entre asteriscos é o destaque.
  */
 import type { Photo } from '@data/types'
 
@@ -42,7 +42,7 @@ export const applications = {
       id: 'vasos-de-pressao',
       label: 'Vasos de pressão',
       glyph: 'tank',
-      description: 'Inspeção, avaliação e documentação de vasos de pressão enquadrados na NR13.',
+      description: 'Inspeção, avaliação e documentação de vasos de pressão enquadrados.',
       photo: { src: app1, alt: 'Vaso de pressão horizontal em área industrial' },
       featured: true,
     },
@@ -50,8 +50,7 @@ export const applications = {
       id: 'ar-comprimido',
       label: 'Ar comprimido',
       glyph: 'air',
-      description:
-        'Vasos de pressão e reservatórios do sistema avaliados quanto ao enquadramento na NR13.',
+      description: 'Vasos e reservatórios do sistema avaliados quanto ao enquadramento.',
       photo: { src: app2, alt: 'Compressor de ar e reservatório em sala de máquinas' },
     },
     {
@@ -65,7 +64,7 @@ export const applications = {
       id: 'tubulacoes',
       label: 'Tubulações industriais',
       glyph: 'pipe',
-      description: 'Avaliação de tubulações enquadradas, com documentação e inspeção.',
+      description: 'Avaliação, inspeção e documentação de tubulações enquadradas.',
       photo: { src: app4, alt: 'Tubulações industriais com válvula e flanges' },
     },
   ],

@@ -2,7 +2,7 @@
  * Dados da seção "Como funciona" (slot `processo` da biblioteca B2, fase: apoio).
  *
  * VARIANTE LOCAL (LP Vazão, 09/11/2026): layout e textos da LP original. `icon` é do
- * sprite original (VzIcons.astro). No título, o trecho entre asteriscos é o destaque.
+ * sprite original (VzIcons.astro). Descrições das etapas encurtadas para 3 linhas (09/11/2026). No título, o trecho entre asteriscos é o destaque.
  */
 import type { IconName } from '@data/icons'
 
@@ -29,8 +29,7 @@ export const process = {
       icon: 'file',
       glyph: 'clip',
       title: 'Levantamento e diagnóstico',
-      description:
-        'Identificação dos equipamentos em campo, avaliação das condições da instalação e análise dos requisitos aplicáveis a cada um.',
+      description: 'Identificação dos equipamentos em campo e dos requisitos de cada um.',
     },
     {
       id: 'inspecao',
@@ -38,15 +37,14 @@ export const process = {
       glyph: 'helmet',
       title: 'Inspeção dos equipamentos',
       description:
-        'Execução das verificações e inspeções necessárias conforme o tipo, categoria, condições e histórico do equipamento.',
+        'Verificações e inspeções conforme o tipo, a categoria e o histórico do equipamento.',
     },
     {
       id: 'documentacao',
       icon: 'file',
       glyph: 'doc',
       title: 'Documentação técnica',
-      description:
-        'Elaboração ou organização dos documentos aplicáveis decorrentes do processo de inspeção e adequação.',
+      description: 'Elaboração ou organização dos documentos decorrentes da inspeção e adequação.',
     },
     {
       id: 'adequacoes',
@@ -54,7 +52,7 @@ export const process = {
       glyph: 'gear',
       title: 'Plano e adequações',
       description:
-        'Indicação das intervenções necessárias e, quando preciso, execução ou suporte para alterações, reparos e instalações.',
+        'Indicação das intervenções e, quando preciso, execução de reparos e instalações.',
     },
   ] as readonly ProcessStep[],
 } as const satisfies {

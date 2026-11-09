@@ -1486,3 +1486,67 @@
 .vz.talk::before {
   display: none;
 }
+
+/* O hero tem cantos inferiores arredondados: Serviços começa por baixo dele, para o fundo
+   dos Serviços aparecer nos cantos (mesmo recurso das LPs Print Master). */
+.vz.services {
+  margin-top: -40px;
+  padding-top: calc(clamp(72px, 9vw, 112px) + 40px);
+}
+@media (min-width: 1024px) {
+  .vz.services {
+    margin-top: -64px;
+    padding-top: calc(clamp(72px, 9vw, 112px) + 64px);
+  }
+}
+
+/* Parágrafo de Serviços em uma linha só no desktop (pedido de 09/11/2026). */
+.vz.services .section-head {
+  max-width: 960px;
+}
+@media (min-width: 1024px) {
+  .vz.services .section-head p {
+    white-space: nowrap;
+  }
+}
+
+/* Descrições dos cards de serviço sempre com 3 linhas (pedido de 09/11/2026): os textos
+   foram encurtados para caber, e a altura mínima alinha os cards. */
+.vz .svc-grid .svc p {
+  min-height: calc(1.6em * 3);
+}
+
+/* "Como funciona": descrição em 2 linhas no desktop (pedido de 09/11/2026). */
+@media (min-width: 1024px) {
+  .vz .flow-head {
+    max-width: 900px;
+  }
+  .vz .flow-head .q + p {
+    text-wrap: balance;
+  }
+}
+
+/* Etapas do "Como funciona": descrições sempre com 3 linhas (pedido de 09/11/2026). */
+.vz .step p {
+  min-height: calc(1.6em * 3);
+}
+
+/* Equipamentos: título do card em 1 linha e descrição em 3 (pedido de 09/11/2026). A coluna
+   do ícone fica mais estreita para o título caber. */
+.vz .app-b {
+  gap: 12px;
+}
+.vz .app-ic {
+  padding-right: 12px;
+}
+.vz .app-ic .ico {
+  width: 34px;
+  height: 34px;
+}
+.vz .app .app-h {
+  font-size: 17px;
+  white-space: nowrap;
+}
+.vz .app .app-p {
+  min-height: calc(1.55em * 3);
+}

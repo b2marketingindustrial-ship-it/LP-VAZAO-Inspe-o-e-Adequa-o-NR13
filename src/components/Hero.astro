@@ -1,5 +1,8 @@
 ---
 /**
+ * Desvio da LP Vazão (09/11/2026): cantos inferiores arredondados (40px / 64px no desktop), como
+ * nas LPs Print Master; a seção seguinte começa por baixo do hero (original.css).
+ *
  * ESTRUTURA FIXA (PROMPT-PADRAO-LP 4.1.2). Grid desktop: texto (1fr) · coluna VAZIA (270px) · shortcode (300px).
  * A coluna 2 é a janela do banner; nunca coloque conteúdo nela. O banner segue o brief 4.1.3.
  * Abra a página com `?grid=1` para ver as colunas e a zona do assunto sobre a imagem.
@@ -13,7 +16,10 @@ import { hero, cta } from '../data/content'
 const isDev = import.meta.env.DEV
 ---
 
-<section class="relative overflow-hidden border-b border-white/15 bg-primary-dark-900" data-hero>
+<section
+  class="relative z-[7] overflow-hidden rounded-b-[40px] bg-primary-dark-900 shadow-[0_28px_56px_-40px_rgba(10,43,87,0.55)] lg:rounded-b-[64px]"
+  data-hero
+>
   {/* z1 — banner ancorado à borda direita do container (desktop) */}
   <div class="hero-photo absolute inset-0 z-[1]">
     <Picture
@@ -62,11 +68,22 @@ const isDev = import.meta.env.DEV
         <Eyebrow tone="light">{hero.eyebrow}</Eyebrow>
 
         <h1 class="mt-2 font-display text-[2.75rem] leading-[1.1] font-extrabold text-neutral-light sm:text-[3rem] lg:text-[2.75rem] xl:text-[3.1rem]">
-          {hero.title}
+          {hero.titleLines.map((line, i) => (
+            <>
+              {i > 0 && <br />}
+              {line}
+            </>
+          ))}
         </h1>
 
         <p class="mt-5 font-sans text-lg leading-relaxed text-neutral-light/75 lg:text-base">
-          {hero.text}
+          {hero.textLines.map((line, i) => (
+            <>
+              {i > 0 && <br class="hidden sm:block" />}
+              {i > 0 && ' '}
+              {line}
+            </>
+          ))}
         </p>
 
         {/* Caixa de 3 pontos — texto sempre em duas linhas */}
