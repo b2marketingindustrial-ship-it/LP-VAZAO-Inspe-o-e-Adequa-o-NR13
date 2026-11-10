@@ -24,7 +24,7 @@ export const why = {
   title: 'Mais de 30 anos de *engenharia industrial*',
   /** O mesmo título quebrado em 2 linhas; o trecho entre asteriscos é o destaque. */
   titleLines: ['Mais de 30 anos de', '*engenharia industrial*'],
-  text: 'Fundada em 1991, a Vazão Engenharia e Montagem desenvolve soluções completas para a indústria, do projeto à entrega, atendendo às normas regulamentadoras de cada segmento.',
+  text: 'Fundada em 1991, a Vazão Engenharia e Montagem atende indústrias de todo o Nordeste com soluções completas, do projeto à entrega, atendendo às normas regulamentadoras de cada segmento.',
   scene: {
     src: cenario,
     alt: 'Vaso de pressão de aço inox em planta industrial a céu aberto',

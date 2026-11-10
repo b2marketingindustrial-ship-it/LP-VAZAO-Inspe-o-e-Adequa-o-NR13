@@ -1,6 +1,6 @@
 # LP Vazão — Inspeção e adequação NR13
 
-Landing page de serviço da **Vazão Engenharia e Montagem** (Recife/PE) para indústrias de Pernambuco e Ceará, no padrão B2 v2.8.0: Astro 7 + Tailwind 4, uma rota, publicada no WordPress da Vazão pela branch `wp-build`.
+Landing page de serviço da **Vazão Engenharia e Montagem** (Recife/PE) para indústrias de todo o Nordeste, no padrão B2 v2.8.0: Astro 7 + Tailwind 4, uma rota, publicada no WordPress da Vazão pela branch `wp-build`.
 
 - Campanha: grupo **NR13** de _[PES] Locação e Serviços Nordeste_ (Google Ads). Palavra-chave principal: `inspeção nr13` (H1 e title).
 - URL final: **pendente** (WordPress da Vazão). A versão anterior, em HTML puro, segue no ar na Vercel até a troca.

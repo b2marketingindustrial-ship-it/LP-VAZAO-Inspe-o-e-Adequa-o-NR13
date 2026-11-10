@@ -55,11 +55,11 @@ export const hero = {
   title: 'Inspeção NR13, adequação e laudo para sua indústria',
   /** Quebras fixas do H1 (pedido de 09/11/2026). Juntas, as linhas têm de formar `title`. */
   titleLines: ['Inspeção NR13,', 'adequação e laudo', 'para sua indústria'],
-  text: 'Inspeção, adequação e documentação para vasos de pressão, caldeiras, ar comprimido e tubulações.',
-  /** Quebra do parágrafo a partir de `sm` (pedido de 09/11/2026). */
+  text: 'Inspeção, adequação e documentação para vasos de pressão, caldeiras, ar comprimido e tubulações, para indústrias de todo o Nordeste.',
+  /** Quebra do parágrafo a partir de `sm` (pedido de 09/11/2026); área atendida no fim (10/11/2026). */
   textLines: [
     'Inspeção, adequação e documentação para vasos de pressão,',
-    'caldeiras, ar comprimido e tubulações.',
+    'caldeiras, ar comprimido e tubulações, para indústrias de todo o Nordeste.',
   ],
   banner: {
     src: heroBg,
@@ -89,6 +89,7 @@ export const quote = {
   trust: [
     { icon: 'users', label: 'Retorno de especialista' },
     { icon: 'shield', label: 'Dados protegidos' },
+    { icon: 'map-pin', label: 'Atendimento em todo o Nordeste' },
   ],
   /**
    * Nota de LGPD abaixo do formulário. Vazia a pedido da B2 (09/11/2026): o aviso de LGPD fica
@@ -99,7 +100,7 @@ export const quote = {
   eyebrow: string
   title: string
   text: string
-  /** 2 selos (pedido da B2 em 09/11/2026: sai "Sem compromisso"); o padrão pede 3. */
+  /** 3 selos: sai "Sem compromisso" (09/11/2026) e entra a área atendida (10/11/2026). */
   trust: readonly TrustItem[]
   lgpd: string
 }

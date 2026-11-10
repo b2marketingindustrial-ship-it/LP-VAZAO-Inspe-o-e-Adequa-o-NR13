@@ -15,7 +15,7 @@ site:
   brand: Vazão Engenharia e Montagem
   brandShort: Vazão
   product: Inspeção e adequação NR13
-  context: indústrias em Pernambuco e Ceará
+  context: indústrias do Nordeste
   url: https://www.vazao.com.br/lp-inspecao-nr13/ # PROVISÓRIA: confirmar a URL no WordPress da Vazão
   address: Av. Barão de Bonito, 880 - Várzea, Recife - PE, 50740-080
   privacyUrl: ''
@@ -28,7 +28,7 @@ campanha:
   mainKeyword: inspeção nr13
   negatives: []
   forbidden: []
-  areaAtendida: Pernambuco e Ceará
+  areaAtendida: Nordeste
   onde: selo
   familias:
     - nome: servico
@@ -62,12 +62,12 @@ tokens:
   fonte: Manrope
 
 conteudo:
-  title: Inspeção NR13 e adequação em PE e CE | Vazão Engenharia
-  description: Inspeção NR13, adequação e laudo para vasos de pressão, caldeiras, ar comprimido e tubulações. Atendimento em Pernambuco e Ceará.
+  title: Inspeção NR13 e adequação no Nordeste | Vazão Engenharia
+  description: Inspeção NR13, adequação e laudo para vasos de pressão, caldeiras, ar comprimido e tubulações. Atendimento no Nordeste.
   hero:
     eyebrow: Engenharia especializada em NR13
     title: Inspeção NR13, adequação e laudo para sua indústria
-    text: Inspeção, adequação e documentação para vasos de pressão, caldeiras, ar comprimido e tubulações.
+    text: Inspeção, adequação e documentação para vasos de pressão, caldeiras, ar comprimido e tubulações, para indústrias de todo o Nordeste.
     points:
       - icon: search
         line1: Levantamento
@@ -88,7 +88,7 @@ conteudo:
       - icon: clock
         label: Experiência desde 1991
       - icon: pin
-        label: Atendimento em PE e CE
+        label: Atendimento em todo o Nordeste
 
 blocos:
   linhas:
