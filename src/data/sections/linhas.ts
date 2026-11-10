@@ -51,7 +51,7 @@ export const productLines = {
         'Do diagnóstico à execução das intervenções de engenharia que a sua indústria precisa.',
       photo: {
         src: linha2,
-        alt: 'Técnico ajustando os rotores internos de um equipamento industrial',
+        alt: 'Vaso de pressão vertical com manômetro e válvula de segurança instalados',
       },
       features: ['Diagnóstico técnico', 'Plano de adequação', 'Intervenções de engenharia'],
       dark: false,

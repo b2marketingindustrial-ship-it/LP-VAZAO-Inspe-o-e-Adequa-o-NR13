@@ -111,7 +111,7 @@ blocos:
         title: Adequação NR13
         description: Do diagnóstico à execução das intervenções de engenharia necessárias.
         features: [Diagnóstico técnico, Plano de adequação, Intervenções de engenharia]
-        photo: Técnico ajustando os rotores internos de um equipamento industrial
+        photo: Vaso de pressão vertical com manômetro e válvula de segurança instalados
         dark: false
       - id: laudo
         tag: Documentação
