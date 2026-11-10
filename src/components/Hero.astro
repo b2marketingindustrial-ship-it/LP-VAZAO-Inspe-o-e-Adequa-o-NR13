@@ -64,7 +64,7 @@ const isDev = import.meta.env.DEV
   <div class="relative z-[5] mx-auto max-w-page px-6 py-20 lg:px-10 lg:py-24">
     <div class="hero-grid grid items-center gap-y-12 lg:gap-x-6">
       {/* Coluna 1 — textos */}
-      <div class="max-w-xl lg:max-w-none">
+      <div class="hero-copy max-w-xl lg:max-w-none">
         <Eyebrow tone="light">{hero.eyebrow}</Eyebrow>
 
         <h1 class="mt-2 font-display text-[2.75rem] leading-[1.1] font-extrabold text-neutral-light sm:text-[3rem] lg:text-[2.75rem] xl:text-[3.1rem]">
@@ -259,6 +259,12 @@ const isDev = import.meta.env.DEV
 
     .hero-dots {
       width: calc(50% - 60px);
+    }
+
+    /* Pedido de 10/11/2026: textos mais à esquerda que a margem da página (24px em 1366px,
+       até 120px em telas largas). Só a coluna 1 se move; foto, janela e shortcode ficam. */
+    .hero-copy {
+      margin-left: calc(-1 * clamp(24px, (100vw - 1320px) / 2, 120px));
     }
   }
 </style>
