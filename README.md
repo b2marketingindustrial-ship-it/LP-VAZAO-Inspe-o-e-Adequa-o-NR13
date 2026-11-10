@@ -1,6 +1,6 @@
 # LP Inspeção e Adequação NR13 — Vazão Engenharia
 
-Landing page de serviço da **Vazão Engenharia e Montagem** para indústrias de Pernambuco e Ceará.
+Landing page de serviço da **Vazão Engenharia e Montagem** para indústrias de todo o Nordeste.
 Recebe o tráfego do grupo **NR13** da campanha *[PES] Locação e Serviços Nordeste* (Google Ads).
 Palavra-chave principal: **inspeção nr13** (presente no H1 e no título da aba).
 
