@@ -1,0 +1,100 @@
+---
+/**
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026) — o miolo voltou ao layout ORIGINAL da LP anterior.
+ * Slot `aplicacoes` da biblioteca B2 (nome, id, dados e CTAs exigidos pelo manifesto), com o
+ * markup original: cabeçalho à esquerda, checklist de vasos de pressão à direita e 4 cards.
+ * Estilo em src/styles/original.css (escopo `.vz`). `npm run compose` sobrescreve este
+ * arquivo: não recomponha sem guardar esta versão.
+ *
+ * Diferença do original: cada card é um <button> (o manifesto exige um CTA por item), por
+ * isso título e texto do card são <span>.
+ */
+import { Image } from 'astro:assets'
+import Section from '@components/Section.astro'
+import type { SectionProps } from '@lib/layout'
+import { applications } from '@data/sections/aplicacoes'
+
+type Props = SectionProps
+
+const { tone, rhythm } = Astro.props
+const parts = applications.title.split('*')
+---
+
+<Section
+  id="aplicacoes"
+  tone={tone}
+  rhythm={rhythm}
+  container={false}
+  class="vz section apps"
+  aria-labelledby="aplicacoes-title"
+>
+  <div class="wrap">
+    <div class="apps-top">
+      <div class="head-left reveal">
+        <span class="eyebrow left">{applications.eyebrow}</span>
+        <h2 id="aplicacoes-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
+        <p>{applications.text}</p>
+        <button type="button" class="btn btn-slave-whats" data-cta="aplicacoes-cta">
+          {applications.button}
+          <svg class="ico" aria-hidden="true">
+            <use href="#i-arrow" />
+          </svg>
+        </button>
+      </div>
+      <div class="vaso reveal d1">
+        <h3>{applications.checklist.title}</h3>
+        <ul>
+          {applications.checklist.items.map((item) => (
+            <li>
+              <svg class="ico" aria-hidden="true">
+                <use href="#i-check" />
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="app-grid">
+      {applications.items.map((app, i) => (
+        <button
+          data-cta={`aplicacoes-${app.id}`}
+          type="button"
+          class:list={[
+            'app btn-slave-whats reveal',
+            'featured' in app && app.featured && 'feat',
+            i ? `d${i}` : false,
+          ]}
+        >
+          <span class="media">
+            <Image
+              src={app.photo.src}
+              alt={app.photo.alt}
+              width={640}
+              format="webp"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+          <span class="app-b">
+            <span class="app-ic" aria-hidden="true">
+              <svg class="ico">
+                <use href={`#i-${app.glyph}`} />
+              </svg>
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="app-h">{app.label}</span>
+              <span class="app-p">{app.description}</span>
+            </span>
+            <span class="app-arrow" aria-hidden="true">
+              <svg class="ico">
+                <use href="#i-arrow" />
+              </svg>
+            </span>
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,68 @@
+---
+/**
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026): barra de CTA fixa no rodapé do celular, mantida da
+ * LP anterior por decisão da B2 (docs/BRIEFING.md). Fora do padrão B2.
+ *
+ * Só abaixo de `lg`. Aparece depois que o hero sai da tela e some quando a Cotação entra,
+ * para não cobrir o formulário. O botão é um CTA como os outros: `btn-slave-whats`.
+ */
+import Button from './Button.astro'
+import { cta } from '../data/content'
+---
+
+<div
+  data-mobile-cta
+  class="mobile-cta fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-neutral-light/95 px-4 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] backdrop-blur-md lg:hidden"
+  aria-hidden="true"
+>
+  <Button cta="mobile-cta" variant="primary" class="w-full">
+    {cta.primary}
+  </Button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-mobile-cta]').forEach((bar) => {
+    const hero = document.querySelector('#main > section')
+    const quote = document.getElementById('cotacao')
+    if (!hero) return
+
+    let pastHero = false
+    let atQuote = false
+    const update = () => {
+      const show = pastHero && !atQuote
+      bar.classList.toggle('is-visible', show)
+      bar.setAttribute('aria-hidden', String(!show))
+      bar.toggleAttribute('inert', !show)
+    }
+
+    new IntersectionObserver(([entry]) => {
+      pastHero = !entry.isIntersecting
+      update()
+    }).observe(hero)
+
+    if (quote)
+      new IntersectionObserver(([entry]) => {
+        atQuote = entry.isIntersecting
+        update()
+      }).observe(quote)
+
+    update()
+  })
+</script>
+
+<style>
+  .mobile-cta {
+    transform: translateY(110%);
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .mobile-cta.is-visible {
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-cta {
+      transition: none;
+    }
+  }
+</style>

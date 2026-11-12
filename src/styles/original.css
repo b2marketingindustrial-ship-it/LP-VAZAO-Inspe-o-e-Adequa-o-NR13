@@ -1,0 +1,1668 @@
+/* ---------------------------------------------------------------------------
+   VARIANTE LOCAL (LP Vazão, 09/11/2026): layout ORIGINAL do miolo da página.
+   Portado do index.html anterior (mockups com a identidade do site da Vazão), a
+   pedido da B2: só o miolo voltou ao original; Header, Hero, Cotação e Footer
+   continuam na estrutura fixa do padrão B2.
+
+   Tudo aqui é escopado por `.vz` (a classe vai na tag raiz de cada seção do
+   miolo), para não vazar para a estrutura fixa. CSS fora de @layer: vence as
+   classes de tom e ritmo que o <Section> aplica.
+   --------------------------------------------------------------------------- */
+
+/* Identidade visual: mesma base do site Vazão (Plus Jakarta Sans, marinho/azul/vermelho) */
+.vz {
+  --navy-900: #061b38;
+  --navy-800: #0a2b57;
+  --blue-700: #0b3f8a;
+  --blue-600: #1550aa;
+  --blue-500: #2468cc;
+  --blue-200: #c9daf1;
+  --blue-100: #e1ebf8;
+  --blue-50: #f0f5fc;
+  --red-600: #e1062f;
+  --red-700: #c10428;
+  --green-600: #2d7a45;
+  --ink: #10233d;
+  --text: #3d4f66;
+  --muted: #66788e;
+  --line: #e2e9f1;
+  --line-strong: #cfdae6;
+  --surface: #f4f7fb;
+  --white: #fff;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 26px;
+  --sh-sm: 0 1px 2px rgba(10, 43, 87, 0.06), 0 1px 3px rgba(10, 43, 87, 0.05);
+  --sh-md: 0 14px 34px -16px rgba(10, 43, 87, 0.22);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --round: clamp(28px, 4vw, 56px);
+  --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --grid-bg:
+    linear-gradient(rgba(36, 104, 204, 0.06) 1px, transparent 1px) center/16px 16px,
+    linear-gradient(90deg, rgba(36, 104, 204, 0.06) 1px, transparent 1px) center/16px 16px,
+    radial-gradient(110% 90% at 50% 40%, #fff 0%, #eef4fb 60%, #dfeaf7 100%);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+.vz input,
+.vz select,
+.vz textarea {
+  font: inherit;
+  color: inherit;
+}
+.vz h1,
+.vz h2,
+.vz h3,
+.vz h4,
+.vz p {
+  margin: 0;
+}
+.vz h1,
+.vz h2,
+.vz h3 {
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.vz p {
+  text-wrap: pretty;
+}
+.vz ul,
+.vz ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vz :focus-visible {
+  outline: 3px solid var(--blue-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.vz .wrap {
+  width: min(1200px, 100% - 48px);
+  margin-inline: auto;
+}
+.vz .ico {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* ---------- Botões ---------- */
+.vz .btn {
+  --bg: var(--red-600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--bg);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  box-shadow: 0 10px 22px -10px rgba(225, 6, 47, 0.55);
+  transition:
+    transform 0.25s var(--ease),
+    background-color 0.2s,
+    box-shadow 0.25s var(--ease),
+    border-color 0.2s;
+}
+.vz .btn .ico {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
+  transition: transform 0.25s var(--ease);
+}
+.vz .btn:hover {
+  --bg: var(--red-700);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px -12px rgba(225, 6, 47, 0.6);
+}
+.vz .btn:hover .ico {
+  transform: translateX(3px);
+}
+.vz .btn:active {
+  transform: translateY(0);
+}
+.vz .btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+.vz .btn-outline {
+  --bg: #fff;
+  color: var(--blue-700);
+  border-color: var(--line-strong);
+  box-shadow: var(--sh-sm);
+}
+.vz .btn-outline:hover {
+  --bg: var(--blue-50);
+  border-color: var(--blue-500);
+  box-shadow: var(--sh-sm);
+}
+.vz .btn-outline:hover .ico.down {
+  transform: translateY(3px);
+}
+.vz .btn-sm {
+  min-height: 42px;
+  padding: 0 16px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+/* ---------- Eyebrow / cabeçalhos de seção ---------- */
+.vz .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red-600);
+}
+.vz .eyebrow::before,
+.vz .eyebrow::after {
+  content: '';
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.vz .eyebrow.left::before {
+  display: none;
+}
+.vz.section {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(72px, 9vw, 112px) 0;
+}
+.vz .section-head {
+  max-width: 760px;
+  margin: 0 auto clamp(40px, 5vw, 56px);
+  text-align: center;
+}
+.vz .section-head h2,
+.vz .head-left h2 {
+  margin: 14px 0 14px;
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.12;
+  color: var(--blue-700);
+}
+.vz .section-head h2 em,
+.vz .head-left h2 em {
+  font-style: normal;
+  color: var(--blue-500);
+}
+.vz .section-head p,
+.vz .head-left p {
+  font-size: 17px;
+  color: var(--muted);
+}
+.vz .cta-row {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(36px, 4vw, 48px);
+}
+.vz .opts {
+  align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.vz .opts button {
+  padding: 7px 13px;
+  border: 1px solid var(--blue-200);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue-700);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+.vz .opts button:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-500);
+}
+/* ---------- Mídia com placeholder (a foto entra sozinha quando existir em assets/) ---------- */
+.vz .media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--blue-500);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M32 28v8M28 32h8' stroke='%232468cc' stroke-opacity='.28' stroke-width='1'/%3E%3C/svg%3E")
+      center/64px 64px,
+    var(--grid-bg);
+}
+.vz .media .ico {
+  width: 56px;
+  height: 56px;
+  stroke-width: 1.2;
+  opacity: 0.55;
+}
+.vz .media.loaded {
+  background-size: cover;
+  background-position: center;
+}
+.vz .media.loaded .ico {
+  display: none;
+}
+/* ---------- Logo no topo das seções + foto de fundo que se dissolve ---------- */
+.vz .sec-logo {
+  display: block;
+  width: clamp(150px, 12vw, 190px);
+  height: auto;
+  margin-bottom: 14px;
+}
+.vz .section-head .sec-logo {
+  margin: 0 auto 16px;
+}
+.vz .logo-line {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.vz .logo-line .sec-logo {
+  margin: 0;
+}
+.vz .logo-line .eyebrow {
+  padding-left: 24px;
+  border-left: 1px solid var(--line-strong);
+  min-height: 44px;
+}
+.vz .sec-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: min(50%, 820px);
+  height: clamp(320px, 30vw, 460px);
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0, #000 38%), linear-gradient(0deg, transparent 0, #000 45%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0, #000 38%), linear-gradient(0deg, transparent 0, #000 45%);
+  mask-composite: intersect;
+}
+/* ---------- Serviços (carrossel) ---------- */
+.vz.services {
+  background: linear-gradient(180deg, #f3f7fd 0%, #eef4fb 50%, #f4f8fd 100%);
+}
+.vz .sec-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.vz .track {
+  --gap: 22px;
+  --per: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (var(--per) - 1) * var(--gap)) / var(--per));
+  gap: var(--gap);
+  margin: 0;
+  padding: 6px 4px 16px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.vz .track::-webkit-scrollbar {
+  display: none;
+}
+.vz .svc {
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: 42% 1fr;
+  padding: 12px;
+  border: 1px solid #dbe5f1;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 18px 36px -24px rgba(10, 43, 87, 0.35);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease),
+    border-color 0.35s;
+}
+.vz .svc:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 48px -26px rgba(10, 43, 87, 0.45);
+  border-color: var(--blue-200);
+}
+.vz .svc .media {
+  min-height: 280px;
+  border-radius: 12px;
+}
+.vz .svc-body {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 14px 10px 24px;
+}
+.vz .chip .ico {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+.vz .chip {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--blue-100);
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--blue-700);
+}
+.vz .svc h3 {
+  margin: 12px 0 8px;
+  font-size: clamp(21px, 1.7vw, 24px);
+  line-height: 1.2;
+  color: var(--blue-700);
+}
+.vz .svc p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.vz .checks {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.vz .svc p + .checks {
+  margin-top: 16px;
+}
+.vz .checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.vz .checks li::before {
+  content: '';
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--blue-600)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E")
+    center/11px no-repeat;
+}
+.vz .car-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 520px;
+  margin: 18px auto 0;
+}
+.vz .car-prog {
+  flex: 1;
+  min-width: 0;
+}
+.vz .car-count {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+}
+.vz .ctrl {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--blue-700);
+  box-shadow: 0 8px 18px -8px rgba(10, 43, 87, 0.3);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    opacity 0.2s;
+}
+.vz .ctrl .ico {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.4;
+}
+.vz .ctrl.prev .ico {
+  transform: scaleX(-1);
+}
+.vz .ctrl:hover:not(:disabled) {
+  background: var(--blue-700);
+  border-color: var(--blue-700);
+  color: #fff;
+}
+.vz .ctrl:disabled {
+  opacity: 0.45;
+  cursor: default;
+  box-shadow: none;
+}
+.vz .progress {
+  position: relative;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--blue-100);
+  overflow: hidden;
+}
+.vz .progress span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  border-radius: 5px;
+  background: var(--blue-600);
+  transition:
+    transform 0.2s linear,
+    width 0.2s;
+}
+/* ---------- Etapas ---------- */
+.vz.flow-sec {
+  overflow: hidden;
+  background: linear-gradient(180deg, #fff 0%, #f5f8fd 100%);
+}
+.vz .flow-head {
+  max-width: 760px;
+  margin-bottom: clamp(40px, 5vw, 56px);
+}
+.vz .flow-head h2 {
+  margin: 18px 0 18px;
+  font-size: clamp(30px, 3.4vw, 48px);
+  line-height: 1.1;
+  color: var(--blue-700);
+}
+.vz .flow-head h2 em {
+  font-style: normal;
+  color: var(--blue-500);
+}
+.vz .flow-head .q {
+  margin-bottom: 8px;
+  font-size: clamp(18px, 1.5vw, 21px);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--navy-800);
+}
+.vz .flow-head .q + p {
+  font-size: 16.5px;
+  color: var(--muted);
+}
+.vz .flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.vz .step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -36px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--blue-200);
+  background: #fff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231550aa' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E")
+    center/18px no-repeat;
+  box-shadow: 0 8px 18px -10px rgba(10, 43, 87, 0.4);
+  transform: translateY(-50%);
+}
+.vz .step-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.vz .step-ic {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  box-shadow: inset 0 0 0 1px var(--blue-100);
+}
+.vz .step-ic .ico {
+  width: 30px;
+  height: 30px;
+  stroke-width: 1.5;
+}
+.vz .step-t {
+  padding-left: 16px;
+  border-left: 1px solid var(--line-strong);
+}
+.vz .step {
+  position: relative;
+  padding: 28px 24px 26px;
+  border: 1px solid #dde6f1;
+  border-radius: var(--r-lg);
+  background: #fff;
+  box-shadow:
+    0 24px 48px -30px rgba(6, 27, 56, 0.4),
+    0 2px 6px rgba(10, 43, 87, 0.05);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+.vz .step::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 24px;
+  width: 64px;
+  height: 5px;
+  border-radius: 0 0 4px 4px;
+  background: var(--blue-500);
+}
+.vz .step:nth-child(even)::before {
+  background: var(--red-600);
+}
+.vz .step:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 34px 60px -30px rgba(6, 27, 56, 0.5),
+    0 2px 6px rgba(10, 43, 87, 0.06);
+}
+.vz .step .n {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--blue-600);
+}
+.vz .step h3 {
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--blue-700);
+}
+.vz .step p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+/* ---------- Aplicações ---------- */
+.vz.apps {
+  background: linear-gradient(180deg, #f3f7fd 0%, #eef4fb 100%);
+}
+.vz .apps-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+  margin-bottom: clamp(36px, 4vw, 48px);
+}
+.vz .apps-top .btn {
+  margin-top: 24px;
+}
+.vz .vaso {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(24px, 2.6vw, 34px);
+  border-radius: 24px;
+  border: 1px solid #d6e3f3;
+  background: linear-gradient(115deg, #fff 0%, #f6f9fe 50%, #e8f0fb 100%);
+  box-shadow: 0 36px 70px -42px rgba(10, 43, 87, 0.5);
+}
+.vz .vaso::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 45%;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(36, 104, 204, 0.07) 1px, transparent 1px) 0 0/28px 28px,
+    linear-gradient(90deg, rgba(36, 104, 204, 0.07) 1px, transparent 1px) 0 0/28px 28px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 40%);
+  mask-image: linear-gradient(90deg, transparent, #000 40%);
+}
+.vz .vaso h3 {
+  margin-bottom: 18px;
+  font-size: clamp(18px, 1.4vw, 21px);
+  line-height: 1.3;
+  color: var(--blue-700);
+}
+.vz .vaso ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.vz .vaso li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #d6e3f3;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.vz .vaso li .ico {
+  width: 18px;
+  height: 18px;
+  color: var(--red-600);
+  stroke-width: 2.4;
+}
+.vz .app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.vz .app {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border: 1px solid #dbe5f1;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 18px 36px -24px rgba(10, 43, 87, 0.35);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease),
+    border-color 0.35s;
+}
+.vz .app:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 48px -26px rgba(10, 43, 87, 0.45);
+  border-color: var(--blue-200);
+}
+.vz .app .media {
+  aspect-ratio: 2/1;
+  border-radius: 12px;
+}
+.vz .app .media .ico {
+  width: 44px;
+  height: 44px;
+}
+.vz .app-b {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 8px 8px;
+}
+.vz .app-ic {
+  flex: none;
+  padding: 4px 16px 4px 0;
+  border-right: 1px solid var(--line-strong);
+  color: var(--blue-600);
+}
+.vz .app-ic .ico {
+  width: 40px;
+  height: 40px;
+  stroke-width: 1.4;
+}
+.vz .app h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+  line-height: 1.25;
+  color: var(--blue-700);
+}
+.vz .app p {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.vz .app.feat {
+  border-color: var(--blue-500);
+  box-shadow:
+    0 0 0 1px var(--blue-500),
+    0 24px 44px -24px rgba(11, 63, 138, 0.5);
+}
+/* ---------- Diferenciais (onda azul do site) ---------- */
+.vz.dif-section {
+  overflow: hidden;
+  padding-bottom: clamp(64px, 6vw, 80px);
+  background: linear-gradient(180deg, #fff 0%, #f3f7fc 55%, #eef3fa 100%);
+}
+.vz .dif-lines {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+.vz .dif-lines {
+  top: 0;
+  height: 100%;
+}
+.vz.dif-section .wrap {
+  width: min(1360px, 100% - 48px);
+}
+.vz .dif-head {
+  max-width: 680px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.vz .dif-head h2 {
+  margin: 16px 0 14px;
+  font-size: clamp(32px, 3.6vw, 54px);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: var(--navy-800);
+}
+.vz .dif-head h2 em {
+  font-style: normal;
+  color: var(--blue-500);
+}
+.vz .dif-head p {
+  font-size: 17px;
+  color: var(--text);
+}
+.vz.dif-section .sec-photo {
+  width: min(56%, 1000px);
+  height: clamp(340px, 32vw, 500px);
+}
+.vz .benefits {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+.vz .benefit {
+  position: relative;
+  padding: 30px 20px 28px;
+  border: 1px solid #dde6f1;
+  border-radius: var(--r-lg);
+  background: #fff;
+  text-align: center;
+  box-shadow:
+    0 24px 48px -28px rgba(6, 27, 56, 0.45),
+    0 2px 6px rgba(10, 43, 87, 0.06);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+.vz .benefit::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 96px;
+  height: 6px;
+  border-radius: 0 0 4px 4px;
+  background: var(--blue-500);
+  transform: translateX(-50%);
+}
+.vz .benefit:nth-child(even)::before {
+  background: var(--red-600);
+}
+.vz .benefit:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 34px 60px -30px rgba(6, 27, 56, 0.55),
+    0 2px 6px rgba(10, 43, 87, 0.06);
+}
+.vz .benefit-icon {
+  display: grid;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f3f7fc, #e9f0f8);
+  color: var(--blue-700);
+  box-shadow:
+    inset 0 0 0 1px var(--blue-100),
+    0 0 0 8px rgba(240, 245, 252, 0.7),
+    0 10px 20px -10px rgba(10, 43, 87, 0.25);
+}
+.vz .benefit-icon .ico {
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.5;
+}
+.vz .benefit h3 {
+  margin-bottom: 10px;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--blue-700);
+}
+.vz .benefit p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+/* ---------- FAQ ---------- */
+.vz.faq {
+  background: linear-gradient(180deg, #f5f8fd 0%, #edf3fb 100%);
+}
+.vz.faq .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+.vz.faq .head-left {
+  position: sticky;
+  top: 110px;
+}
+.vz.faq .head-left .btn {
+  margin-top: 26px;
+}
+.vz .faq-list {
+  display: grid;
+  gap: 12px;
+}
+.vz .faq-list details {
+  border: 1px solid #dbe5f1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 14px 30px -24px rgba(10, 43, 87, 0.35);
+  transition: border-color 0.2s;
+}
+.vz .faq-list details[open] {
+  border-color: var(--blue-200);
+}
+.vz .faq-list summary {
+  position: relative;
+  padding: 20px 64px 20px 22px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--blue-700);
+}
+.vz .faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.vz .faq-list summary::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--blue-50)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3f8a' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E")
+    center/14px no-repeat;
+  transform: translateY(-50%);
+  transition:
+    transform 0.25s var(--ease),
+    background-color 0.2s;
+}
+.vz .faq-list details[open] summary::after {
+  background-color: var(--red-600);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+}
+.vz .faq-list details p {
+  padding: 0 22px 20px;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+/* ---------- Área "fale com a gente" (banner + avaliação) ---------- */
+.vz.talk {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f5f8fd 0%, #edf3fb 100%);
+}
+.vz.talk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0 5%,
+      rgba(255, 255, 255, 0.8) 5% 12%,
+      transparent 12% 68%,
+      rgba(255, 255, 255, 0.65) 68% 76%,
+      transparent 76%
+    ),
+    linear-gradient(
+      115deg,
+      transparent 0 24%,
+      rgba(214, 228, 245, 0.55) 24% 29%,
+      transparent 29% 86%,
+      rgba(214, 228, 245, 0.5) 86% 92%,
+      transparent 92%
+    );
+}
+.vz.talk .wrap {
+  width: min(1360px, 100% - clamp(48px, 8vw, 200px));
+}
+.vz.cta-section {
+  --list: clamp(440px, 42vw, 640px);
+  padding: clamp(48px, 5vw, 64px) 0 0;
+}
+.vz .cta {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--list);
+  min-height: clamp(300px, 22vw, 360px);
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(120deg, #082b5e 0%, #0a3478 60%, #0b3f8a 100%);
+  isolation: isolate;
+  box-shadow: 0 40px 80px -40px rgba(6, 27, 56, 0.55);
+}
+.vz .cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(120, 170, 255, 0.07) 1px, transparent 1px) 0 0/34px 34px,
+    linear-gradient(90deg, rgba(120, 170, 255, 0.07) 1px, transparent 1px) 0 0/34px 34px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000 70%);
+  mask-image: linear-gradient(90deg, transparent 30%, #000 70%);
+}
+.vz .cta-main {
+  position: relative;
+  align-self: center;
+  padding: clamp(40px, 4vw, 56px) clamp(24px, 3vw, 48px) clamp(40px, 4vw, 56px)
+    clamp(28px, 3.6vw, 60px);
+}
+.vz .cta-main::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  bottom: -150px;
+  z-index: -1;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0 30px,
+    rgba(255, 255, 255, 0.07) 30px 31px
+  );
+  pointer-events: none;
+}
+.vz .cta .eyebrow {
+  gap: 16px;
+  font-size: clamp(12px, 0.9vw, 14px);
+  color: #fff;
+}
+.vz .cta .eyebrow::before {
+  background: var(--red-600);
+  width: 50px;
+}
+.vz .cta .eyebrow::after {
+  display: none;
+}
+.vz .cta h2 {
+  margin: 16px 0 12px;
+  max-width: 620px;
+  color: #fff;
+  font-size: clamp(28px, 2.4vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+.vz .cta p {
+  max-width: 560px;
+  color: #d6e4f7;
+  font-size: clamp(16px, 1.1vw, 18px);
+  line-height: 1.55;
+}
+.vz .cta .btn {
+  margin-top: clamp(22px, 2vw, 28px);
+  min-height: 56px;
+  padding: 0 28px;
+}
+.vz .cta .sec-logo {
+  width: clamp(140px, 11vw, 180px);
+  margin-bottom: 22px;
+}
+.vz .cta-side {
+  position: relative;
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  padding: 32px clamp(24px, 3vw, 48px) 32px 0;
+  isolation: isolate;
+}
+.vz .cta-side::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 22%;
+  right: 0;
+  z-index: -1;
+  clip-path: polygon(90px 0, 100% 0, 100% 100%, 0 100%);
+}
+.vz .cta-list {
+  width: 100%;
+  padding: 6px clamp(20px, 2vw, 32px);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 30px 60px -24px rgba(3, 15, 35, 0.6);
+}
+.vz .cta-list li {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: clamp(16px, 1.4vw, 22px) 0;
+  border-bottom: 1px solid #d9e3ef;
+}
+.vz .cta-list li:last-child {
+  border-bottom: 0;
+}
+.vz .cta-list .ico {
+  width: clamp(32px, 2.4vw, 40px);
+  height: clamp(32px, 2.4vw, 40px);
+  color: var(--blue-600);
+  stroke-width: 1.5;
+}
+.vz .cta-list strong {
+  display: block;
+  padding-left: 18px;
+  border-left: 1px solid var(--line-strong);
+  font-size: clamp(16px, 1.2vw, 20px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--blue-700);
+}
+/* ---------- Divisores arredondados entre seções (mesmo efeito do site) ---------- */
+.vz.services {
+  z-index: 6;
+  border-radius: 0 0 var(--round) var(--round);
+  box-shadow: 0 34px 50px -40px rgba(10, 43, 87, 0.35);
+}
+.vz.flow-sec {
+  z-index: 5;
+  margin-top: calc(var(--round) * -1);
+  padding-top: calc(clamp(72px, 9vw, 112px) + var(--round));
+  border-radius: 0 0 var(--round) var(--round);
+  box-shadow: 0 34px 50px -40px rgba(10, 43, 87, 0.3);
+}
+.vz.apps {
+  z-index: 4;
+  margin-top: calc(var(--round) * -1);
+  padding-top: calc(clamp(72px, 9vw, 112px) + var(--round));
+  border-radius: 0 0 var(--round) var(--round);
+}
+.vz.dif-section {
+  z-index: 3;
+  margin-top: calc(var(--round) * -1);
+  padding-top: calc(clamp(72px, 9vw, 112px) + var(--round));
+  border-radius: 0 0 var(--round) var(--round);
+}
+.vz.faq {
+  z-index: 2;
+  margin-top: calc(var(--round) * -1);
+  padding-top: calc(clamp(72px, 9vw, 112px) + var(--round));
+  border-radius: 0 0 var(--round) var(--round);
+  box-shadow: 0 34px 50px -40px rgba(10, 43, 87, 0.3);
+}
+.vz.talk {
+  z-index: 1;
+  margin-top: calc(var(--round) * -1);
+  padding-top: var(--round);
+  border-radius: 0 0 var(--round) var(--round);
+}
+/* ---------- CTA fixo (mobile) ---------- */
+/* ---------- Animações de entrada ---------- */
+.js .vz .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
+}
+.js .vz .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.js .vz .reveal.d1 {
+  transition-delay: 0.08s;
+}
+.js .vz .reveal.d2 {
+  transition-delay: 0.16s;
+}
+.js .vz .reveal.d3 {
+  transition-delay: 0.24s;
+}
+/* ---------- Responsivo ---------- */
+@media (max-width: 1200px) {
+  .vz .benefits {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1080px) {
+  .vz .track {
+    --per: 1;
+  }
+  .vz .svc {
+    grid-template-columns: 40% 1fr;
+  }
+  .vz .flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .vz .app-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .vz .step::after {
+    display: none;
+  }
+  .vz .cta {
+    grid-template-columns: 1fr;
+  }
+  .vz .cta-side {
+    grid-column: 1;
+    padding: 28px clamp(28px, 3.6vw, 60px) 36px;
+  }
+  .vz .cta-side::before {
+    left: 0;
+    clip-path: none;
+    opacity: 0.9;
+  }
+}
+@media (max-width: 900px) {
+  .vz .apps-top,
+  .vz.faq .wrap {
+    grid-template-columns: 1fr;
+  }
+  .vz .sec-photo {
+    width: 100%;
+    opacity: 0.22;
+  }
+  .vz.faq .head-left {
+    position: static;
+  }
+}
+@media (max-width: 640px) {
+  .vz .wrap {
+    width: calc(100% - 32px);
+  }
+  .vz .section-head p,
+  .vz .head-left p {
+    font-size: 15.5px;
+  }
+  .vz .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+  .vz .svc {
+    grid-template-columns: 1fr;
+  }
+  .vz .svc .media {
+    min-height: 0;
+    aspect-ratio: 16/10;
+  }
+  .vz .svc-body {
+    padding: 16px 8px 8px;
+  }
+  .vz .track {
+    --gap: 12px;
+  }
+  .vz .flow,
+  .vz .app-grid {
+    grid-template-columns: 1fr;
+  }
+  .vz .step {
+    padding: 26px 20px 22px;
+  }
+  .vz .vaso ul {
+    grid-template-columns: 1fr;
+  }
+  .vz.dif-section .wrap {
+    width: calc(100% - 32px);
+  }
+  .vz .benefits {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .vz .benefit:last-child {
+    grid-column: 1/-1;
+  }
+  .vz .benefit {
+    padding: 26px 14px 22px;
+    border-radius: 16px;
+  }
+  .vz .benefit::before {
+    width: 64px;
+    height: 5px;
+  }
+  .vz .benefit-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 14px;
+    box-shadow:
+      inset 0 0 0 1px var(--blue-100),
+      0 0 0 6px rgba(240, 245, 252, 0.7);
+  }
+  .vz .benefit-icon .ico {
+    width: 28px;
+    height: 28px;
+  }
+  .vz .benefit h3 {
+    font-size: 16px;
+  }
+  .vz .benefit p {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .vz .faq-list summary {
+    padding: 18px 58px 18px 18px;
+    font-size: 16px;
+  }
+  .vz .faq-list summary::after {
+    right: 16px;
+  }
+  .vz .faq-list details p {
+    padding: 0 18px 18px;
+    font-size: 15px;
+  }
+  .vz.talk .wrap {
+    width: calc(100% - 32px);
+  }
+  .vz .cta {
+    border-radius: 20px;
+  }
+  .vz .cta-main {
+    padding: 32px 24px 28px;
+  }
+  .vz .cta .btn {
+    width: 100%;
+  }
+  .vz .cta-side {
+    padding: 4px 16px 20px;
+  }
+  .vz .cta-list {
+    padding: 4px 18px;
+  }
+  .vz .logo-line {
+    gap: 14px;
+  }
+  .vz .logo-line .eyebrow {
+    padding-left: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vz .track {
+    scroll-behavior: auto;
+  }
+  .js .vz .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Ajustes do porte para Astro ---------- */
+/* As fotos passam pelo astro:assets (<img>), em vez de background-image via data-img. */
+.vz .media > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.vz .cta-side-photo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 22%;
+  right: 0;
+  z-index: -1;
+  width: 78%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 75% center;
+  clip-path: polygon(90px 0, 100% 0, 100% 100%, 0 100%);
+}
+@media (max-width: 1080px) {
+  .vz .cta-side-photo {
+    left: 0;
+    width: 100%;
+    clip-path: none;
+    opacity: 0.9;
+  }
+}
+/* Cards de equipamento e CTAs viraram <button> (plugin de atendimento). */
+.vz button.app {
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  width: 100%;
+}
+.vz .svc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue-700);
+  cursor: pointer;
+}
+.vz .svc-cta .ico {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.4;
+  transition: transform 0.25s var(--ease);
+}
+.vz .svc-cta:hover {
+  color: var(--red-600);
+}
+.vz .svc-cta:hover .ico {
+  transform: translateX(3px);
+}
+.vz .app .app-h {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  color: var(--blue-700);
+}
+.vz .app .app-p {
+  display: block;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+/* O banner agora fica sozinho na área "talk" (o formulário é a Cotação do padrão). */
+.vz.talk {
+  padding-bottom: clamp(48px, 5vw, 64px);
+}
+
+/* Serviços em grid 2×2 (pedido de 09/11/2026: grid, não carrossel). O card é o original. */
+.vz .svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.vz .svc-grid .svc .media {
+  min-height: 260px;
+}
+@media (max-width: 1080px) {
+  .vz .svc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .vz .svc-grid {
+    gap: 14px;
+  }
+  .vz .svc-grid .svc .media {
+    min-height: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Botões padronizados com o Button.astro do padrão B2 (pedido de 09/11/2026):
+   mesmos cantos retos, tamanho, peso, respiro e ícone do Hero, da Cotação e da
+   barra do celular. Vale para todos os botões do miolo, inclusive o do banner.
+   --------------------------------------------------------------------------- */
+.vz .btn,
+.vz .cta .btn {
+  gap: 10px;
+  min-height: 0;
+  padding: 14px 24px;
+  border: 0;
+  border-radius: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: normal;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.2s;
+}
+.vz .btn:hover,
+.vz .btn:active {
+  transform: none;
+  box-shadow: none;
+}
+.vz .btn .ico {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  transition: none;
+}
+.vz .btn:hover .ico {
+  transform: none;
+}
+/* Link "Falar com especialista" do card: receita de link de card do padrão (13px, negrito). */
+.vz .svc-cta {
+  font-size: 13px;
+}
+
+/* Banner "Fale com um especialista" integrado à Cotação como uma seção só (pedido de
+   09/11/2026): mesmo fundo da Cotação, sem o recorte arredondado embaixo nem as faixas
+   diagonais, para não haver corte entre os dois. */
+.vz.talk {
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--color-neutral-gray-100);
+  padding-bottom: 32px;
+}
+.vz.talk::before {
+  display: none;
+}
+
+/* O hero tem cantos inferiores arredondados: Serviços começa por baixo dele, para o fundo
+   dos Serviços aparecer nos cantos (mesmo recurso das LPs Print Master). */
+.vz.services {
+  margin-top: -40px;
+  padding-top: calc(clamp(72px, 9vw, 112px) + 40px);
+}
+@media (min-width: 1024px) {
+  .vz.services {
+    margin-top: -64px;
+    padding-top: calc(clamp(72px, 9vw, 112px) + 64px);
+  }
+}
+
+/* Parágrafo de Serviços em uma linha só no desktop (pedido de 09/11/2026). */
+.vz.services .section-head {
+  max-width: 960px;
+}
+@media (min-width: 1024px) {
+  .vz.services .section-head p {
+    white-space: nowrap;
+  }
+}
+
+/* Descrições dos cards de serviço sempre com 3 linhas (pedido de 09/11/2026): os textos
+   foram encurtados para caber, e a altura mínima alinha os cards. */
+.vz .svc-grid .svc p {
+  min-height: calc(1.6em * 3);
+}
+
+/* "Como funciona": descrição em 2 linhas no desktop (pedido de 09/11/2026). */
+@media (min-width: 1024px) {
+  .vz .flow-head {
+    max-width: 900px;
+  }
+  .vz .flow-head .q + p {
+    text-wrap: balance;
+  }
+}
+
+/* Etapas do "Como funciona": descrições sempre com 3 linhas (pedido de 09/11/2026). */
+.vz .step p {
+  min-height: calc(1.6em * 3);
+}
+
+/* Equipamentos: título do card em 1 linha e descrição em 3 (pedido de 09/11/2026). A coluna
+   do ícone fica mais estreita para o título caber. */
+.vz .app-b {
+  gap: 12px;
+}
+.vz .app-ic {
+  padding-right: 12px;
+}
+.vz .app-ic .ico {
+  width: 34px;
+  height: 34px;
+}
+.vz .app .app-h {
+  font-size: 17px;
+  white-space: nowrap;
+}
+.vz .app .app-p {
+  min-height: calc(1.55em * 3);
+}
+
+/* A sombra do banner era cortada em linha reta pelo overflow da área "talk" (que só existia
+   para as faixas diagonais, já removidas). */
+.vz.talk {
+  overflow: visible;
+}
+
+/* ---------------------------------------------------------------------------
+   Ritmo vertical padronizado (09/11/2026): a mesma distância entre a borda de cada
+   seção e o conteúdo, em cima e embaixo — 72px no desktop, 48px no celular. Entre o
+   conteúdo de duas seções ficam ~144px / ~96px (faixa 96–160px do GUIA-LAYOUT do padrão
+   B2 quando o fundo muda). A sobreposição das bordas arredondadas (--round, e 40/64px sob
+   o hero) é compensada à parte, para não entrar no espaço visível.
+   --------------------------------------------------------------------------- */
+.vz {
+  --gap-sec: 48px;
+}
+@media (min-width: 1024px) {
+  .vz {
+    --gap-sec: 72px;
+  }
+}
+.vz.section {
+  padding-top: var(--gap-sec);
+  padding-bottom: var(--gap-sec);
+}
+.vz.flow-sec,
+.vz.apps,
+.vz.faq {
+  padding-top: calc(var(--round) + var(--gap-sec));
+}
+.vz.services {
+  margin-top: -40px;
+  padding-top: calc(40px + var(--gap-sec));
+}
+@media (min-width: 1024px) {
+  .vz.services {
+    margin-top: -64px;
+    padding-top: calc(64px + var(--gap-sec));
+  }
+}
+/* Dúvidas vem depois do bloco "Por que a Vazão", cujos cards avançam 40px (desktop) sobre
+   ela: sem sobreposição de borda, respiro de duas medidas para igualar o vão entre conteúdos. */
+#perguntas.vz.faq {
+  margin-top: 0;
+  padding-top: calc(var(--gap-sec) * 2);
+}
+@media (min-width: 1024px) {
+  #perguntas.vz.faq {
+    padding-top: calc(var(--gap-sec) * 2 + 40px);
+  }
+}
+/* Banner + Cotação: o banner começa com o mesmo respiro; até o texto da Cotação (que já tem
+   pt-8 = 32px) fica uma medida. */
+.vz.talk {
+  padding-top: var(--round);
+  padding-bottom: calc(var(--gap-sec) - 32px);
+}
+.vz.cta-section {
+  padding-top: var(--gap-sec);
+}
+
+/* Espaço interno padronizado: cabeçalho → conteúdo e conteúdo → botão (48px / 32px). */
+.vz {
+  --gap-in: 32px;
+}
+@media (min-width: 1024px) {
+  .vz {
+    --gap-in: 48px;
+  }
+}
+.vz .section-head,
+.vz .flow-head,
+.vz .apps-top {
+  margin-bottom: var(--gap-in);
+}
+.vz .cta-row {
+  margin-top: var(--gap-in);
+}
+
+/* Seta nos cards de Equipamentos (o card inteiro é CTA): mesmo chip de seta do padrão B2. */
+.vz .app-arrow {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+.vz .app-arrow .ico {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.2;
+}
+.vz .app:hover .app-arrow {
+  background: var(--red-600);
+  color: #fff;
+  transform: translateX(2px);
+}
+/* A seta fica no canto da foto, para não estreitar o texto (descrições em 3 linhas). */
+.vz .app {
+  position: relative;
+}
+.vz .app .app-arrow {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  background: #fff;
+  box-shadow: 0 6px 14px -6px rgba(10, 43, 87, 0.45);
+}

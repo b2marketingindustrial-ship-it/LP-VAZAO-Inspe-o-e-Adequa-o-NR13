@@ -1,0 +1,28 @@
+---
+/**
+ * Eyebrow — desvio da LP Vazão (09/11/2026): o mesmo eyebrow do miolo original (texto em
+ * caixa alta seguido de um traço vermelho), no lugar do quadradinho do padrão B2, para a
+ * página ter um estilo só. Sobre fundo escuro (`tone="light"`) o texto fica branco e o traço
+ * continua vermelho.
+ */
+interface Props {
+  tone?: 'light' | 'dark'
+  marker?: boolean
+  class?: string
+}
+
+const { tone = 'dark', marker = true, class: className = '' } = Astro.props
+
+const toneClasses = tone === 'light' ? 'text-neutral-light/85' : 'text-accent-orange'
+---
+
+<span
+  class={`
+    inline-flex items-center gap-3
+    font-sans text-[12px] font-extrabold uppercase tracking-[0.16em]
+    ${toneClasses} ${className}
+  `}
+>
+  <slot />
+  {marker && <span aria-hidden="true" class="h-[2px] w-7 rounded-full bg-accent-orange" />}
+</span>

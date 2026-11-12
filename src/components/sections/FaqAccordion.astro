@@ -1,0 +1,49 @@
+---
+/**
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026) — o miolo voltou ao layout ORIGINAL da LP anterior.
+ * Slot `perguntas` da biblioteca B2 (nome, id, dados e CTA exigidos pelo manifesto), com o
+ * markup original: cabeçalho fixo à esquerda e acordeão à direita. Estilo em
+ * src/styles/original.css (escopo `.vz`). `npm run compose` sobrescreve este arquivo: não
+ * recomponha sem guardar esta versão.
+ */
+import Section from '@components/Section.astro'
+import type { SectionProps } from '@lib/layout'
+import { faq } from '@data/sections/perguntas'
+import { ctaMiolo } from '@data/miolo'
+
+type Props = SectionProps
+
+const { tone, rhythm } = Astro.props
+const parts = faq.title.split('*')
+---
+
+<Section
+  id="perguntas"
+  tone={tone}
+  rhythm={rhythm}
+  container={false}
+  class="vz section faq"
+  aria-labelledby="perguntas-title"
+>
+  <div class="wrap">
+    <div class="head-left reveal">
+      <span class="eyebrow left">{faq.eyebrow}</span>
+      <h2 id="perguntas-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
+      <p>{faq.text}</p>
+      <button type="button" class="btn btn-slave-whats" data-cta="perguntas-cta">
+        {ctaMiolo}
+        <svg class="ico" aria-hidden="true">
+          <use href="#i-arrow" />
+        </svg>
+      </button>
+    </div>
+    <div class="faq-list reveal d1">
+      {faq.items.map((item, i) => (
+        <details open={i === 0}>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</Section>

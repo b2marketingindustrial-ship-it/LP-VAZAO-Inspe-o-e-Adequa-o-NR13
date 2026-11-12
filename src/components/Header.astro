@@ -1,0 +1,86 @@
+---
+/**
+ * ESTRUTURA FIXA (PROMPT-PADRAO-LP 4.1.1), com o desvio adotado nas LPs SEIVE, Print Master e
+ * Coair (pedido da B2 em 09/11/2026): barra branca com o logo DENTRO dela (sem a placa
+ * pendurada), filete das cores da Vazão no topo, tagline central com selo, CTA compacto e
+ * sombra só depois que a página rola (`data-scrolled`). Sem menu: uma rota, uma página
+ * (regra 1). O logo não é link, para ninguém sair da LP sem querer.
+ * Muda só: logo (src/assets/LOGO.png), tagline (header.tagline) e rótulos (content.cta).
+ */
+import { Image } from 'astro:assets'
+import Icon from './Icon.astro'
+import logo from '../assets/LOGO.png'
+import { site } from '../data/site'
+import { header, cta } from '../data/content'
+---
+
+<header data-header class="site-header sticky top-0 z-50 bg-neutral-light/95 backdrop-blur-md">
+  <span
+    aria-hidden="true"
+    class="block h-[3px] bg-[linear-gradient(90deg,var(--color-primary-dark-800)_0%,var(--color-primary-dark)_55%,var(--color-accent-orange)_100%)]"
+  ></span>
+  <div class="mx-auto flex max-w-page items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-6 lg:px-10">
+    {/* 1. Logo dentro da barra */}
+    <div class="header-logo flex shrink-0 items-center">
+      <Image
+        src={logo}
+        alt={site.brand}
+        width={230}
+        height={72}
+        format="webp"
+        loading="eager"
+        fetchpriority="low"
+        decoding="async"
+        class="h-[34px] w-auto sm:h-[46px]"
+      />
+    </div>
+
+    {/* 2. Tagline com selo, centrada entre o logo e o CTA (some abaixo de lg) */}
+    <div class="hidden flex-1 items-center justify-center lg:flex">
+      <span class="flex items-center gap-2.5 font-display text-[13px] font-extrabold tracking-[0.14em] text-primary-dark uppercase">
+        <span class="flex size-7 items-center justify-center rounded-full bg-accent-orange/12 text-accent-orange">
+          <Icon name="badge-check" class="size-4" />
+        </span>
+        {header.tagline}
+      </span>
+    </div>
+
+    {/* 3. CTA compacto, rótulo curto no mobile */}
+    <button
+      type="button"
+      data-cta="header-cta"
+      class="btn-slave-whats inline-flex shrink-0 items-center gap-2 bg-accent-orange px-4 py-2.5 font-sans text-[13px] font-bold text-neutral-light transition-colors duration-200 hover:bg-accent-orange-dark sm:px-5 sm:text-[14px]"
+    >
+      <span class="sm:hidden">{cta.primaryShort}</span>
+      <span class="hidden sm:inline">{cta.primary}</span>
+      <Icon name="arrow-right" class="hidden size-4 shrink-0 sm:block" />
+    </button>
+  </div>
+</header>
+
+<style>
+  /* Linha fina enquanto a página está no topo; sombra quando o conteúdo passa por baixo. */
+  .site-header {
+    box-shadow: 0 1px 0 rgb(10 43 87 / 0.08);
+    transition: box-shadow 0.25s ease;
+  }
+
+  .site-header[data-scrolled] {
+    box-shadow: 0 14px 30px -20px rgb(10 43 87 / 0.55);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Sombra do header só depois que a página rola.
+  document.querySelectorAll<HTMLElement>('[data-header]').forEach((el) => {
+    const update = () => el.toggleAttribute('data-scrolled', window.scrollY > 8)
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+  })
+</script>

@@ -1,0 +1,75 @@
+---
+/**
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026) — o miolo voltou ao layout ORIGINAL da LP anterior.
+ * Slot `processo` da biblioteca B2 (nome, id, dados e CTA exigidos pelo manifesto), com o
+ * markup das etapas originais; estilo em src/styles/original.css (escopo `.vz`).
+ * `npm run compose` sobrescreve este arquivo: não recomponha sem guardar esta versão.
+ */
+import { Image } from 'astro:assets'
+import Section from '@components/Section.astro'
+import type { SectionProps } from '@lib/layout'
+import { process } from '@data/sections/processo'
+import { ctaMiolo } from '@data/miolo'
+import fundo from '@assets/processo/fundo.jpg'
+
+type Props = SectionProps
+
+const { tone, rhythm } = Astro.props
+const parts = process.title.split('*')
+---
+
+<Section
+  id="processo"
+  tone={tone}
+  rhythm={rhythm}
+  container={false}
+  class="vz section flow-sec"
+  aria-labelledby="processo-title"
+>
+  <Image
+    class="sec-photo"
+    src={fundo}
+    alt=""
+    aria-hidden="true"
+    width={820}
+    format="webp"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="wrap">
+    <div class="flow-head reveal">
+      <span class="eyebrow left">{process.eyebrow}</span>
+      <h2 id="processo-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
+      <p class="q">{process.question}</p>
+      <p>{process.text}</p>
+    </div>
+
+    <ol class="flow">
+      {process.steps.map((step, i) => (
+        <li class:list={['step reveal', i ? `d${i}` : false]}>
+          <div class="step-top">
+            <span class="step-ic" aria-hidden="true">
+              <svg class="ico">
+                <use href={`#i-${step.glyph}`} />
+              </svg>
+            </span>
+            <div class="step-t">
+              <span class="n">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+            </div>
+          </div>
+          <p>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="cta-row">
+      <button type="button" class="btn btn-slave-whats" data-cta="processo-cta">
+        {ctaMiolo}
+        <svg class="ico" aria-hidden="true">
+          <use href="#i-arrow" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</Section>

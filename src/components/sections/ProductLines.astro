@@ -1,0 +1,108 @@
+---
+/**
+ * VARIANTE LOCAL (LP Vazão, 09/11/2026) — o miolo voltou ao layout ORIGINAL da LP anterior.
+ * Este arquivo ocupa o slot `linhas` da biblioteca B2 (nome, id, dados e CTAs exigidos pelo
+ * manifesto), mas o markup é o carrossel de serviços original; estilo em
+ * src/styles/original.css (escopo `.vz`). `npm run compose` sobrescreve este arquivo:
+ * não recomponha sem guardar esta versão.
+ *
+ * Diferença do original: cada card ganhou o link "Falar com especialista" (o manifesto exige
+ * um CTA por item) e os botões são `btn-slave-whats` em vez de âncoras para o formulário.
+ */
+import { Image } from 'astro:assets'
+import Section from '@components/Section.astro'
+import type { SectionProps } from '@lib/layout'
+import { productLines } from '@data/sections/linhas'
+import { ctaMiolo } from '@data/miolo'
+
+type Props = SectionProps
+
+const { tone, rhythm } = Astro.props
+const parts = productLines.title.split('*')
+---
+
+<Section
+  id="linhas"
+  tone={tone}
+  rhythm={rhythm}
+  container={false}
+  class="vz section services"
+  aria-labelledby="linhas-title"
+>
+  <svg
+    class="sec-bg"
+    viewBox="0 0 1440 1000"
+    preserveAspectRatio="xMidYMin slice"
+    aria-hidden="true"
+    fill="none"
+  >
+    <g stroke="#b7cbe6" stroke-width="1" opacity=".7">
+      <path d="M-20 420C200 360 380 520 620 470S1020 360 1460 420"></path>
+      <path d="M-20 450C200 390 380 550 620 500S1020 390 1460 450"></path>
+      <path d="M-20 480C200 420 380 580 620 530S1020 420 1460 480"></path>
+      <path d="M1000 40C1150 80 1250 20 1460 60"></path>
+      <path d="M1000 70C1150 110 1250 50 1460 90"></path>
+    </g>
+    <g stroke="#7fa3d6" stroke-width="1.2" opacity=".6">
+      <circle cx="1275" cy="210" r="38"></circle>
+      <path d="M1275 160v100M1225 210h100"></path>
+      <path d="M1105 54v24M1093 66h24M388 130v20M378 140h20M30 400v20M20 410h20M1395 600v20M1385 610h20M1220 820v20M1210 830h20"></path>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">{productLines.eyebrow}</span>
+      <h2 id="linhas-title">{parts.map((t, i) => (i % 2 ? <em>{t}</em> : t))}</h2>
+      <p>{productLines.text}</p>
+    </div>
+
+    <div class="reveal">
+      <ul class="svc-grid" aria-label="Serviços NR13">
+        {productLines.items.map((item) => (
+          <li class="svc">
+            <div class="media">
+              <Image
+                src={item.photo.src}
+                alt={item.photo.alt}
+                width={640}
+                format="webp"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="svc-body">
+              <span class="chip">
+                <svg class="ico" aria-hidden="true">
+                  <use href={`#i-${item.glyph}`} />
+                </svg>
+                {item.tag}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <ul class="checks">
+                {item.features.map((f) => (
+                  <li>{f}</li>
+                ))}
+              </ul>
+              <button type="button" class="svc-cta btn-slave-whats" data-cta={`linhas-${item.id}`}>
+                Falar com especialista
+                <svg class="ico" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg>
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="cta-row">
+      <button type="button" class="btn btn-slave-whats" data-cta="linhas-cta">
+        {ctaMiolo}
+        <svg class="ico" aria-hidden="true">
+          <use href="#i-arrow" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</Section>
